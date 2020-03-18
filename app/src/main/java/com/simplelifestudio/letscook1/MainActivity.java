@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.loginRegisterBt:
 
-            
+
 
                 startActivity(new Intent(MainActivity.this,register.class));
 
