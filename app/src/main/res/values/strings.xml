@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">letscook1</string>
+    <string name="registrarbutname">Registrar</string>
+    <string name="logintextbut">Login</string>
+</resources>
