@@ -13,11 +13,17 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginEnd="260dp"
+        android:layout_marginBottom="95dp"
         android:alpha="0.8"
         android:background="#00FFFFFF"
+        android:contentDescription="Imagen de ingredientes"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ingredien" />
 
     <TextView
@@ -36,15 +42,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3"
+        android:layout_width="413dp"
+        android:layout_height="636dp"
         android:orientation="vertical"
-
-        android:padding="30dp"
-        tools:context=".register"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="59dp">
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <EditText
             android:id="@+id/editText"
@@ -117,7 +124,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="40dp" />
+            android:layout_height="60dp" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -141,7 +148,6 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
