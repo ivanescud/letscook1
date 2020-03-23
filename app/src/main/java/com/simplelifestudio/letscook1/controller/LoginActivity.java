@@ -1,8 +1,10 @@
-package com.simplelifestudio.letscook1;
+package com.simplelifestudio.letscook1.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.simplelifestudio.letscook1.R;
 
 public class LoginActivity extends AppCompatActivity {
 
