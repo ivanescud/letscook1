@@ -12,6 +12,7 @@ import com.simplelifestudio.letscook1.R;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button registerBut;
+    private Button loginBut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
             init();
         registerBut.setOnClickListener(this);
+        loginBut.setOnClickListener(this);
 
     }
 
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void init() {
         registerBut = findViewById(R.id.loginRegisterBt);
+        loginBut = findViewById(R.id.loginbut);
 
     }
 
