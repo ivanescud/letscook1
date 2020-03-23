@@ -37,15 +37,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.loginRegisterBt:
 
-
-
                 startActivity(new Intent(MainActivity.this,register.class));
-
 
                 break;
 
             case R.id.loginbut:
 
+                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
 
                 break;
 
