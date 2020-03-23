@@ -4,6 +4,6 @@
     <string name="logintextbut">Login</string>
     <string name="titleLogin">Login</string>
     <string name="eMail">E-Mail</string>
-    
+
     <string name="password">Password</string>
 </resources>
