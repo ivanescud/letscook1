@@ -3,4 +3,6 @@
     <string name="registrarbutname">Registrar</string>
     <string name="logintextbut">Login</string>
     <string name="titleLogin">Login</string>
+    <string name="eMail">e-Mail</string>
+    <string name="password">password</string>
 </resources>
