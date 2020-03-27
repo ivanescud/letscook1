@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <View
+                android:id="@+id/linia"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gris_detail" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <FrameLayout
+                    android:layout_width="40dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/homeBotonRecetaBt"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@drawable/butcircle"
+                            android:scaleType="fitXY"
+                            android:tint="@color/loginbut"
+                            app:srcCompat="@drawable/ic_local_dining" />
+
+                        <TextView
+                            android:id="@+id/homeBotonRecetasTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="serif"
+                            android:gravity="center"
+                            android:text="@string/home_boton_recetas"
+                            android:textColor="@color/design_default_color_on_secondary" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <FrameLayout
+                    android:layout_width="40dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/homeBotonBebidaBt"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@drawable/butcircle"
+                            android:scaleType="fitXY"
+                            android:tint="@color/registerbutpress"
+                            app:srcCompat="@drawable/ic_local_bar" />
+
+                        <TextView
+                            android:id="@+id/homeBotonBebidasTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="serif"
+                            android:gravity="center"
+                            android:text="@string/home_boton_bebidas"
+                            android:textColor="@color/design_default_color_on_secondary" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <FrameLayout
+                    android:layout_width="40dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/homeBotonTop10Bt"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@drawable/butcircle"
+                            android:scaleType="fitXY"
+                            android:tint="#467105"
+                            app:srcCompat="@drawable/ic_publish" />
+
+                        <TextView
+                            android:id="@+id/homeBotonTop10Tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="serif"
+                            android:gravity="center"
+                            android:text="@string/home_boton_top10"
+                            android:textColor="@color/design_default_color_on_secondary" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <FrameLayout
+                    android:layout_width="40dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/homeBotonMercadoBt"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@drawable/butcircle"
+                            android:scaleType="fitXY"
+                            android:tint="@color/design_default_color_on_secondary"
+                            app:srcCompat="@drawable/ic_add_shopping_cart" />
+
+                        <TextView
+                            android:id="@+id/homeBotonMercadoTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="serif"
+                            android:gravity="center"
+                            android:text="@string/home_boton_mercado"
+                            android:textColor="@color/design_default_color_on_secondary" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <View
+                android:id="@+id/linia5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gris_detail" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_home_title0"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="50sp" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/text_home_title1"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <View
+                    android:id="@+id/linia2"
+                    android:layout_width="400dp"
+                    android:layout_height="3dp"
+                    android:background="@color/gris_detail" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <include
+                layout="@layout/celdapost"
+                android:layout_width="350dp"
+                android:layout_height="450dp"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

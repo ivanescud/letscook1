@@ -5,4 +5,11 @@
     <string name="titleLogin">Login</string>
     <string name="eMail">E-Mail</string>
     <string name="password">Password</string>
+    <string name="text_home_title0">Descubre</string>
+    <string name="text_home_title1"> lo nuevo!</string>
+    <string name="text_default">INSERTE TEXTO</string>
+    <string name="home_boton_recetas">Recetas</string>
+    <string name="home_boton_bebidas">Bebidas</string>
+    <string name="home_boton_top10">Top 10</string>
+    <string name="home_boton_mercado">Mercado</string>
 </resources>
