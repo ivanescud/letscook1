@@ -41,24 +41,32 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                mAuth.signInWithEmailAndPassword(emailET.getText().toString(),passwoET.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        startActivity(new Intent(LoginActivity.this,HomeActivity.class));finish();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(LoginActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
 
-                        Log.d("Login",e.toString());
-                    }
-                });
-
-
+              verifi();
 
             }
         });
+    }
+    private void verifi()
+    {
+        if(emailET.getText().toString().equals("") || passwoET.getText().toString().equals("")){
+
+            Toast.makeText(this,"Favor ingresar los datos correctos", Toast.LENGTH_SHORT).show();
+        }else {
+            mAuth.signInWithEmailAndPassword(emailET.getText().toString(),passwoET.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    startActivity(new Intent(LoginActivity.this,HomeActivity.class));finish();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(LoginActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+
+                    Log.d("Login",e.toString());
+                }
+            });
+        }
     }
 
 
