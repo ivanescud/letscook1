@@ -254,11 +254,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
-            <include
-                layout="@layout/celdapost"
-                android:layout_width="350dp"
-                android:layout_height="450dp"
-                android:layout_gravity="center_horizontal" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/celdapost"
+                />
+
         </LinearLayout>
     </ScrollView>
 
