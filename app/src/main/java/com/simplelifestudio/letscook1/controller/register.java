@@ -5,16 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.model.User;
 
@@ -28,6 +32,7 @@ public class register extends AppCompatActivity {
     Button registrarBt;
     //Fire base
     FirebaseAuth mAuth;
+    FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +51,7 @@ public class register extends AppCompatActivity {
         registrarBt = findViewById(R.id.loginRegisterBt);
         //FireBase
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseFirestore.getInstance();
     }
 
     // Añade todos los campos a la clase usuario
@@ -56,6 +61,18 @@ public class register extends AppCompatActivity {
         user.setApellido(apellido.getText().toString());
         user.setEdad(Integer.parseInt(edad.getText().toString()));
         user.setEmail(email.getText().toString());
+
+        db.collection("users").add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentReference> task) {
+                Log.d("Database","Usuario creado en db");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
     }
 
     //Crea nuevo Usuario en FireBase
@@ -64,10 +81,13 @@ public class register extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    String userId = "548KL79KS";
                     nuevoUsuario();
+
                     startActivity(new Intent(register.this,HomeActivity.class));
-                    Toast.makeText(register.this,"Usuario Creado",Toast.LENGTH_SHORT).show();
                     finish();
+                    Toast.makeText(register.this,"Usuario Creado",Toast.LENGTH_SHORT).show();
+
                 }
                 else{
                     Toast.makeText(register.this,"Error:"+task.getException().getMessage().toString()+" Intente denuevo",Toast.LENGTH_SHORT).show();
