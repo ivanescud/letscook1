@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="60dp"
+    android:layout_height="80dp"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/homeBotonRecetaBt"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/butcircle"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_add_shopping_cart"
+        android:tint="@color/design_default_color_on_secondary" />
+
+    <TextView
+        android:id="@+id/homeBotonRecetasTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="@string/home_boton_mercado"
+        android:textColor="@color/design_default_color_on_secondary" />
+</LinearLayout>

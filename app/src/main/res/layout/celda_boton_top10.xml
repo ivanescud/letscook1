@@ -11,12 +11,15 @@
         android:layout_height="60dp"
         android:background="@drawable/butcircle"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        android:src="@drawable/ic_publish"
+        android:tint="#467105" />
 
     <TextView
         android:id="@+id/homeBotonRecetasTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="serif"
         android:gravity="center"
-        android:text="TextView" />
+        android:text="@string/home_boton_top10"
+        android:textColor="@color/design_default_color_on_secondary" />
 </LinearLayout>
