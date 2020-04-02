@@ -7,7 +7,6 @@
     <string name="password">Password</string>
     <string name="text_home_title0">Descubre</string>
     <string name="text_home_title1"> lo nuevo!</string>
-    <string name="text_default">INSERTE TEXTO</string>
     <string name="home_boton_recetas">Recetas</string>
     <string name="home_boton_bebidas">Bebidas</string>
     <string name="home_boton_top10">Top 10</string>
@@ -19,5 +18,9 @@
     <string name="edad">Edad</string>
     <string name="Contraseña">Contraseña</string>
     <string name="recontraseña">Re-Contraseña</string>
+
+    <!--Defaul String-->
+    <string name="Imagen">Imagen</string>
+    <string name="text_default">INSERTE TEXTO</string>
 </resources>
 

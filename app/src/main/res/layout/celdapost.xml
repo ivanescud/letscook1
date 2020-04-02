@@ -1,45 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="350dp"
+
+<androidx.cardview.widget.CardView android:layout_width="350dp"
     android:layout_height="450dp"
-    android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/postlayoutBackgroundLa"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/imgcomidapordefecto"
-        android:filterTouchesWhenObscured="false"
-        android:focusableInTouchMode="false">
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/imgcomidapordefecto" />
+        android:contentDescription="@string/Imagen"
+        android:scaleType="fitXY"
+        android:src="@drawable/imgcomidapordefecto" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="343dp"
             android:layout_height="80dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/post_shape"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.97">
+            android:padding="5dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView8"
+                android:layout_width="69dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/Imagen"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/postTextoTv"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="72dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:text="@string/text_default"
@@ -48,22 +43,6 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@drawable/circle_white"
-            android:padding="9dp"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.06"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.94"
-            app:srcCompat="@drawable/logo" />
+    </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
 
