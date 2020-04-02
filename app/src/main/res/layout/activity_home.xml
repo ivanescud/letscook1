@@ -39,146 +39,44 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <FrameLayout
-                    android:layout_width="40dp"
+                <include
+                    layout="@layout/celda_boton_receta"
+                    android:layout_width="50dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        android:layout_width="60dp"
-                        android:layout_height="80dp"
-                        android:orientation="vertical">
-
-                        <ImageButton
-                            android:id="@+id/homeBotonRecetaBt"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:background="@drawable/butcircle"
-                            android:scaleType="fitXY"
-                            android:tint="@color/loginbut"
-                            app:srcCompat="@drawable/ic_local_dining" />
-
-                        <TextView
-                            android:id="@+id/homeBotonRecetasTv"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:gravity="center"
-                            android:text="@string/home_boton_recetas"
-                            android:textColor="@color/design_default_color_on_secondary" />
-                    </LinearLayout>
-                </FrameLayout>
+                    android:layout_weight="1" />
 
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <FrameLayout
-                    android:layout_width="40dp"
+                <include
+                    layout="@layout/celda_boton_bebidas"
+                    android:layout_width="50dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        android:layout_width="60dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <ImageButton
-                            android:id="@+id/homeBotonBebidaBt"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:background="@drawable/butcircle"
-                            android:scaleType="fitXY"
-                            android:tint="@color/registerbutpress"
-                            app:srcCompat="@drawable/ic_local_bar" />
-
-                        <TextView
-                            android:id="@+id/homeBotonBebidasTv"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:gravity="center"
-                            android:text="@string/home_boton_bebidas"
-                            android:textColor="@color/design_default_color_on_secondary" />
-
-                    </LinearLayout>
-                </FrameLayout>
+                    android:layout_weight="1" />
 
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <FrameLayout
-                    android:layout_width="40dp"
+                <include
+                    layout="@layout/celda_boton_top10"
+                    android:layout_width="50dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        android:layout_width="60dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <ImageButton
-                            android:id="@+id/homeBotonTop10Bt"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:background="@drawable/butcircle"
-                            android:scaleType="fitXY"
-                            android:tint="#467105"
-                            app:srcCompat="@drawable/ic_publish" />
-
-                        <TextView
-                            android:id="@+id/homeBotonTop10Tv"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:gravity="center"
-                            android:text="@string/home_boton_top10"
-                            android:textColor="@color/design_default_color_on_secondary" />
-
-                    </LinearLayout>
-                </FrameLayout>
+                    android:layout_weight="1" />
 
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <FrameLayout
-                    android:layout_width="40dp"
+                <include
+                    layout="@layout/celda_boton_mercado"
+                    android:layout_width="50dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1">
-
-                    <LinearLayout
-                        android:layout_width="60dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <ImageButton
-                            android:id="@+id/homeBotonMercadoBt"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:background="@drawable/butcircle"
-                            android:scaleType="fitXY"
-                            android:tint="@color/design_default_color_on_secondary"
-                            app:srcCompat="@drawable/ic_add_shopping_cart" />
-
-                        <TextView
-                            android:id="@+id/homeBotonMercadoTv"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:gravity="center"
-                            android:text="@string/home_boton_mercado"
-                            android:textColor="@color/design_default_color_on_secondary" />
-
-                    </LinearLayout>
-                </FrameLayout>
+                    android:layout_weight="1" />
 
                 <Space
                     android:layout_width="wrap_content"
