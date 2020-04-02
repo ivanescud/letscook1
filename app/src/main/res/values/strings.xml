@@ -11,6 +11,9 @@
     <string name="home_boton_bebidas">Bebidas</string>
     <string name="home_boton_top10">Top 10</string>
     <string name="home_boton_mercado">Mercado</string>
+    <!--Activity Login-->
+    <string name="login_google">Login with Google</string>
+
     <!-- Activity Register-->
     <string name="Registro">Registro</string>
     <string name="Nombre">Nombre</string>
