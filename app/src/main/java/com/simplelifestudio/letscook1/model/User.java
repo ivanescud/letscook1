@@ -6,19 +6,29 @@ public class User {
     private  String apellido;
     private int edad;
     private String email;
-    private String password;
-    private String userid;
+
+    private String userID;
+
 
 
     public User() {
     }
 
-    public User(String nombre, String apellido, String email, String password, int edad) {
+    public User(String nombre, String apellido, String email,int edad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        this.password = password;
+
         this.edad = edad;
+    }
+
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getNombre() {
@@ -45,13 +55,6 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public int getEdad() {
         return edad;

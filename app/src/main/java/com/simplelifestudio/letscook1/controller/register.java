@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,7 +52,7 @@ public class register extends AppCompatActivity {
         registrarBt = findViewById(R.id.loginRegisterBt);
         //FireBase
         mAuth = FirebaseAuth.getInstance();
-        FirebaseFirestore.getInstance();
+       db = FirebaseFirestore.getInstance();
     }
 
     // Añade todos los campos a la clase usuario
@@ -61,18 +62,21 @@ public class register extends AppCompatActivity {
         user.setApellido(apellido.getText().toString());
         user.setEdad(Integer.parseInt(edad.getText().toString()));
         user.setEmail(email.getText().toString());
+        user.setUserID(db.collection("users").document().getId());
 
-        db.collection("users").add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+        db.collection("users").document(user.getUserID()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentReference> task) {
-                Log.d("Database","Usuario creado en db");
+            public void onSuccess(Void aVoid) {
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
+                Toast.makeText(getApplicationContext(), e.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
     //Crea nuevo Usuario en FireBase
@@ -81,8 +85,7 @@ public class register extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    String userId = "548KL79KS";
-                    nuevoUsuario();
+                   nuevoUsuario();
 
                     startActivity(new Intent(register.this,HomeActivity.class));
                     finish();
