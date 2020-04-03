@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="230dp">
+
+            <ImageView
+                android:id="@+id/recetaHeadImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/Imagen"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/busqueda" />
+
+            <LinearLayout
+                android:layout_width="330dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_bg_busqueda"
+                android:elevation="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/Imagen"
+                    android:scaleType="fitCenter"
+                    android:tint="@color/light_blanco_detail"
+                    app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
+
+                <EditText
+                    android:id="@+id/recetaBuscarEtxt"
+                    android:layout_width="275dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="@string/hint_busqueda"
+                    android:inputType="textPersonName"
+                    android:textColorHighlight="@color/light_blanco_detail"
+                    android:textColorHint="@color/light_blanco_detail" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/recetaTitletxt"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="28dp"
+                android:foregroundGravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/text_default"
+                android:textColor="@color/light_blanco_detail"
+                android:textSize="70sp" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="350dp"
+                android:layout_height="4dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:background="@color/light_blanco_detail" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp">
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_gravity="center_horizontal|top"
+                android:background="@color/gris_detail" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/text_resultados"
+                android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                android:textSize="30sp" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:background="@color/gris_detail" />
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/celda_resultado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/celda_resultado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/celda_resultado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/celda_resultado"
+                android:layout_width="match_parent"
+                android:layout_height="80dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

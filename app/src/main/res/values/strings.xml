@@ -22,6 +22,10 @@
     <string name="Contraseña">Contraseña</string>
     <string name="recontraseña">Re-Contraseña</string>
 
+    <!--Activity Recetas-->
+    <string name="hint_busqueda">Busca la receta que quieres!</string>
+    <string name="text_resultados">Resultados</string>
+
     <!--Defaul String-->
     <string name="Imagen">Imagen</string>
     <string name="text_default">INSERTE TEXTO</string>
