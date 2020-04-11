@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,13 +16,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.model.User;
 
-public class register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     EditText nombre;
     EditText apellido;
     EditText edad;
@@ -81,19 +78,19 @@ public class register extends AppCompatActivity {
 
     //Crea nuevo Usuario en FireBase
     public void registrarUsuario(){
-        mAuth.createUserWithEmailAndPassword(email.getText().toString(),contraseña.getText().toString()).addOnCompleteListener(register.this, new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email.getText().toString(),contraseña.getText().toString()).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                    nuevoUsuario();
 
-                    startActivity(new Intent(register.this,HomeActivity.class));
+                    startActivity(new Intent(RegisterActivity.this,HomeActivity.class));
                     finish();
-                    Toast.makeText(register.this,"Usuario Creado",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this,"Usuario Creado",Toast.LENGTH_SHORT).show();
 
                 }
                 else{
-                    Toast.makeText(register.this,"Error:"+task.getException().getMessage().toString()+" Intente denuevo",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this,"Error:"+task.getException().getMessage().toString()+" Intente denuevo",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -108,13 +105,13 @@ public class register extends AppCompatActivity {
                     if (nombre.getText().toString().isEmpty()||apellido.getText().toString().isEmpty()||
                     edad.getText().toString().isEmpty()||email.getText().toString().isEmpty()||contraseña.getText().toString().isEmpty()||
                     reContraseña.getText().toString().isEmpty()) {
-                        Toast.makeText(register.this,"Debe llenar todos los parametros",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"Debe llenar todos los parametros",Toast.LENGTH_SHORT).show();
                     } else {
                         registrarUsuario();
                     }
                 }
                 else{
-                    Toast.makeText(register.this,"Las contraseñas no conciden",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this,"Las contraseñas no conciden",Toast.LENGTH_SHORT).show();
                 }
             }
         });

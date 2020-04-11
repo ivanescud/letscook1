@@ -29,5 +29,6 @@
     <!--Defaul String-->
     <string name="Imagen">Imagen</string>
     <string name="text_default">INSERTE TEXTO</string>
+    <string name="splashsubtitle">Es Hora de Cocinar!</string>
 </resources>
 
