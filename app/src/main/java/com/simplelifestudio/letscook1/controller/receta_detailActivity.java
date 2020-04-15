@@ -1,20 +1,16 @@
 package com.simplelifestudio.letscook1.controller;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
 
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,16 +23,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.YouTubePlayerTracker;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.AdapterDireccion;
-import com.simplelifestudio.letscook1.model.ingredientes;
+import com.simplelifestudio.letscook1.adapters.AdapterIngredientes;
+import com.simplelifestudio.letscook1.model.Ingrediente;
+import com.simplelifestudio.letscook1.model.Paso;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -60,8 +55,11 @@ public class receta_detailActivity extends AppCompatActivity {
     private ImageButton favoriteIB;
     private CardView contenedorVideo;
     //recyclerView
-    private AdapterDireccion adpter;
-    private RecyclerView direccionRC;
+    private AdapterDireccion adapterDireccion;
+    private AdapterIngredientes adapterIngredientes;
+    private RecyclerView direccionRV;
+    private RecyclerView ingredienteRV;
+    LinearLayoutManager verticalLayoutManager;
     LinearLayoutManager horizontalLayoutManager;
     //
     private String receta;
@@ -80,50 +78,37 @@ public class receta_detailActivity extends AppCompatActivity {
         cambiarActivity();
         botonFavorito();
         youtubePlayerListener(videoInicio, videoFinal);
-        ArrayList<String> paso = new ArrayList<>();
-        paso.add("1");
-        paso.add("2");
-        paso.add("3");
-        paso.add("4");
-        paso.add("5");
-        paso.add("6");
-        ArrayList<String> direccion = new ArrayList<>();
-        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
-                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
-                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
-                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
-                " malesuada vel id est. ");
-        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
-                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
-                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
-                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
-                " malesuada vel id est. ");
-        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
-                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
-                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
-                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
-                " malesuada vel id est. ");
-        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
-                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
-                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
-                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
-                " malesuada vel id est. ");
-        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
-                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
-                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
-                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
-                " malesuada vel id est. ");
-        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
-                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
-                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
-                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
-                " malesuada vel id est. ");
+        //test direccionRV
+       ArrayList<Paso> paso = new ArrayList<>();
+       paso.add(new Paso("1","TEXT EXAMPLE",R.drawable.ic_comment,20));
+        paso.add(new Paso("2","TEXT EXAMPLE",R.drawable.ic_favorite_border,20));
+        paso.add(new Paso("3","TEXT EXAMPLE",R.drawable.ic_launcher_background,20));
+        paso.add(new Paso("4","TEXT EXAMPLE",R.drawable.ic_local_bar,20));
+        paso.add(new Paso("5","TEXT EXAMPLE",R.drawable.ic_import_contacts,20));
+        paso.add(new Paso("6","TEXT EXAMPLE",R.drawable.ic_local_dining,20));
 
-        direccionRC = findViewById(R.id.recetaDetailDireccionRV);
-        horizontalLayoutManager = new LinearLayoutManager(receta_detailActivity.this, LinearLayoutManager.HORIZONTAL,false);
-        direccionRC.setLayoutManager(horizontalLayoutManager);
-        adpter = new AdapterDireccion(this,paso,direccion,R.drawable.butcircle);
-        direccionRC.setAdapter(adpter);
+        //test ingredientesRV
+        ArrayList<Ingrediente> ingredientes = new ArrayList<>();
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
+
+        adapterDireccion = new AdapterDireccion(this,paso);
+        adapterIngredientes = new AdapterIngredientes(this,ingredientes);
+        direccionRV.setAdapter(adapterDireccion);
+        ingredienteRV.setAdapter(adapterIngredientes);
     }
 
     public void init() {
@@ -146,7 +131,13 @@ public class receta_detailActivity extends AppCompatActivity {
         calificacion1TV = findViewById(R.id.calificaion);
         favoriteIB = findViewById(R.id.recetaDetailBotonFavoritoIB);
         //recyclerView
+        direccionRV = findViewById(R.id.recetaDetailDireccionRV);
+        horizontalLayoutManager = new LinearLayoutManager(receta_detailActivity.this, LinearLayoutManager.HORIZONTAL,false);
+        direccionRV.setLayoutManager(horizontalLayoutManager);
 
+        ingredienteRV = findViewById(R.id.recetaDetailIngredientesRV);
+        verticalLayoutManager = new LinearLayoutManager(receta_detailActivity.this,LinearLayoutManager.VERTICAL,false);
+        ingredienteRV.setLayoutManager(verticalLayoutManager);
         //firebase
         db = FirebaseFirestore.getInstance();
     }
