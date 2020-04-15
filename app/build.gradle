@@ -50,4 +50,6 @@ dependencies {
     //meterial dising
     implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
     implementation 'com.google.android.material:material:1.2.0-alpha06'
+    //progresbar
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
 }
