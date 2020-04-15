@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView profileImgcell;
     private RecyclerView recetasRV;
     private RecyclerView bebidasRV;
+    private EditText buscadorET;
 
 
     @Override
@@ -35,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         init();
 
 
-        
+
 
     }
 
@@ -50,6 +52,7 @@ public class HomeActivity extends AppCompatActivity {
          profileImgcell = findViewById(R.id.homeBotonperfilIV);
          recetasRV = findViewById(R.id.homerecetasRV);
          bebidasRV = findViewById(R.id.homebebidasRV);
+         buscadorET = findViewById(R.id.homeBuscadorET);
 
 
     }

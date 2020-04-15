@@ -69,6 +69,8 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
             vervideo.setOnClickListener(this);
         }
 
+
+
         @Override
         public void onClick(View view) {
             Log.w("EVENTO","boton ver video presionado");
