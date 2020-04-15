@@ -169,6 +169,7 @@ public class receta_detailActivity extends AppCompatActivity {
         favoriteIB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Toast.makeText(receta_detailActivity.this, "boton presionado", Toast.LENGTH_SHORT).show();
             }
         });

@@ -16,6 +16,7 @@
         <activity android:name=".controller.RegisterActivity" />
         <activity android:name=".controller.resultado_listActivity" />
         <activity android:name=".controller.MainActivity" />
+        <activity android:name=".controller.receta_detailActivity"/>
 
         <activity android:name=".controller.Splash">
             <intent-filter>

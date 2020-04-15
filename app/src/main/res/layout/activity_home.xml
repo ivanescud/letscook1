@@ -11,10 +11,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01999998">
+        app:layout_constraintVertical_bias="0.0">
 
 
         <LinearLayout
@@ -29,8 +29,7 @@
                 android:layout_marginTop="10dp"
                 android:background="#910C0C"
                 android:elevation="30dp"
-                android:padding="20dp"
-                >
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/textView2"
@@ -83,54 +82,54 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="10dp"
-                >
+                app:cardElevation="10dp">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/barradebusqueda"
                     android:elevation="10dp"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:showDividers="middle">
 
 
                     <EditText
                         android:id="@+id/homeBuscadorET"
-                        android:layout_width="250dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Busca la receta que quieres" />
+                        android:layout_alignParentStart="true"
+                        android:hint="Busca aquí la receta que quieres" />
 
-                    <Space
-                        android:layout_width="15dp"
-                        android:layout_height="0dp" />
 
                     <Button
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+
                         android:background="@drawable/botonbusqueda" />
 
 
-                </LinearLayout>
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-
+                    android:orientation="horizontal">
 
                     <include
+                        android:id="@+id/homerecetaButcell"
                         layout="@layout/celda_boton_receta"
-                        android:layout_width="67dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content" />
 
                     <Space
                         android:layout_width="wrap_content"
@@ -160,13 +159,12 @@
                         android:layout_weight="1" />
 
                     <include
-                        layout="@layout/celda_boton_mercado"
+                        layout="@layout/celda_boton_perfil"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
                 </LinearLayout>
-
 
 
             </androidx.cardview.widget.CardView>
