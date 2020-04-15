@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -18,6 +19,7 @@ import android.widget.VideoView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -33,13 +35,13 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.You
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.YouTubePlayerTracker;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 import com.simplelifestudio.letscook1.R;
+import com.simplelifestudio.letscook1.adapters.AdapterDireccion;
 import com.simplelifestudio.letscook1.model.ingredientes;
 
 import java.util.ArrayList;
 import java.util.Map;
 
 public class receta_detailActivity extends AppCompatActivity {
-    private ArrayList<ingredientes> arrayList;
     //declaracion de la view recetas_detail_nestedscroll.xml
     private TextView calificacionTV;
     private TextView tituloTV;
@@ -57,7 +59,10 @@ public class receta_detailActivity extends AppCompatActivity {
     private TextView calificacion1TV;
     private ImageButton favoriteIB;
     private CardView contenedorVideo;
-    private RecyclerView ingredientesRC;
+    //recyclerView
+    private AdapterDireccion adpter;
+    private RecyclerView direccionRC;
+    LinearLayoutManager horizontalLayoutManager;
     //
     private String receta;
     private String videoUrl;
@@ -69,15 +74,59 @@ public class receta_detailActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receta_detail);
+
         init();
         obtenerDatos();
         cambiarActivity();
         botonFavorito();
         youtubePlayerListener(videoInicio, videoFinal);
+        ArrayList<String> paso = new ArrayList<>();
+        paso.add("1");
+        paso.add("2");
+        paso.add("3");
+        paso.add("4");
+        paso.add("5");
+        paso.add("6");
+        ArrayList<String> direccion = new ArrayList<>();
+        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
+                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
+                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
+                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
+                " malesuada vel id est. ");
+        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
+                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
+                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
+                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
+                " malesuada vel id est. ");
+        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
+                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
+                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
+                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
+                " malesuada vel id est. ");
+        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
+                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
+                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
+                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
+                " malesuada vel id est. ");
+        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
+                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
+                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
+                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
+                " malesuada vel id est. ");
+        direccion.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus mi. Fusce mollis interdum mi. Vivamus risus mi," +
+                " pulvinar ut elit eget, dignissim suscipit urna. Integer at porta mauris. Cras non ligula placerat, tempor mi in, tempor enim. " +
+                "Praesent fringilla vitae mauris in mollis. Donec eget pharetra tortor. Mauris a diam ligula. Praesent cursus nunc felis, vitae" +
+                " auctor purus ornare vel. Aliquam semper elementum erat, nec imperdiet enim bibendum dictum. Donec at risus nec ipsum elementum" +
+                " malesuada vel id est. ");
+
+        direccionRC = findViewById(R.id.recetaDetailDireccionRV);
+        horizontalLayoutManager = new LinearLayoutManager(receta_detailActivity.this, LinearLayoutManager.HORIZONTAL,false);
+        direccionRC.setLayoutManager(horizontalLayoutManager);
+        adpter = new AdapterDireccion(this,paso,direccion,R.drawable.butcircle);
+        direccionRC.setAdapter(adpter);
     }
 
     public void init() {
-        arrayList = new ArrayList<>();
         //Init de la view recetas_detail_nestedscroll.xml
         tituloTV = findViewById(R.id.recetaDetailTituloTV);
         numeroFavoritosTV = findViewById(R.id.recetaDetailNumeroFavoritosTV);
@@ -96,6 +145,8 @@ public class receta_detailActivity extends AppCompatActivity {
         playIB = findViewById(R.id.recetaDetailBotonPlayIB);
         calificacion1TV = findViewById(R.id.calificaion);
         favoriteIB = findViewById(R.id.recetaDetailBotonFavoritoIB);
+        //recyclerView
+
         //firebase
         db = FirebaseFirestore.getInstance();
     }
