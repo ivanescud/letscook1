@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <ImageButton
-        android:id="@+id/homeBotonRecetaBt"
+        android:id="@+id/homeBotonbebidasIV"
         android:layout_width="80dp"
         android:layout_height="70dp"
         android:background="@drawable/drinksbut"
