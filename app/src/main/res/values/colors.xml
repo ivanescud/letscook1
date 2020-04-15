@@ -13,6 +13,8 @@
     <!--Colores translucidos-->
     <color name="blanco_translucido">#B9FFFFFF</color>
     <color name="negro_translucido">#7A000000</color>
+    <color name="negro">#000000</color>
+
 
 
 
