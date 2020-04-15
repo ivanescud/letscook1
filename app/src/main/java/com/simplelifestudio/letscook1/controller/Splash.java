@@ -27,7 +27,6 @@ public class Splash extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         progressBar.setMax(100);
-
         progressBar.setProgress(50);
 
         Handler handler = new Handler();
@@ -43,12 +42,12 @@ public class Splash extends AppCompatActivity {
                     finish();
                 }else {
                     progressBar.setProgress(100);
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                    finish();
                 }
 
             }
-        }, 3000);
+        }, 2000);
 
     }
 }
