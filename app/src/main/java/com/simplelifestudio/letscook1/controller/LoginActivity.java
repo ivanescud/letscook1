@@ -18,6 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.simplelifestudio.letscook1.R;
 
+import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
+
 public class LoginActivity extends AppCompatActivity {
 
 
@@ -28,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText emailET;
     private EditText passwoET;
+    private MaterialProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         init();
+
+
+        progressBar.setMax(100);
+
 
         loginBut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void verifi()
     {
+        progressBar.setProgress(50);
         if(emailET.getText().toString().equals("") || passwoET.getText().toString().equals("")){
 
             Toast.makeText(this,"Favor ingresar los datos correctos", Toast.LENGTH_SHORT).show();
@@ -53,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.signInWithEmailAndPassword(emailET.getText().toString(),passwoET.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
+                    progressBar.setProgress(100);
                     startActivity(new Intent(LoginActivity.this,HomeActivity.class));finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -72,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBut = findViewById(R.id.loginacLoginBut);
         emailET = findViewById(R.id.loginActEmailET);
         passwoET = findViewById(R.id.loginActPasswordET);
-
+        progressBar = findViewById(R.id.loginprogressbar);
 
         mAuth = FirebaseAuth.getInstance();
 

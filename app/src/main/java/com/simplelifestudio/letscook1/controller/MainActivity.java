@@ -9,10 +9,13 @@ import android.widget.Button;
 
 import com.simplelifestudio.letscook1.R;
 
+import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button registerBut;
     private Button loginBut;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             init();
         registerBut.setOnClickListener(this);
         loginBut.setOnClickListener(this);
+
+
 
     }
 
@@ -31,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         registerBut = findViewById(R.id.loginRegisterBt);
         loginBut = findViewById(R.id.loginbut);
 
+
     }
 
     @Override
@@ -40,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.loginRegisterBt:
 
-                startActivity(new Intent(MainActivity.this,register.class));
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
 
                 break;
 

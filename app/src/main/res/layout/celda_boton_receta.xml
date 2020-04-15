@@ -11,6 +11,7 @@
         android:layout_height="60dp"
         android:background="@drawable/butcircle"
         android:contentDescription="@string/Imagen"
+        android:elevation="30dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_local_dining"
         android:tint="@color/loginbut" />
