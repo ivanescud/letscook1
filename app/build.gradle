@@ -32,14 +32,22 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
+    //circle view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //firebase
     implementation 'com.google.firebase:firebase-auth:19.1.0'
     implementation 'com.google.firebase:firebase-firestore:21.2.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.android.material:material:1.1.0'
+    //implementaciones de redondeo de esquina
+    implementation 'com.github.captain-miao:optroundcardview:1.0.0'
+    //Youtube play video
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+    //meterial dising
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'com.google.android.material:material:1.2.0-alpha06'
 }

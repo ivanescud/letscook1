@@ -42,6 +42,7 @@ public class register extends AppCompatActivity {
         registrar();
     }
 
+
     public void init(){
         nombre = findViewById(R.id.registroNombreTxt);
         apellido = findViewById(R.id.registroApellidoTxt);

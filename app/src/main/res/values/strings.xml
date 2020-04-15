@@ -29,5 +29,12 @@
     <!--Defaul String-->
     <string name="Imagen">Imagen</string>
     <string name="text_default">INSERTE TEXTO</string>
+
+    <!--receta_detailActivity-->
+    <string name="ingredientes">Ingredientes</string>
+    <string name="dirrecion">Dirección</string>
+    <!--celda_direcciones-->
+    <string name="ver_video">ver video</string>
+    <string name="paso">Paso</string>
 </resources>
 
