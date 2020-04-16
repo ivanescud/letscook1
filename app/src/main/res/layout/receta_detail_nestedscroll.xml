@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        >
 
         <TextView
             android:id="@+id/recetaDetailTituloTV"
@@ -33,6 +33,7 @@
             android:id="@+id/imageView6"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="15dp"
             android:contentDescription="@string/Imagen"
             android:scaleType="centerInside"
@@ -46,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="18sp"
+           android:text="200"
             app:layout_constraintStart_toEndOf="@+id/imageView6"
             app:layout_constraintTop_toBottomOf="@+id/recetaDetailTituloTV" />
 
@@ -68,6 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="18sp"
+            android:text="4.2"
             app:layout_constraintStart_toEndOf="@+id/imageView10"
             app:layout_constraintTop_toBottomOf="@+id/recetaDetailTituloTV" />
 
@@ -87,6 +90,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:text="200"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recetaDetailTituloTV" />
@@ -95,9 +100,12 @@
             android:id="@+id/view4"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/butradioregister"
             android:backgroundTint="#31707070"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
@@ -207,6 +215,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="21dp"
+            android:background="#F6F6F6"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
