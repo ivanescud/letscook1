@@ -37,7 +37,12 @@ public class HomeActivity extends AppCompatActivity {
         init();
 
 
-
+        recetaImgcell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),receta_detailActivity.class));
+            }
+        });
 
     }
 
