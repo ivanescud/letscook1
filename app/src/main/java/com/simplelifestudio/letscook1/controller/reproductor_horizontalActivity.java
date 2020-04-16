@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
@@ -37,9 +38,10 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
 
     public void init(){
         videoUrl = getIntent().getStringExtra("videoUrl");
-        inicioVideo = 0;
+        inicioVideo = getIntent().getIntExtra("posVideo",0);
         youTubePlayerView = findViewById(R.id.youTubePlayerViewh);
         youTubePlayerTracker = new YouTubePlayerTracker();
+        Toast.makeText(this,"el video inicia en "+inicioVideo,Toast.LENGTH_SHORT).show();
     }
 
     public void YouTubePlayerView(){

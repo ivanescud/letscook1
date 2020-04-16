@@ -45,6 +45,7 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
     holder.direccion.setText((paso.get(position).getIntruccion()));
     holder.icono.setImageResource(paso.get(position).getIco());
     holder.posVideo = paso.get(position).getPosVideo();
+    holder.videoUrl = paso.get(position).getVideoUrl();
     }
 
     @Override
@@ -58,6 +59,7 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
         TextView direccion;
         TextView vervideo;
         ImageView icono;
+        String videoUrl;
         int posVideo;
 
         public viewHolder(@NonNull View itemView) {
@@ -74,7 +76,7 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
         @Override
         public void onClick(View view) {
 
-            context.startActivity(new Intent(context, reproductor_horizontalActivity.class).putExtra("posVideo",posVideo));
+            context.startActivity(new Intent(context, reproductor_horizontalActivity.class).putExtra("videoUrl",videoUrl).putExtra("posVideo",posVideo));
         }
     }
 
