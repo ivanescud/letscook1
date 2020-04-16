@@ -201,7 +201,7 @@ public class receta_detailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(receta_detailActivity.this, reproductor_horizontalActivity.class));
+                startActivity(new Intent(receta_detailActivity.this, reproductor_horizontalActivity.class).putExtra("videoUrl",videoUrl));
                 overridePendingTransition(R.anim.top_in, R.anim.left_out);
             }
         });
