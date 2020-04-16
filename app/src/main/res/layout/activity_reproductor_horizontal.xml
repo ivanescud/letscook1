@@ -8,4 +8,15 @@
     android:background="@color/colorPrimary"
     tools:context=".controller.reproductor_horizontalActivity">
 
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youTubePlayerViewh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:showSeekBar="false"
+        app:showVideoCurrentTime="true"
+        app:showVideoDuration="true"
+        app:showYouTubeButton="false" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
