@@ -5,8 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="400dp"
+    android:layout_marginRight="40dp"
     android:padding="50dp"
     app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
     app:strokeColor="#707070"
     app:strokeWidth="1dp">
 
