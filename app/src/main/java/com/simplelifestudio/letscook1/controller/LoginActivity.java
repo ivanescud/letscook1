@@ -47,8 +47,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                emailET.setEnabled(false);
-                passwoET.setEnabled(false);
+                activeUI(false);
               progressBar.setVisibility(View.VISIBLE);
                 verifi();
 
@@ -73,8 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(LoginActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
 
-                    emailET.setEnabled(true);
-                    passwoET.setEnabled(true);
+                  activeUI(true);
                     progressBar.setVisibility(View.GONE);
                     Log.d("Login",e.toString());
                 }
@@ -95,4 +93,11 @@ public class LoginActivity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
 
     }
+
+
+    private void activeUI(boolean active){
+        emailET.setEnabled(active);
+        passwoET.setEnabled(active);
+    }
+
 }
