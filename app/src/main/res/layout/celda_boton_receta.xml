@@ -9,7 +9,7 @@
     <ImageButton
         android:id="@+id/homeBotonRecetaBt"
         android:layout_width="80dp"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         android:background="@drawable/recetabut"
         android:contentDescription="@string/Imagen"
         android:scaleType="fitXY"

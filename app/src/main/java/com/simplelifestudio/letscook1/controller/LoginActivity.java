@@ -40,13 +40,17 @@ public class LoginActivity extends AppCompatActivity {
         init();
 
 
-        progressBar.setMax(100);
+
 
 
         loginBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              verifi();
+
+                emailET.setEnabled(false);
+                passwoET.setEnabled(false);
+              progressBar.setVisibility(View.VISIBLE);
+                verifi();
 
             }
         });
@@ -69,6 +73,9 @@ public class LoginActivity extends AppCompatActivity {
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(LoginActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
 
+                    emailET.setEnabled(true);
+                    passwoET.setEnabled(true);
+                    progressBar.setVisibility(View.GONE);
                     Log.d("Login",e.toString());
                 }
             });
@@ -85,8 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
-
+        progressBar.setVisibility(View.GONE);
 
     }
 }

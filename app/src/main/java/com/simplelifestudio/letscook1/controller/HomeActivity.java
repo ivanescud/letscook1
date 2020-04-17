@@ -15,6 +15,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.simplelifestudio.letscook1.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -30,6 +32,8 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recetasRV;
     private RecyclerView bebidasRV;
     private EditText buscadorET;
+    private FirebaseAuth mAuth;
+    private FirebaseUser fuser;
 
 
     @Override
@@ -46,9 +50,19 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        switch (item.getItemId()) {
+            case R.id.logoutmenuBT:
+                mAuth.signOut();
+                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                finish();
+            break;
+
+
+        }
+
         return super.onOptionsItemSelected(item);
-
-
 
     }
 
@@ -82,6 +96,7 @@ public class HomeActivity extends AppCompatActivity {
          bebidasRV = findViewById(R.id.homebebidasRV);
          buscadorET = findViewById(R.id.homeBuscadorET);
 
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
