@@ -12,12 +12,13 @@ public class Receta {
     private Map<String, Boolean> likes = new HashMap<>();
     private int coments;
     private Map<String,Ingrediente> ingredientes = new HashMap<>();
+    private Map<Integer,String> pasos = new HashMap<>();
 
 
     public Receta() {
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, float rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes) {
+    public Receta(String nombreRC, String autorRC, String mainImgRc, float rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes, Map<Integer, String> pasos) {
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
@@ -25,6 +26,7 @@ public class Receta {
         this.likes = likes;
         this.coments = coments;
         this.ingredientes = ingredientes;
+        this.pasos = pasos;
     }
 
     public String getNombreRC() {
@@ -81,5 +83,13 @@ public class Receta {
 
     public void setIngredientes(Map<String, Ingrediente> ingredientes) {
         this.ingredientes = ingredientes;
+    }
+
+    public Map<Integer, String> getPasos() {
+        return pasos;
+    }
+
+    public void setPasos(Map<Integer, String> pasos) {
+        this.pasos = pasos;
     }
 }

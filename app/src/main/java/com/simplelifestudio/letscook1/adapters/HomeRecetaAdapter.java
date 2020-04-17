@@ -11,50 +11,61 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.simplelifestudio.letscook1.R;
-import com.simplelifestudio.letscook1.model.Ingrediente;
+import com.simplelifestudio.letscook1.model.Receta;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class HomeRecetaAdapter  extends RecyclerView.Adapter<HomeRecetaAdapter.viewHolder> {
-    ArrayList<Ingrediente> ingrediente;
+    ArrayList<Receta>recetas;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public HomeRecetaAdapter(Context context,ArrayList<Ingrediente> ingrediente) {
+    public HomeRecetaAdapter(ArrayList<Receta> recetas, LayoutInflater layoutInflater, Context context) {
+        this.recetas = recetas;
+        this.layoutInflater = layoutInflater;
         this.context = context;
-        this.ingrediente = ingrediente;
-        this.layoutInflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.celda_ingrediente,parent,false);
+        View view = layoutInflater.inflate(R.layout.homecellrv,parent,false);
         return new viewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-        holder.producto.setText(ingrediente.get(position).getProducto());
-        holder.cantidad.setText(ingrediente.get(position).getCantidad());
-        holder.icono.setImageResource(ingrediente.get(position).getIco());
+
+
+
+
+     /*   holder.nombreRc.setText(ingrediente.get(position).getProducto());
+        holder.likesRC.setText(ingrediente.get(position).getCantidad());
+        holder.icono.setImageResource(ingrediente.get(position).getIco());*/
     }
 
     @Override
     public int getItemCount() {
-        return ingrediente.size();
+        return recetas.size();
     }
 
     public class viewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
-        TextView producto;
-        TextView cantidad;
-        ImageView icono;
+        TextView nombreRc;
+        TextView likesRC;
+        TextView rankRC;
+        CircleImageView createdCIV;
+        ImageView mainImgIV;
+
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-            producto = itemView.findViewById(R.id.celdaIngredienteProductoTV);
-            cantidad = itemView.findViewById(R.id.celdaingredientePorcionTV);
-            icono = itemView.findViewById(R.id.celdaIngredientesIconoIV);
+            mainImgIV = itemView.findViewById(R.id.homecellimg);
+            nombreRc = itemView.findViewById(R.id.homecellTitleTV);
+            likesRC = itemView.findViewById(R.id.homecelllikeTv);
+            rankRC = itemView.findViewById(R.id.homecellrankTV);
+            createdCIV = itemView.findViewById(R.id.homecellbyImgCIV);
         }
 
         @Override
