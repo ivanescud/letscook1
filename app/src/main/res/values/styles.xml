@@ -3,17 +3,20 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/loginbutpress</item>
         <item name="colorPrimaryDark">@color/loginbutpress</item>
         <item name="colorAccent">@color/loginbutpress</item>
     </style>
 
 
-    <style name="HomeActivityAppTheme" parent="AppTheme">
+    <style name="HomeActivityAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-       <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/loginbutpress</item>
+        <item name="colorPrimaryDark">@color/loginbutpress</item>
+        <item name="colorAccent">@color/loginbutpress</item>
     </style>
+
+
 
     <style name="Theme.JanusShop" parent="Base.AppTheme"/>
 

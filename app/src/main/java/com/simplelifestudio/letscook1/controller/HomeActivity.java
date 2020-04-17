@@ -4,6 +4,9 @@ package com.simplelifestudio.letscook1.controller;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,6 +31,26 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView bebidasRV;
     private EditText buscadorET;
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.hometopbar,menu);
+
+
+        return true;
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
