@@ -82,13 +82,7 @@ public class receta_detailActivity extends AppCompatActivity {
         cambiarActivity();
         botonFavorito();
         youtubePlayerListener(videoInicio, videoFinal);
-        //test direccionRV
-       paso.add(new Paso("1","TEXT EXAMPLE","oUpBiLCc3_0",R.drawable.ic_comment,20));
-        paso.add(new Paso("2","TEXT EXAMPLE","oUpBiLCc3_0",R.drawable.ic_favorite_border,10));
-        paso.add(new Paso("3","TEXT EXAMPLE","oUpBiLCc3_0",R.drawable.ic_launcher_background,50));
-        paso.add(new Paso("4","TEXT EXAMPLE","oUpBiLCc3_0",R.drawable.ic_local_bar,90));
-        paso.add(new Paso("5","TEXT EXAMPLE","oUpBiLCc3_0",R.drawable.ic_import_contacts,40));
-        paso.add(new Paso("6","TEXT EXAMPLE","oUpBiLCc3_0",R.drawable.ic_local_dining,70));
+
 
         //test ingredientesRV
         ArrayList<Ingrediente> ingredientes = new ArrayList<>();
@@ -108,7 +102,7 @@ public class receta_detailActivity extends AppCompatActivity {
         ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
         ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
 
-        adapterDireccion = new AdapterDireccion(receta_detailActivity.this,paso,videoUrl);
+
         adapterIngredientes = new AdapterIngredientes(receta_detailActivity.this,ingredientes);
         direccionRV.setAdapter(adapterDireccion);
         ingredienteRV.setAdapter(adapterIngredientes);
@@ -172,6 +166,17 @@ public class receta_detailActivity extends AppCompatActivity {
                 }
             }
         });
+        //test direccionRV
+        String prueva;
+        prueva= videoUrl;
+        Toast.makeText(this,"esto: "+prueva,Toast.LENGTH_SHORT).show();
+        paso.add(new Paso("1","TEXT EXAMPLE",R.drawable.ic_comment,20));
+        paso.add(new Paso("2","TEXT EXAMPLE",R.drawable.ic_favorite_border,10));
+        paso.add(new Paso("3","TEXT EXAMPLE",R.drawable.ic_launcher_background,50));
+        paso.add(new Paso("4","TEXT EXAMPLE",R.drawable.ic_local_bar,90));
+        paso.add(new Paso("5","TEXT EXAMPLE",R.drawable.ic_import_contacts,40));
+        paso.add(new Paso("6","TEXT EXAMPLE",R.drawable.ic_local_dining,70));
+        adapterDireccion = new AdapterDireccion(receta_detailActivity.this,paso,videoUrl);
 
     }
 
@@ -217,8 +222,8 @@ public class receta_detailActivity extends AppCompatActivity {
         favoriteIB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Toast.makeText(receta_detailActivity.this, "boton presionado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(receta_detailActivity.this,"esto: "+videoUrl,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(receta_detailActivity.this, "boton presionado", Toast.LENGTH_SHORT).show();
             }
         });
     }

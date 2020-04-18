@@ -24,7 +24,7 @@
             android:layout_gravity="bottom"
             android:text="Cereal con Leche"
             android:textColor="@color/light_blanco_detail"
-            android:textSize="36sp" />
+            android:textSize="24sp" />
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

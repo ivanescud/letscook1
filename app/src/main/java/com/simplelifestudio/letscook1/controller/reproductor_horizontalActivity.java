@@ -1,11 +1,7 @@
 package com.simplelifestudio.letscook1.controller;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -17,12 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.navigation.NavigationView;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
@@ -47,9 +43,11 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
     private int inicioVideo;
     private ArrayList<Paso> paso;
     //Animacion fade_alpha_outh
-    Animation fadeAlphaOuthAnim;
-   ImageView swipeHandIV;
-   TextView masOpcionesTV;
+    private Animation fadeAlphaOuthAnim;
+    private ImageView swipeHandIV;
+    private TextView masOpcionesTV;
+    //view
+    private ImageView backIV;
 
 
     @Override
@@ -66,6 +64,7 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
         getLifecycle().addObserver(youTubePlayerView);
         YouTubePlayerView();
         //
+        backButton();
         animation();
 
     }
@@ -79,10 +78,11 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
         //YoutubePlayer
         youTubePlayerView = findViewById(R.id.youTubePlayerViewh);
         youTubePlayerTracker = new YouTubePlayerTracker();
-        Toast.makeText(this,"el video inicia en "+inicioVideo,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "el video inicia en " + videoUrl, Toast.LENGTH_SHORT).show();
         //menu
         navigationView = findViewById(R.id.navigation);
         //View
+        backIV = findViewById(R.id.reproductorHorizontalBackIV);
         subMenu();
         //Animacion fade_alpha_outh
         fadeAlphaOuthAnim = new AlphaAnimation(1.0f,0.0f);
@@ -178,7 +178,7 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    //Listener ver paso
+
 
 //animaciones
     public void fadeOutAnimitaionStart(){
@@ -205,5 +205,15 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
         Fade fade = new Fade();
         fade.setDuration(10000);
         getWindow().setEnterTransition(fade);
+    }
+
+    //
+    public void backButton() {
+        backIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

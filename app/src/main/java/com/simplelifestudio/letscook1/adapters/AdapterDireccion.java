@@ -25,11 +25,11 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public AdapterDireccion(Context context, ArrayList paso,String videoUrl) {
+    public AdapterDireccion(Context context, ArrayList paso,String url) {
       this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
         this.paso = paso;
-        this.videoUrl = videoUrl;
+        this.videoUrl = url;
     }
 
     @NonNull
