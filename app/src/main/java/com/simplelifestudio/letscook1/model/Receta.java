@@ -1,9 +1,10 @@
 package com.simplelifestudio.letscook1.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Receta {
+public class Receta implements Serializable {
 
     private String nombreRC;
     private String autorRC;
@@ -14,6 +15,7 @@ public class Receta {
     private Map<String,Ingrediente> ingredientes = new HashMap<>();
     private Map<Integer,String> pasos = new HashMap<>();
     private String autorImgRC;
+    private String type;
 
 
     public Receta() {
@@ -110,5 +112,13 @@ public class Receta {
 
     public void setAutorImgRC(String autorImgRC) {
         this.autorImgRC = autorImgRC;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

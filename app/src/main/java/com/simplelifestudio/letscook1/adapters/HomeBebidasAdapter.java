@@ -1,11 +1,9 @@
 package com.simplelifestudio.letscook1.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,20 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.simplelifestudio.letscook1.R;
-import com.simplelifestudio.letscook1.controller.receta_detailActivity;
 import com.simplelifestudio.letscook1.model.Receta;
 
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeRecetaAdapter extends RecyclerView.Adapter<HomeRecetaAdapter.viewHolder> {
+
+public class HomeBebidasAdapter extends RecyclerView.Adapter<HomeBebidasAdapter.viewHolder> {
     ArrayList<Receta> recetas;
     private Context context;
     LayoutInflater layoutInflater;
-     OnClickCell onClickCell;
+    OnClickCell2 onClickCell;
 
-    public HomeRecetaAdapter(ArrayList<Receta> recetas, Context context, OnClickCell onClickCell) {
+    public HomeBebidasAdapter(ArrayList<Receta> recetas, Context context, OnClickCell2 onClickCell) {
         this.recetas = recetas;
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
@@ -65,9 +63,9 @@ public class HomeRecetaAdapter extends RecyclerView.Adapter<HomeRecetaAdapter.vi
         CircleImageView createdCIV;
         ImageView mainImgIV;
 
-        OnClickCell onClickCell;
+        OnClickCell2 onClickCell;
 
-        public viewHolder(@NonNull View itemView, OnClickCell onClickCell) {
+        public viewHolder(@NonNull View itemView, OnClickCell2 onClickCell) {
             super(itemView);
             mainImgIV = itemView.findViewById(R.id.homecellimg);
             nombreRc = itemView.findViewById(R.id.homecellTitleTV);
@@ -83,11 +81,12 @@ public class HomeRecetaAdapter extends RecyclerView.Adapter<HomeRecetaAdapter.vi
 
         @Override
         public void onClick(View view) {
-            onClickCell.onClickCell(getAdapterPosition());
+            onClickCell.onClickCell2(getAdapterPosition());
         }
     }
 
-    public interface OnClickCell {
-        void onClickCell(int positon);
+    public interface OnClickCell2 {
+        void onClickCell2(int positon);
     }
 }
+

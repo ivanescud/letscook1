@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.simplelifestudio.letscook1.R;
+import com.simplelifestudio.letscook1.adapters.HomeBebidasAdapter;
+import com.simplelifestudio.letscook1.adapters.HomeBebidasAdapter.OnClickCell2;
 import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
 import com.simplelifestudio.letscook1.extra.DividerItemDecoration;
 import com.simplelifestudio.letscook1.extra.SimpleDividerItemDecoration;
@@ -32,7 +34,7 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter.OnClickCell, OnClickCell2 {
 
     private CircleImageView userImgCIV;
     private TextView userNameTV;
@@ -93,6 +95,7 @@ public class HomeActivity extends AppCompatActivity {
         recetaImgcell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(getApplicationContext(),receta_detailActivity.class));
             }
         });
@@ -135,8 +138,8 @@ public class HomeActivity extends AppCompatActivity {
         bebidas.add(new Receta("Martiny Frances","LetsCook Team",url2,3.7f,likes,byImg2));
         bebidas.add(new Receta("Blue Sky","Jorge Lopez",url4,4.0f,likes,byImg2));
 
-        recetaAdapter = new HomeRecetaAdapter(recetas,HomeActivity.this);
-        bebidasAdapter = new HomeRecetaAdapter(bebidas,HomeActivity.this);
+        recetaAdapter = new HomeRecetaAdapter(recetas,HomeActivity.this,this);
+        bebidasAdapter = new HomeRecetaAdapter(bebidas,HomeActivity.this,this);
 
 
        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL,false);
@@ -155,6 +158,26 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+
+
     }
 
+    @Override
+    public void onClickCell(int positon) {
+        Bundle data = new Bundle();
+        Receta recetapass = recetas.get(positon);
+        data.putSerializable("data",recetapass);
+        Intent intent = new Intent (getApplicationContext(),receta_detailActivity.class).putExtra("data",data);
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void onClickCell2(int positon) {
+        Bundle data = new Bundle();
+        Receta recetapass = bebidas.get(positon);
+        data.putSerializable("data",recetapass);
+        Intent intent = new Intent (getApplicationContext(),receta_detailActivity.class).putExtra("data",data);
+        startActivity(intent);
+    }
 }

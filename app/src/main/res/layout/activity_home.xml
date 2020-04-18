@@ -226,6 +226,7 @@
                         android:layout_marginTop="20dp"
                         tools:listitem="@layout/homecellrv"
                         android:padding="10dp"
+                        android:elevation="5dp"
                         />
 
 
@@ -241,6 +242,7 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:padding="10dp"
+                        android:elevation="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"

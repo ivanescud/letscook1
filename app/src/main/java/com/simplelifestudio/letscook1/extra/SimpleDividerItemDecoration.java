@@ -30,7 +30,7 @@ public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
             int top = child.getBottom() + params.bottomMargin;
             int bottom = top + mDivider.getIntrinsicHeight();
 
-            mDivider.setBounds(left, top, right, bottom);
+            mDivider.setBounds(left, top, 30, bottom);
             mDivider.draw(c);
         }
     }
