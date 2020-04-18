@@ -15,7 +15,11 @@
         <activity android:name=".controller.reproductor_horizontalActivity"/>
         <activity android:name=".controller.LoginActivity" />
         <activity android:name=".controller.RegisterActivity" />
-        <activity android:name=".controller.resultado_listActivity" />
+        <activity android:name=".controller.resultado_listActivity"
+            android:theme="@style/HomeActivityAppTheme"
+            >
+
+        </activity>
         <activity android:name=".controller.MainActivity" />
         <activity android:name=".controller.Splash"/>
         <activity android:name=".controller.receta_detailActivity"/>

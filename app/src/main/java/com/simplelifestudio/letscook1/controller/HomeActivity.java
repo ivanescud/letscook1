@@ -39,7 +39,7 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
     private CircleImageView userImgCIV;
     private TextView userNameTV;
     private ImageView recetaImgcell;
-    private ImageView tragosImgcell;
+    private ImageView bebidasImgcell;
     private ImageView topImgcell;
     private ImageView profileImgcell;
     private RecyclerView recetasRV;
@@ -100,6 +100,14 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
             }
         });
 
+        bebidasImgcell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),resultado_listActivity.class));
+
+            }
+        });
+
     }
 
 
@@ -108,7 +116,7 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
         userImgCIV = findViewById(R.id.homeUserImgIV);
         userNameTV = findViewById(R.id.homeUserTileTV);
         recetaImgcell = findViewById(R.id.homeBotonRecetaBt);
-         tragosImgcell = findViewById(R.id.homeBotonbebidasIV);
+         bebidasImgcell = findViewById(R.id.homeBotonbebidasIV);
           topImgcell = findViewById(R.id.homeBotontopIV);
          profileImgcell = findViewById(R.id.homeBotonperfilIV);
          recetasRV = findViewById(R.id.homerecetasRV);
