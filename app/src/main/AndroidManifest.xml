@@ -11,23 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--LandScape repoductor_horizontalActivity-->
-        <activity android:name=".controller.reproductor_horizontalActivity"/>
+        <activity android:name=".controller.SplashRecetaDetail"></activity>
+        <!-- LandScape repoductor_horizontalActivity -->
+        <activity android:name=".controller.reproductor_horizontalActivity" />
         <activity android:name=".controller.LoginActivity" />
         <activity android:name=".controller.RegisterActivity" />
         <activity android:name=".controller.resultado_listActivity"
             android:theme="@style/HomeActivityAppTheme"
-            android:label="LET&apos;S COOK"
             >
 
         </activity>
         <activity android:name=".controller.MainActivity" />
-        <activity android:name=".controller.Splash"/>
-        <activity android:name=".controller.receta_detailActivity"/>
+        <activity android:name=".controller.Splash" />
+        <activity android:name=".controller.receta_detailActivity" />
         <activity
             android:name=".controller.HomeActivity"
-            android:label="LET&apos;S COOK"
-            android:theme="@style/HomeActivityAppTheme" >
+            android:label="LET&apos;SCOOK"
+            android:theme="@style/HomeActivityAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,4 +35,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
