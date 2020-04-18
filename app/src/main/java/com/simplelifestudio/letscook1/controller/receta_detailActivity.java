@@ -3,6 +3,7 @@ package com.simplelifestudio.letscook1.controller;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 
@@ -55,6 +56,7 @@ public class receta_detailActivity extends AppCompatActivity {
     private ImageButton favoriteIB;
     private CardView contenedorVideo;
     //recyclerView
+    ArrayList<Paso> paso = new ArrayList<>();
     private AdapterDireccion adapterDireccion;
     private AdapterIngredientes adapterIngredientes;
     private RecyclerView direccionRV;
@@ -79,7 +81,6 @@ public class receta_detailActivity extends AppCompatActivity {
         botonFavorito();
         youtubePlayerListener(videoInicio, videoFinal);
         //test direccionRV
-       ArrayList<Paso> paso = new ArrayList<>();
        paso.add(new Paso("1","TEXT EXAMPLE","oUpBiLCc3_0",R.drawable.ic_comment,20));
         paso.add(new Paso("2","TEXT EXAMPLE","oUpBiLCc3_0",R.drawable.ic_favorite_border,10));
         paso.add(new Paso("3","TEXT EXAMPLE","oUpBiLCc3_0",R.drawable.ic_launcher_background,50));
@@ -105,7 +106,7 @@ public class receta_detailActivity extends AppCompatActivity {
         ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
         ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
 
-        adapterDireccion = new AdapterDireccion(receta_detailActivity.this,paso);
+        adapterDireccion = new AdapterDireccion(receta_detailActivity.this,paso,videoUrl);
         adapterIngredientes = new AdapterIngredientes(receta_detailActivity.this,ingredientes);
         direccionRV.setAdapter(adapterDireccion);
         ingredienteRV.setAdapter(adapterIngredientes);
@@ -200,8 +201,11 @@ public class receta_detailActivity extends AppCompatActivity {
         playIB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                startActivity(new Intent(receta_detailActivity.this, reproductor_horizontalActivity.class).putExtra("videoUrl",videoUrl));
+                Bundle bundle = new Bundle();
+                bundle.putString("videoUrl",videoUrl);
+                bundle.putSerializable("paso",paso);
+                Intent intent = new Intent(getApplicationContext(),reproductor_horizontalActivity.class).putExtras(bundle);
+                startActivity(intent);
                 overridePendingTransition(R.anim.top_in, R.anim.left_out);
             }
         });

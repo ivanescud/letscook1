@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:screenOrientation="landscape">
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youTubePlayerViewh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:elevation="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:showFullScreenButton="false"
@@ -17,8 +20,10 @@
         app:showVideoCurrentTime="true"
         app:showVideoDuration="true"
         app:showYouTubeButton="false">
-        <include layout="@layout/reproductor_horizontal_anim_direcciones_cardview"/>
+
+        <include layout="@layout/reproductor_horizontal_anim_direcciones_cardview" />
     </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"

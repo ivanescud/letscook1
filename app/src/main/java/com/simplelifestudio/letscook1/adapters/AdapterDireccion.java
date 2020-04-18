@@ -2,11 +2,10 @@ package com.simplelifestudio.letscook1.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,13 +21,15 @@ import java.util.ArrayList;
 
 public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.viewHolder> {
     private ArrayList<Paso> paso;
+    private String videoUrl;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public AdapterDireccion(Context context, ArrayList paso) {
+    public AdapterDireccion(Context context, ArrayList paso,String videoUrl) {
       this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
         this.paso = paso;
+        this.videoUrl = videoUrl;
     }
 
     @NonNull
@@ -45,7 +46,6 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
     holder.direccion.setText((paso.get(position).getIntruccion()));
     holder.icono.setImageResource(paso.get(position).getIco());
     holder.posVideo = paso.get(position).getPosVideo();
-    holder.videoUrl = paso.get(position).getVideoUrl();
     }
 
     @Override
@@ -59,12 +59,11 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
         TextView direccion;
         TextView vervideo;
         ImageView icono;
-        String videoUrl;
         int posVideo;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-            numeroPaso = itemView.findViewById(R.id.celdaDireccionPasoTC);
+            numeroPaso = itemView.findViewById(R.id.celdaDireccionPasoTV);
             direccion = itemView.findViewById(R.id.celdaDireccionInfoTv);
             icono = itemView.findViewById(R.id.celda_direccionIcoIV);
             vervideo = itemView.findViewById(R.id.celdaDireccionVerVideoTv);
@@ -76,8 +75,12 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
         @Override
         public void onClick(View view) {
 
-            context.startActivity(new Intent(context, reproductor_horizontalActivity.class).putExtra("videoUrl",videoUrl).putExtra("posVideo",posVideo));
-        }
+            context.startActivity(new Intent(context, reproductor_horizontalActivity.class));
+            Bundle bundle = new Bundle();
+            bundle.putString("videoUrl",videoUrl);
+            bundle.putInt("posVideo",posVideo);
+            bundle.putSerializable("paso",paso);;
+    }
     }
 
     public interface ItemClickListener {
