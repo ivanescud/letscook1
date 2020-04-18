@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.model.Receta;
 
@@ -17,33 +18,34 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeRecetaAdapter  extends RecyclerView.Adapter<HomeRecetaAdapter.viewHolder> {
-    ArrayList<Receta>recetas;
-    private LayoutInflater layoutInflater;
+public class HomeRecetaAdapter extends RecyclerView.Adapter<HomeRecetaAdapter.viewHolder> {
+    ArrayList<Receta> recetas;
     private Context context;
+    LayoutInflater layoutInflater;
 
-    public HomeRecetaAdapter(ArrayList<Receta> recetas, LayoutInflater layoutInflater, Context context) {
+    public HomeRecetaAdapter(ArrayList<Receta> recetas, Context context) {
         this.recetas = recetas;
-        this.layoutInflater = layoutInflater;
         this.context = context;
+        this.layoutInflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.homecellrv,parent,false);
+        View view = layoutInflater.inflate(R.layout.homecellrv, parent, false);
         return new viewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
+        Glide.with(context).load(recetas.get(position).getMainImgRc()).into(holder.mainImgIV);
+        Glide.with(context).load(recetas.get(position).getAutorImgRC()).into(holder.createdCIV);
+        holder.nombreRc.setText(recetas.get(position).getNombreRC());
+        holder.likesRC.setText(String.valueOf(recetas.get(position).getLikes().size()));
+        holder.rankRC.setText(String.valueOf(recetas.get(position).getRankingRC()));
 
 
-
-     /*   holder.nombreRc.setText(ingrediente.get(position).getProducto());
-        holder.likesRC.setText(ingrediente.get(position).getCantidad());
-        holder.icono.setImageResource(ingrediente.get(position).getIco());*/
     }
 
     @Override
@@ -51,7 +53,7 @@ public class HomeRecetaAdapter  extends RecyclerView.Adapter<HomeRecetaAdapter.v
         return recetas.size();
     }
 
-    public class viewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
+    public class viewHolder extends RecyclerView.ViewHolder  {
         TextView nombreRc;
         TextView likesRC;
         TextView rankRC;
@@ -68,9 +70,5 @@ public class HomeRecetaAdapter  extends RecyclerView.Adapter<HomeRecetaAdapter.v
             createdCIV = itemView.findViewById(R.id.homecellbyImgCIV);
         }
 
-        @Override
-        public void onClick(View view) {
-
-        }
     }
 }
