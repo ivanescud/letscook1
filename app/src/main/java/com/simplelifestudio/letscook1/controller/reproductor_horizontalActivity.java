@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.util.Log;
@@ -140,7 +142,14 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
         direccionInfo.setText(paso.get(item.getItemId()-1).getIntruccion());
         iconoDireccion.setImageResource(paso.get(item.getItemId()-1).getIco());
 
-        verPasoEvent(verPaso);
+
+            verPaso.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    myYouTubePlayer.seekTo(paso.get(navigationView.getCheckedItem().getItemId()-1).getPosVideo());
+                    dialog.dismiss();
+                }
+            });
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,19 +157,12 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
                dialog.dismiss();
             }
         });
-
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
 
     //Listener ver paso
-    public void verPasoEvent(TextView verPaso){
-        verPaso.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myYouTubePlayer.seekTo(paso.get(navigationView.getCheckedItem().getItemId()-1).getPosVideo());
-            }
-        });
-    }
+
 
 
     public void animation(){

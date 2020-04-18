@@ -12,8 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        >
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/celda_direccionIcoIV"
@@ -59,6 +58,12 @@
         <TextView
             android:id="@+id/celdaDireccionInfoTv"
             android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            android:scrollbars="vertical"
             android:text="Lorem ipsum Lorem ipsum dolor sit amet,consectetur
             \n adipiscing elit. Aenean condimentum augue et
             tempus finibus. Proin in ullamcorper metus. Suspendisse
@@ -66,12 +71,6 @@
             . Vivamus ullamcorper laoreet lorem, non consectetur
             dolor pharetra et. Nam vitae lorem mollis, facilisis
            "
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:scrollbarAlwaysDrawHorizontalTrack="true"
-            android:scrollbars="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
@@ -80,15 +79,14 @@
             android:id="@+id/celdaDireccionVerVideoTv"
             android:layout_width="70dp"
             android:layout_height="20dp"
-            android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/bg_ver_video"
             android:gravity="center_horizontal|center_vertical"
             android:padding="2dp"
             android:text="@string/ver_paso"
             android:textColor="#BF0404"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/celdaDireccionInfoTv" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
             android:id="@+id/celdaDireccionCancelarIV"
