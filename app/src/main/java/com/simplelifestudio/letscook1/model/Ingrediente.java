@@ -1,6 +1,8 @@
 package com.simplelifestudio.letscook1.model;
 
-public class Ingrediente {
+import java.io.Serializable;
+
+public class Ingrediente implements Serializable {
     int ico;
     String cantidad;
     String producto;
