@@ -59,5 +59,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
 
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
 
 }
