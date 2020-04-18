@@ -120,14 +120,16 @@ public class receta_detailActivity extends AppCompatActivity {
         videoFinal = 15;
         bundle = getIntent().getExtras();
         paso = (ArrayList<Paso>) bundle.getSerializable("paso");
-        ingredientes = (ArrayList<Ingrediente>) bundle.getSerializable("paso");
+        ingredientes = (ArrayList<Ingrediente>) bundle.getSerializable("ingredientes");
         tituloTV.setText(bundle.getString("titulo"));
         calificacionTV.setText(bundle.getString("calificacion"));
-        numeroFavoritosTV.setText(bundle.getString("calificacion"));
+        numeroFavoritosTV.setText(bundle.getString("favoritos"));
         numeroComentarios.setText(bundle.getString("comentario"));
         tiempoTV.setText(bundle.getString("tiempo"));
         servidasTV.setText(bundle.getString("servidas"));
         tipoTV.setText(bundle.getString("tipo"));
+        videoUrl = bundle.getString("videoUrl");
+        calificacion1TV.setText(bundle.getString("calificacion"));
         adapterDireccion = new AdapterDireccion(receta_detailActivity.this, paso, videoUrl);
         adapterIngredientes = new AdapterIngredientes(receta_detailActivity.this, ingredientes);
         direccionRV.setAdapter(adapterDireccion);

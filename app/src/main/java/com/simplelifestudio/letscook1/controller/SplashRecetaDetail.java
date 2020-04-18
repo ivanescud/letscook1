@@ -23,8 +23,6 @@ import java.util.Map;
 public class SplashRecetaDetail extends AppCompatActivity {
     private String receta, titulo, numeroComentario, calificacion, numeroFavoritos, tiempo, servidas, tipo, videoUrl;
     private int videoInicio, videoFinal;
-    private Bundle bundle;
-    private Intent intent;
     private FirebaseFirestore db;
     private  ArrayList<Ingrediente> ingredientes = new ArrayList<>();
     private  ArrayList<Paso> paso = new ArrayList<>();
@@ -33,7 +31,6 @@ public class SplashRecetaDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_receta_detail);
-        intent = new Intent(SplashRecetaDetail.this,receta_detailActivity.class);
         db = FirebaseFirestore.getInstance();
         obtenerDatos();
         verificarDatos();
@@ -64,30 +61,13 @@ public class SplashRecetaDetail extends AppCompatActivity {
             }
         });
         //test direccionRV
-        ArrayList<Paso> paso = new ArrayList<>();
+        paso = new ArrayList<>();
         paso.add(new Paso("1", "TEXT EXAMPLE", R.drawable.ic_comment, 20));
-        paso.add(new Paso("2", "TEXT EXAMPLE", R.drawable.ic_favorite_border, 10));
-        paso.add(new Paso("3", "TEXT EXAMPLE", R.drawable.ic_launcher_background, 50));
-        paso.add(new Paso("4", "TEXT EXAMPLE", R.drawable.ic_local_bar, 90));
-        paso.add(new Paso("5", "TEXT EXAMPLE", R.drawable.ic_import_contacts, 40));
-        paso.add(new Paso("6", "TEXT EXAMPLE", R.drawable.ic_local_dining, 70));
 
         //test ingredientesRV
+        ingredientes = new ArrayList<>();
         ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
+
 
 
     }
@@ -97,17 +77,20 @@ public class SplashRecetaDetail extends AppCompatActivity {
             @Override
             public void run() {
                 if (videoUrl != null) {
-                   bundle.putString("titulo",titulo);
+                    Log.w("SplashDebug","Titulo="+titulo);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("titulo",titulo);
                     bundle.putString("calificacion",calificacion);
-                    bundle.putString("calificacion",numeroFavoritos);
+                    bundle.putString("favoritos",numeroFavoritos);
                     bundle.putSerializable("comentario",numeroComentario);
                     bundle.putString("tiempo",tiempo);
                     bundle.putString("servidas",servidas);
                     bundle.putString("tipo",tipo);
                     bundle.putString("videoUrl",videoUrl);
                     bundle.putSerializable("paso",paso);
-                    bundle.putSerializable("ingredientes",paso);
-                    startActivity(intent.putExtras(bundle));
+                    bundle.putSerializable("ingredientes",ingredientes);
+                    Intent intent = new Intent(getApplicationContext(),receta_detailActivity.class).putExtras(bundle);
+                    startActivity(intent);
                     finish();
                 }
             }
