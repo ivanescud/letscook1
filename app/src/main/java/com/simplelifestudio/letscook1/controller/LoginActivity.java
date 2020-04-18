@@ -1,6 +1,7 @@
 package com.simplelifestudio.letscook1.controller;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -50,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginBut.setProgress(0);
+                loginBut.setProgress(20);
                 activeUI(false);
 
                 verifi();
@@ -62,39 +63,50 @@ public class LoginActivity extends AppCompatActivity {
     private void verifi() {
 
 
-        if (emailET.getText().toString().equals("") || passwoET.getText().toString().equals("")) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loginBut.setProgress(50);
+                if (emailET.getText().toString().equals("") || passwoET.getText().toString().equals("")) {
 
-            Toast.makeText(this, "Favor ingresar los datos correctos", Toast.LENGTH_SHORT).show();
-        } else {
-            loginBut.setProgress(20);
-            mAuth.signInWithEmailAndPassword(emailET.getText().toString(), passwoET.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                @Override
-                public void onSuccess(AuthResult authResult) {
-
-                    loginBut.setProgress(100);
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                    finish();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    loginBut.setProgress(-1);
-                    Toast.makeText(LoginActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Favor ingresar los datos correctos", Toast.LENGTH_SHORT).show();
                     activeUI(true);
-                    cleanET();
-                    Log.d("Login", e.toString());
+                } else {
 
-                    new Thread(new Runnable() {
+                    mAuth.signInWithEmailAndPassword(emailET.getText().toString(), passwoET.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
-                        public void run() {
-                            loginBut.setProgress(0);
+                        public void onSuccess(AuthResult authResult) {
+
+                            loginBut.setProgress(100);
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            finish();
                         }
-                    }).start();
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            loginBut.setProgress(-1);
+                            Toast.makeText(LoginActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            activeUI(true);
+                            cleanET();
+                            Log.d("Login", e.toString());
 
 
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    loginBut.setProgress(0);
+                                }
+                            },1000);
+
+
+                        }
+                    });
                 }
-            });
-        }
+
+            }
+        },1000);
 
 
     }

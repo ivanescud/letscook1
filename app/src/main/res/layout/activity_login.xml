@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    tools:context=".controller.LoginActivity">
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
 
         <ImageView
@@ -31,7 +21,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="30dp">
 
@@ -69,20 +59,18 @@
                 android:textColor="@color/light_blanco_detail"
                 app:pb_colorNormal="@color/loginbut"
                 app:pb_colorPressed="@color/loginbutpress"
-                app:pb_colorComplete="@color/holo_orange_light"
+                app:pb_colorComplete="@color/cpb_green_dark"
                 app:pb_textComplete="Acceso Correcto"
                 app:pb_textError="Acceso denegado"
-                app:pb_colorError="#FFEB3B"
+                app:pb_colorError="#BDBDBD"
                 app:pb_textProgress="Cargando"
                 app:pb_colorProgress="#ffffff"
+                app:pb_cornerRadius="45dp"
 
                 />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+
 
         </LinearLayout>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>

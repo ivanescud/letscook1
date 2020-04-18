@@ -73,7 +73,7 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
         switch (item.getItemId()) {
             case R.id.logoutmenuBT:
                 mAuth.signOut();
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 finish();
             break;
 

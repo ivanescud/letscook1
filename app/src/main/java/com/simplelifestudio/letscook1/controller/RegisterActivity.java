@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dd.processbutton.iml.ActionProcessButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText email;
     EditText contraseña;
     EditText reContraseña;
-    Button registrarBt;
+    ActionProcessButton registrarBt;
     //Fire base
     FirebaseAuth mAuth;
     FirebaseFirestore db;
@@ -51,6 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
         //FireBase
         mAuth = FirebaseAuth.getInstance();
        db = FirebaseFirestore.getInstance();
+
+        registrarBt.setMode(ActionProcessButton.Mode.PROGRESS);
     }
 
     // Añade todos los campos a la clase usuario
@@ -65,6 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
         db.collection("users").document(user.getUserID()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
+
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -84,15 +89,34 @@ public class RegisterActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                    nuevoUsuario();
+                    registrarBt.setProgress(50);
 
-                    startActivity(new Intent(RegisterActivity.this,HomeActivity.class));
-                    finish();
-                    Toast.makeText(RegisterActivity.this,"Usuario Creado",Toast.LENGTH_SHORT).show();
+                   Handler handler = new Handler();
+                   handler.postDelayed(new Runnable() {
+                       @Override
+                       public void run() {
+                           registrarBt.setProgress(100);
+                           startActivity(new Intent(RegisterActivity.this,HomeActivity.class));
+                           finish();
+                           Toast.makeText(RegisterActivity.this,"Usuario Creado",Toast.LENGTH_SHORT).show();
+                       }
+                   },1000);
+
 
                 }
                 else{
+                    registrarBt.setProgress(-1);
                     Toast.makeText(RegisterActivity.this,"Error:"+task.getException().getMessage().toString()+" Intente denuevo",Toast.LENGTH_SHORT).show();
-                }
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            registrarBt.setProgress(0);
+                        }
+                    },1000);
+
+                    }
             }
         });
     }
@@ -102,17 +126,20 @@ public class RegisterActivity extends AppCompatActivity {
         registrarBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                registrarBt.setProgress(20);
                 if(contraseña.getText().toString().equals(reContraseña.getText().toString())) {
                     if (nombre.getText().toString().isEmpty()||apellido.getText().toString().isEmpty()||
                     edad.getText().toString().isEmpty()||email.getText().toString().isEmpty()||contraseña.getText().toString().isEmpty()||
                     reContraseña.getText().toString().isEmpty()) {
                         Toast.makeText(RegisterActivity.this,"Debe llenar todos los parametros",Toast.LENGTH_SHORT).show();
+                        registrarBt.setProgress(0);
                     } else {
                         registrarUsuario();
                     }
                 }
                 else{
                     Toast.makeText(RegisterActivity.this,"Las contraseñas no conciden",Toast.LENGTH_SHORT).show();
+                    registrarBt.setProgress(0);
                 }
             }
         });
