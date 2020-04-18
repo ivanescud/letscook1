@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recetaDetailMotionLayoutML"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_recetas_detail">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/recetaDetailContenedorVideoCV"
@@ -29,7 +30,7 @@
             android:clickable="false"
             android:focusableInTouchMode="false"
             app:autoPlay="true"
-            app:showFullScreenButton="false"
+            app:showFullScreenButton="true"
             app:showSeekBar="false"
             app:showVideoCurrentTime="false"
             app:showVideoDuration="false"
