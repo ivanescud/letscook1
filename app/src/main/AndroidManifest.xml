@@ -17,6 +17,7 @@
         <activity android:name=".controller.RegisterActivity" />
         <activity android:name=".controller.resultado_listActivity"
             android:theme="@style/HomeActivityAppTheme"
+            android:label="LET&apos;S COOK"
             >
 
         </activity>
@@ -25,7 +26,7 @@
         <activity android:name=".controller.receta_detailActivity"/>
         <activity
             android:name=".controller.HomeActivity"
-            android:label="LET&apos;SCOOK"
+            android:label="LET&apos;S COOK"
             android:theme="@style/HomeActivityAppTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
