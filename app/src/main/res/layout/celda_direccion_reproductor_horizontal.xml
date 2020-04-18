@@ -14,16 +14,6 @@
         android:layout_height="wrap_content"
         android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/celda_direccionIcoIV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/Imagen"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
-
         <Space
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -47,7 +37,7 @@
             android:id="@+id/celdaDireccionPasoTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
+            android:layout_marginStart="3dp"
             android:layout_marginTop="40dp"
             android:textColor="#262226"
             android:textSize="24sp"
@@ -92,7 +82,7 @@
             android:id="@+id/celdaDireccionCancelarIV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 

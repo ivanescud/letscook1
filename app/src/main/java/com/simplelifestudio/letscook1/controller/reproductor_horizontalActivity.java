@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -14,6 +15,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -42,8 +46,10 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
     private String videoUrl;
     private int inicioVideo;
     private ArrayList<Paso> paso;
-    //
-
+    //Animacion fade_alpha_outh
+    Animation fadeAlphaOuthAnim;
+   ImageView swipeHandIV;
+   TextView masOpcionesTV;
 
 
     @Override
@@ -78,6 +84,14 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigation);
         //View
         subMenu();
+        //Animacion fade_alpha_outh
+        fadeAlphaOuthAnim = new AlphaAnimation(1.0f,0.0f);
+        swipeHandIV = findViewById(R.id.reproductorHorizontalSwipeHandIV);
+        masOpcionesTV = findViewById(R.id.reproductorHorizontalMasOpcionesTV);
+        swipeHandIV.startAnimation(fadeAlphaOuthAnim);
+        masOpcionesTV.startAnimation(fadeAlphaOuthAnim);
+        fadeAlphaOuthAnim.setDuration(4000);
+        fadeOutAnimitaionStart();
     }
 
     //Crear sub menu pasos
@@ -98,7 +112,12 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
                     navigationView.getCheckedItem().setChecked(false);
                     navigationView.setCheckedItem(item);
                 }
-                dialog(item);
+                if(item.getItemId()!=2131296413) {
+                    dialog(item);
+                }
+                else {
+                   finish();
+                }
 
                 Log.w("ItemC","item presionado:"+item.getItemId());
                 return false;
@@ -127,7 +146,6 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
     public void dialog(MenuItem item){
         TextView numeroDePaso;
         TextView direccionInfo;
-        ImageView iconoDireccion;
         TextView verPaso;
         ImageView close;
 
@@ -135,18 +153,17 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.celda_direccion_reproductor_horizontal);
         numeroDePaso = dialog.findViewById(R.id.celdaDireccionPasoTV);
         direccionInfo =  dialog.findViewById(R.id.celdaDireccionInfoTv);
-        iconoDireccion =  dialog.findViewById(R.id.celda_direccionIcoIV);
         verPaso =  dialog.findViewById(R.id.celdaDireccionVerVideoTv);
         close =  dialog.findViewById(R.id.celdaDireccionCancelarIV);
         numeroDePaso.setText(paso.get(item.getItemId()-1).getNumeroPaso());
         direccionInfo.setText(paso.get(item.getItemId()-1).getIntruccion());
-        iconoDireccion.setImageResource(paso.get(item.getItemId()-1).getIco());
 
 
             verPaso.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     myYouTubePlayer.seekTo(paso.get(navigationView.getCheckedItem().getItemId()-1).getPosVideo());
+                    myYouTubePlayer.play();
                     dialog.dismiss();
                 }
             });
@@ -163,7 +180,26 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
 
     //Listener ver paso
 
+//animaciones
+    public void fadeOutAnimitaionStart(){
+        fadeAlphaOuthAnim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
 
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                 swipeHandIV.setVisibility(View.GONE);
+                 masOpcionesTV.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
 
     public void animation(){
         Fade fade = new Fade();

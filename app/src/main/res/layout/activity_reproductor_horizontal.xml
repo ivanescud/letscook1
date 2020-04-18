@@ -21,6 +21,25 @@
         app:showVideoDuration="true"
         app:showYouTubeButton="false">
 
+        <ImageView
+            android:id="@+id/reproductorHorizontalSwipeHandIV"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="start|center_vertical"
+            android:tint="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/swipe_right" />
+
+        <TextView
+            android:id="@+id/reproductorHorizontalMasOpcionesTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="80dp"
+            android:text="Mas opciones"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
 

@@ -79,7 +79,10 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
             Bundle bundle = new Bundle();
             bundle.putString("videoUrl",videoUrl);
             bundle.putInt("posVideo",posVideo);
-            bundle.putSerializable("paso",paso);;
+            bundle.putSerializable("paso",paso);
+            Intent intent = new Intent(context,reproductor_horizontalActivity.class).putExtras(bundle);
+            context.startActivity(intent);
+
     }
     }
 
