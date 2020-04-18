@@ -53,7 +53,6 @@ public class receta_detailActivity extends AppCompatActivity {
     private YouTubePlayerTracker youTubePlayerTracker;
     private YouTubePlayer youTubePlayer1;
     private ImageView backgroundIV;
-    private ImageButton playIB;
     private TextView calificacion1TV;
     private ImageButton favoriteIB;
     private CardView contenedorVideo;
@@ -101,7 +100,6 @@ public class receta_detailActivity extends AppCompatActivity {
         //Init de la view receta_detail.xml
         backgroundIV = findViewById(R.id.recetaDetailBgIV);
         contenedorVideo = findViewById(R.id.recetaDetailContenedorVideoCV);
-        playIB = findViewById(R.id.recetaDetailBotonPlayIB);
         calificacion1TV = findViewById(R.id.calificaion);
         favoriteIB = findViewById(R.id.recetaDetailBotonFavoritoIB);
         //recyclerView
@@ -171,7 +169,7 @@ public class receta_detailActivity extends AppCompatActivity {
 
     //cambia de activity
     public void cambiarActivity() {
-        playIB.setOnClickListener(new View.OnClickListener() {
+        youTubePlayerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
