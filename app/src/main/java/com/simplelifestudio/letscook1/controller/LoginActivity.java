@@ -84,12 +84,19 @@ public class LoginActivity extends AppCompatActivity {
                     cleanET();
                     Log.d("Login", e.toString());
 
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            loginBut.setProgress(0);
+                        }
+                    }).start();
+
 
                 }
             });
         }
 
-        loginBut.setProgress(0);
+
     }
 
 
