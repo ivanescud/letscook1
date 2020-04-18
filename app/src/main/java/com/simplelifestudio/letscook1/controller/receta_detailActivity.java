@@ -1,6 +1,7 @@
 package com.simplelifestudio.letscook1.controller;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import android.os.Parcelable;
@@ -74,7 +75,8 @@ public class receta_detailActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receta_detail);
-
+        //PortTrait
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         init();
         obtenerDatos();
         cambiarActivity();

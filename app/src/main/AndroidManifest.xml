@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--LandScape repoductor_horizontalActivity-->
         <activity android:name=".controller.reproductor_horizontalActivity"/>
         <activity android:name=".controller.LoginActivity" />
         <activity android:name=".controller.RegisterActivity" />

@@ -21,7 +21,6 @@
         app:showVideoDuration="true"
         app:showYouTubeButton="false">
 
-        <include layout="@layout/reproductor_horizontal_anim_direcciones_cardview" />
     </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
 

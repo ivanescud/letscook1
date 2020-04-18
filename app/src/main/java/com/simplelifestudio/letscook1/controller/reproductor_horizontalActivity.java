@@ -4,12 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,29 +41,24 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
     private int inicioVideo;
     private ArrayList<Paso> paso;
     //
-    TextView numeroDePaso;
-    TextView direccionInfo;
-    ImageView iconoDireccion;
-    TextView verPaso;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reproductor_horizontal);
+        //portLand
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         init();
         //menu;
         menuListener();
         //card Direccion
-        numeroDePaso.setText("1");
-        direccionInfo.setText(paso.get(0).getIntruccion());
-        iconoDireccion.setImageResource(paso.get(0).getIco());
         //youtubePlayer
         getLifecycle().addObserver(youTubePlayerView);
         YouTubePlayerView();
         //
         animation();
-        verPasoEvent();
 
     }
 
@@ -76,11 +75,6 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
         //menu
         navigationView = findViewById(R.id.navigation);
         //View
-        numeroDePaso = findViewById(R.id.celdaDireccionPasoTV);
-        direccionInfo = findViewById(R.id.celdaDireccionInfoTv);
-        iconoDireccion = findViewById(R.id.celda_direccionIcoIV);
-        verPaso = findViewById(R.id.celdaDireccionVerVideoTv);
-        verPaso.setText("ver paso");
         subMenu();
     }
 
@@ -102,23 +96,15 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
                     navigationView.getCheckedItem().setChecked(false);
                     navigationView.setCheckedItem(item);
                 }
-                numeroDePaso.setText(paso.get(item.getItemId()-1).getNumeroPaso());
-                direccionInfo.setText(paso.get(item.getItemId()-1).getIntruccion());
+                dialog(item);
+
                 Log.w("ItemC","item presionado:"+item.getItemId());
                 return false;
             }
         });
     }
 
-    //Listener ver paso
-    public void verPasoEvent(){
-        verPaso.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myYouTubePlayer.seekTo(paso.get(navigationView.getCheckedItem().getItemId()-1).getPosVideo());
-            }
-        });
-    }
+
     //youtubeplayer Listener
     public void YouTubePlayerView(){
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
@@ -135,6 +121,47 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
             }
         });
     }
+    //DIALOG
+    public void dialog(MenuItem item){
+        TextView numeroDePaso;
+        TextView direccionInfo;
+        ImageView iconoDireccion;
+        TextView verPaso;
+        ImageView close;
+
+        Dialog dialog = new Dialog(reproductor_horizontalActivity.this);
+        dialog.setContentView(R.layout.celda_direccion_reproductor_horizontal);
+        numeroDePaso = dialog.findViewById(R.id.celdaDireccionPasoTV);
+        direccionInfo =  dialog.findViewById(R.id.celdaDireccionInfoTv);
+        iconoDireccion =  dialog.findViewById(R.id.celda_direccionIcoIV);
+        verPaso =  dialog.findViewById(R.id.celdaDireccionVerVideoTv);
+        close =  dialog.findViewById(R.id.celdaDireccionCancelarIV);
+        numeroDePaso.setText(paso.get(item.getItemId()-1).getNumeroPaso());
+        direccionInfo.setText(paso.get(item.getItemId()-1).getIntruccion());
+        iconoDireccion.setImageResource(paso.get(item.getItemId()-1).getIco());
+
+        verPasoEvent(verPaso);
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    //Listener ver paso
+    public void verPasoEvent(TextView verPaso){
+        verPaso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myYouTubePlayer.seekTo(paso.get(navigationView.getCheckedItem().getItemId()-1).getPosVideo());
+            }
+        });
+    }
+
 
     public void animation(){
         Fade fade = new Fade();
