@@ -3,28 +3,27 @@ package com.simplelifestudio.letscook1.controller;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-
-import android.os.Parcelable;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.YouTubePlayerTracker;
@@ -39,6 +38,8 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class receta_detailActivity extends AppCompatActivity {
+    //bundle
+    private Bundle bundle;
     //declaracion de la view recetas_detail_nestedscroll.xml
     private TextView calificacionTV;
     private TextView tituloTV;
@@ -57,7 +58,8 @@ public class receta_detailActivity extends AppCompatActivity {
     private ImageButton favoriteIB;
     private CardView contenedorVideo;
     //recyclerView
-    ArrayList<Paso> paso = new ArrayList<>();
+    private ArrayList<Paso> paso;
+    private ArrayList<Ingrediente> ingredientes;
     private AdapterDireccion adapterDireccion;
     private AdapterIngredientes adapterIngredientes;
     private RecyclerView direccionRV;
@@ -68,8 +70,6 @@ public class receta_detailActivity extends AppCompatActivity {
     private String receta;
     private String videoUrl;
     private int videoInicio, videoFinal;
-    //Firebase
-    FirebaseFirestore db;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,33 +79,12 @@ public class receta_detailActivity extends AppCompatActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         init();
         obtenerDatos();
+        youTubePlayerTracker = new YouTubePlayerTracker();
+        youTubePlayerView = findViewById(R.id.recetaDetailYoutubePlayer);
+        youtubePlayerListener(videoInicio, videoFinal);
+        getLifecycle().addObserver(youTubePlayerView);
         cambiarActivity();
         botonFavorito();
-        youtubePlayerListener(videoInicio, videoFinal);
-
-
-        //test ingredientesRV
-        ArrayList<Ingrediente> ingredientes = new ArrayList<>();
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment,"1/2 libra","zanahoria"));
-
-
-        adapterIngredientes = new AdapterIngredientes(receta_detailActivity.this,ingredientes);
-        direccionRV.setAdapter(adapterDireccion);
-        ingredienteRV.setAdapter(adapterIngredientes);
     }
 
     public void init() {
@@ -120,8 +99,6 @@ public class receta_detailActivity extends AppCompatActivity {
 
 
         //Init de la view receta_detail.xml
-        youTubePlayerTracker = new YouTubePlayerTracker();
-        youTubePlayerView = findViewById(R.id.recetaDetailYoutubePlayer);
         backgroundIV = findViewById(R.id.recetaDetailBgIV);
         contenedorVideo = findViewById(R.id.recetaDetailContenedorVideoCV);
         playIB = findViewById(R.id.recetaDetailBotonPlayIB);
@@ -135,49 +112,26 @@ public class receta_detailActivity extends AppCompatActivity {
         ingredienteRV = findViewById(R.id.recetaDetailIngredientesRV);
         verticalLayoutManager = new LinearLayoutManager(receta_detailActivity.this,LinearLayoutManager.VERTICAL,false);
         ingredienteRV.setLayoutManager(verticalLayoutManager);
-        //firebase
-        db = FirebaseFirestore.getInstance();
     }
 
     //Obtiene los datos y los setea
     public void obtenerDatos() {
-        receta = "Cereal con Leche";
         videoInicio = 0;
         videoFinal = 15;
-        tituloTV.setText(receta);
-        numeroComentarios.setText("200");
-        db.collection("recetas").document(receta).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot documentSnapshot = task.getResult();
-                    Map<String, Object> map = documentSnapshot.getData();
-                    videoUrl = map.get("video").toString();
-                    calificacionTV.setText(map.get("calificacion").toString());
-                    calificacion1TV.setText(map.get("calificacion").toString());
-                    numeroFavoritosTV.setText(map.get("favoritos").toString());
-                    tiempoTV.setText(map.get("tiempo").toString());
-                    servidasTV.setText(map.get("servida").toString());
-                    tipoTV.setText(map.get("tipo").toString());
-                    //crear el ciclo de reproduccion cuando ya obtenga el url
-                    getLifecycle().addObserver(youTubePlayerView);
-                } else {
-                    Log.w("DATABASE", task.getException());
-                }
-            }
-        });
-        //test direccionRV
-        String prueva;
-        prueva= videoUrl;
-        Toast.makeText(this,"esto: "+prueva,Toast.LENGTH_SHORT).show();
-        paso.add(new Paso("1","TEXT EXAMPLE",R.drawable.ic_comment,20));
-        paso.add(new Paso("2","TEXT EXAMPLE",R.drawable.ic_favorite_border,10));
-        paso.add(new Paso("3","TEXT EXAMPLE",R.drawable.ic_launcher_background,50));
-        paso.add(new Paso("4","TEXT EXAMPLE",R.drawable.ic_local_bar,90));
-        paso.add(new Paso("5","TEXT EXAMPLE",R.drawable.ic_import_contacts,40));
-        paso.add(new Paso("6","TEXT EXAMPLE",R.drawable.ic_local_dining,70));
-        adapterDireccion = new AdapterDireccion(receta_detailActivity.this,paso,videoUrl);
-
+        bundle = getIntent().getExtras();
+        paso = (ArrayList<Paso>) bundle.getSerializable("paso");
+        ingredientes = (ArrayList<Ingrediente>) bundle.getSerializable("paso");
+        tituloTV.setText(bundle.getString("titulo"));
+        calificacionTV.setText(bundle.getString("calificacion"));
+        numeroFavoritosTV.setText(bundle.getString("calificacion"));
+        numeroComentarios.setText(bundle.getString("comentario"));
+        tiempoTV.setText(bundle.getString("tiempo"));
+        servidasTV.setText(bundle.getString("servidas"));
+        tipoTV.setText(bundle.getString("tipo"));
+        adapterDireccion = new AdapterDireccion(receta_detailActivity.this, paso, videoUrl);
+        adapterIngredientes = new AdapterIngredientes(receta_detailActivity.this, ingredientes);
+        direccionRV.setAdapter(adapterDireccion);
+        ingredienteRV.setAdapter(adapterIngredientes);
     }
 
     //Crea un preview del url de un video coloca el inicio del video y el final y hara un bucle
@@ -193,13 +147,23 @@ public class receta_detailActivity extends AppCompatActivity {
 
             @Override
             public void onReady(YouTubePlayer youTubePlayer) {
-                youTubePlayer.addListener(youTubePlayerTracker);
                 youTubePlayer.loadVideo(videoUrl, 0);
+                youTubePlayer.play();
+                youTubePlayer.addListener(youTubePlayerTracker);
                 backgroundIV.setVisibility(View.GONE);
                 youTubePlayer.setVolume(0);
                 youTubePlayer1 = youTubePlayer;
             }
 
+            @Override
+            public void onError(YouTubePlayer youTubePlayer, PlayerConstants.PlayerError error) {
+                youTubePlayer.loadVideo(videoUrl, 0);
+                youTubePlayer.play();
+            }
+
+            @Override
+            public void onStateChange(YouTubePlayer youTubePlayer, PlayerConstants.PlayerState state) {
+            }
         });
     }
 
@@ -227,6 +191,7 @@ public class receta_detailActivity extends AppCompatActivity {
             }
         });
     }
+
 }
 
 
