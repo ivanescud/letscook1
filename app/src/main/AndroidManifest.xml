@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".controller.SplashRecetaDetail"></activity>
-        <!-- LandScape repoductor_horizontalActivity -->
+        <!-- LandScape repoductor_horizontalActivity c -->
         <activity android:name=".controller.reproductor_horizontalActivity" />
         <activity android:name=".controller.LoginActivity" />
         <activity android:name=".controller.RegisterActivity" />
