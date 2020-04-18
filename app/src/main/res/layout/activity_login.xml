@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".controller.LoginActivity">
 
-    <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-        android:id="@+id/loginprogressbar"
-        style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:mpb_progressStyle="horizontal" />
 
 
     <LinearLayout
@@ -71,27 +61,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
-            <Button
+            <com.dd.processbutton.iml.ActionProcessButton
                 android:id="@+id/loginacLoginBut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/butradio"
-                android:text="@string/logintextbut"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp" />
+                android:text="Login"
+                android:textColor="@color/light_blanco_detail"
+                app:pb_colorNormal="@color/loginbut"
+                app:pb_colorPressed="@color/loginbutpress"
+                app:pb_colorComplete="@color/holo_orange_light"
+                app:pb_textComplete="Acceso Correcto"
+                app:pb_textError="Acceso denegado"
+                app:pb_colorError="#FFEB3B"
+                app:pb_textProgress="Cargando"
+                app:pb_colorProgress="#ffffff"
+
+                />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/holo_blue_dark"
-                android:text="@string/login_google"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp" />
         </LinearLayout>
 
     </LinearLayout>

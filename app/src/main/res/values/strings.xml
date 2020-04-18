@@ -38,5 +38,7 @@
     <string name="paso">Paso</string>
     <string name="es_hora_de_cocinar">Es hora de cocinar!</string>
     <string name="ver_paso">ver paso</string>
+    <string name="Complete">Acceso Correcto</string>
+    <string name="Error">Error</string>
 </resources>
 

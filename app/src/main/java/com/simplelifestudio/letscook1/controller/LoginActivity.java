@@ -12,6 +12,10 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dd.CircularProgressButton;
+import com.dd.processbutton.FlatButton;
+import com.dd.processbutton.ProcessButton;
+import com.dd.processbutton.iml.ActionProcessButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -26,14 +30,14 @@ import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 public class LoginActivity extends AppCompatActivity {
 
 
-    private Button loginBut;
+    private ActionProcessButton loginBut;
     private FirebaseAuth mAuth;
     private String email;
     private String password;
 
     private EditText emailET;
     private EditText passwoET;
-    private MaterialProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,62 +47,75 @@ public class LoginActivity extends AppCompatActivity {
         init();
 
 
-
         loginBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                loginBut.setProgress(0);
                 activeUI(false);
-              progressBar.setVisibility(View.VISIBLE);
+
                 verifi();
 
             }
         });
     }
-    private void verifi()
-    {
-        progressBar.setProgress(50);
-        if(emailET.getText().toString().equals("") || passwoET.getText().toString().equals("")){
 
-            Toast.makeText(this,"Favor ingresar los datos correctos", Toast.LENGTH_SHORT).show();
-        }else {
-            mAuth.signInWithEmailAndPassword(emailET.getText().toString(),passwoET.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+    private void verifi() {
+
+
+        if (emailET.getText().toString().equals("") || passwoET.getText().toString().equals("")) {
+
+            Toast.makeText(this, "Favor ingresar los datos correctos", Toast.LENGTH_SHORT).show();
+        } else {
+            loginBut.setProgress(20);
+            mAuth.signInWithEmailAndPassword(emailET.getText().toString(), passwoET.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
-                    progressBar.setProgress(100);
-                    startActivity(new Intent(LoginActivity.this,HomeActivity.class));finish();
+
+                    loginBut.setProgress(100);
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+                    loginBut.setProgress(-1);
                     Toast.makeText(LoginActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    activeUI(true);
+                    cleanET();
+                    Log.d("Login", e.toString());
 
-                  activeUI(true);
-                    progressBar.setVisibility(View.GONE);
-                    Log.d("Login",e.toString());
+
                 }
             });
         }
-    }
 
+        loginBut.setProgress(0);
+    }
 
 
     private void init() {
         loginBut = findViewById(R.id.loginacLoginBut);
         emailET = findViewById(R.id.loginActEmailET);
         passwoET = findViewById(R.id.loginActPasswordET);
-        progressBar = findViewById(R.id.loginprogressbar);
+
+
+        loginBut.setMode(ActionProcessButton.Mode.PROGRESS);
 
         mAuth = FirebaseAuth.getInstance();
 
-        progressBar.setVisibility(View.GONE);
 
     }
 
 
-    private void activeUI(boolean active){
+    private void activeUI(boolean active) {
         emailET.setEnabled(active);
         passwoET.setEnabled(active);
+    }
+
+    private void cleanET() {
+        emailET.setText("");
+        passwoET.setText("");
+
     }
 
 }
