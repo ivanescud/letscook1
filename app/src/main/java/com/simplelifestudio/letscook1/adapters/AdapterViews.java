@@ -12,15 +12,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.bumptech.glide.Glide;
+import com.simplelifestudio.letscook1.R;
+import com.simplelifestudio.letscook1.model.Receta;
+
+import java.util.ArrayList;
 
 
-public class AdapterViews {
-
- /*   ArrayList<Banner> data;
+public class AdapterViews  {
+/*
+    ArrayList<Receta> data;
     Activity activity;
     public static int LOOPS_COUNT = 1000;
 
-    public AdapterViews(ArrayList<Banner> data, Activity activity) {
+    public AdapterViews(ArrayList<Receta> data, Activity activity) {
         this.data = data;
         this.activity = activity;
     }
@@ -52,7 +59,7 @@ public class AdapterViews {
         View view = container;
         if (view==null || view.getTag()==null) {
             LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.banner, null);
+            view = inflater.inflate(R.layout.homecellrv, null);
              holder = new ViewHolder2();
             holder.bannerimg = (ImageView) view.findViewById(R.id.banner_img);
             holder.title = (TextView) view.findViewById(R.id.banner_title);
