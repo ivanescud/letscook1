@@ -6,6 +6,7 @@
     android:id="@+id/recetaDetailMotionLayoutML"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/negro"
     app:layoutDescription="@xml/activity_recetas_detail">
 
     <androidx.cardview.widget.CardView
@@ -59,6 +60,8 @@
         android:layout_marginTop="300dp"
         android:layout_marginEnd="5dp"
         android:elevation="20dp"
+        android:nestedScrollingEnabled="false"
+        android:saveEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

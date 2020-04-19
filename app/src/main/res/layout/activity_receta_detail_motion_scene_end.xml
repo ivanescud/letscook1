@@ -5,12 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recetaDetailMotionLayoutML"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/negro">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/recetaDetailContenedorVideoCV"
         android:layout_width="match_parent"
-        android:layout_height="0.1dp"
+        android:layout_height="300dp"
         android:visibility="visible"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp"
@@ -55,9 +56,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="5dp"
         android:elevation="20dp"
+        android:nestedScrollingEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -75,9 +77,10 @@
 
     <TextView
         android:id="@+id/calificaion"
-        android:layout_width="50dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/butradioregister"
         android:backgroundTint="#D96704"
         android:elevation="21dp"
@@ -88,9 +91,9 @@
 
     <ImageButton
         android:id="@+id/recetaDetailBotonFavoritoIB"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="15dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/boton_favorito_pulsado"
         android:contentDescription="@string/Imagen"
         android:elevation="21dp"
