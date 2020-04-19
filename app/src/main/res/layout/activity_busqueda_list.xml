@@ -20,7 +20,12 @@
         android:id="@+id/busquedaAutoScrollPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/recetaholder"
+        android:padding="5dp"
+        />
+    <me.relex.circleindicator.CircleIndicator
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/busquedaCircleIndicator"
         />
 
 
