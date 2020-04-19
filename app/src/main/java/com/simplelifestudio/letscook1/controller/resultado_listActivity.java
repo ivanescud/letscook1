@@ -47,7 +47,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda_list);
 
-
+        init();
 
         data = new DataHolder();
         recetaslist = data.getRecetas();
@@ -66,7 +66,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         recycleAdapter = new BusquedaRecycleAdapter(recetaslist,resultado_listActivity.this,this,1);
         recycleAdapter2 = new BusquedaRecycleAdapter(recetaslist,resultado_listActivity.this,this,2);
         recycleAdapter3 = new BusquedaRecycleAdapter(recetaslist,resultado_listActivity.this,this,3);
-
+        mainPager.setAdapter(adapter);
        // circleIndicator.setViewPager(mainPager);
 
     }
@@ -107,7 +107,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         circleIndicator.createIndicators(5,0);
 
 
-        mainPager.setAdapter(adapter);
+
 
 
     }

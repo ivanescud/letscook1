@@ -125,16 +125,16 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
          buscadorET = findViewById(R.id.homeBuscadorET);
 
         mAuth = FirebaseAuth.getInstance();
-
+        DataHolder data = new DataHolder();
+        recetas = data.getRecetas();
+        bebidas = data.getBebidas();
 
         recetaAdapter = new HomeRecetaAdapter(recetas,HomeActivity.this,this);
         bebidasAdapter = new HomeRecetaAdapter(bebidas,HomeActivity.this,this);
 
-        DataHolder data = new DataHolder();
 
-        recetas = data.getRecetas();
 
-        bebidas = data.getBebidas();
+
 
        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL,false);
         recetasRV.setLayoutManager(horizontalLayoutManager);
