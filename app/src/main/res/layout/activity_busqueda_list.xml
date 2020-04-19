@@ -7,31 +7,115 @@
     android:layout_width="match_parent"
     >
 
-
-
 <LinearLayout
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    >
 
+    >
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/busquedaAutoScrollPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         />
-    <me.relex.circleindicator.CircleIndicator
+    <me.relex.circleindicator.CircleIndicator3
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/busquedaCircleIndicator"
+        app:ci_orientation="horizontal"
+        app:ci_gravity="center"
+        app:ci_drawable="@drawable/indicadoractivo"
+        app:ci_drawable_unselected="@drawable/indicadordesactive"
+
+        />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rapido y Facil"
+            android:textColor="@color/negro"
+            android:textSize="20sp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/busquedaPrimeRV"
+            />
+
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Ver Más"
+            android:layout_gravity="center_horizontal"
+            />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Las Mas Queridas"
+        android:textColor="@color/negro"
+        android:textSize="20sp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/busquedaCircleIndicator"
+        android:id="@+id/busquedaSegunRV"
         />
 
 
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Ver Más"
+        android:layout_gravity="center_horizontal"
+        />
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mejor Ranking"
+        android:textColor="@color/negro"
+        android:textSize="20sp"
+        />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/busquedaTreRV"
+        />
+
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Ver Más"
+        android:layout_gravity="center_horizontal"
+        />
 
 </LinearLayout>
 

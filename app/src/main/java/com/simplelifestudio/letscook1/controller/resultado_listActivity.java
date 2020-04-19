@@ -18,13 +18,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import me.relex.circleindicator.CircleIndicator;
+import me.relex.circleindicator.CircleIndicator3;
 
 
 public class resultado_listActivity extends AppCompatActivity implements HomeRecetaAdapter.OnClickCell {
 
     private ViewPager2 mainPager;
-    HomeRecetaAdapter adapter;
+    private HomeRecetaAdapter adapter;
     private ArrayList<Receta> recetaslist = new ArrayList<>();
+    private CircleIndicator3 circleIndicator;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +36,14 @@ public class resultado_listActivity extends AppCompatActivity implements HomeRec
         setContentView(R.layout.activity_busqueda_list);
 
         mainPager = findViewById(R.id.busquedaAutoScrollPager);
-
+        circleIndicator = findViewById(R.id.busquedaCircleIndicator);
+        circleIndicator.animatePageSelected(2);
+        circleIndicator.createIndicators(5,0);
         data();
 
         mainPager.setAdapter(adapter);
 
+       // circleIndicator.setViewPager(mainPager);
 
     }
 
@@ -75,8 +82,6 @@ public class resultado_listActivity extends AppCompatActivity implements HomeRec
         String byImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRcCL-1WAQCU623E3mfzm86LmhYcPrlW5A2wbE7K9yURaWW_GxV&usqp=CAU";
         String byImg2 = "https://cdn-theforkmanager.external.thefork.tech/static/styles/blog_article_header_image/public/wp-blog/3-el-tenedor-atraer-clientes-bartender-restaurante.jpg?itok=RVUU9aiQ";
         Map<String, String> ingrediete  = new HashMap<>();
-
-
 
 
         String url = "https://s1.eestatic.com/2019/09/12/cocinillas/recetas/pescado-y-marisco/Salmon-Pescado-Pescado_y_marisco_428717504_134377937_1024x576.jpg";
