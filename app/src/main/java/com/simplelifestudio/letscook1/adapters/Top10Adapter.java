@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.model.Receta;
 
@@ -44,18 +45,18 @@ public class Top10Adapter extends BaseAdapter {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         view = layoutInflater.inflate(celda,null);
-        ImageView PlaceHolder;
+        ImageView mainImg;
         TextView NombreReceta;
         TextView numeroTop;
         String idReceta;
 
 
         NombreReceta = view.findViewById(R.id.celdaGridViewNombreRecetaTV);
-        PlaceHolder = view.findViewById((R.id.recetaGridViewImgIV));
+        mainImg = view.findViewById((R.id.recetaGridViewImgIV));
         numeroTop = view.findViewById(R.id.celdaGridViewTopNumberTV);
 
         NombreReceta.setText(arrayList.get(i).getNombreRC());
-        PlaceHolder.setImageResource(Integer.valueOf(arrayList.get(i).getMainImgRc()));
+        Glide.with(context).load(arrayList.get(i).getMainImgRc()).into(mainImg);
         idReceta = arrayList.get(i).getIdRC();
         numeroTop.setText("Top "+(i+2));
         return view;
