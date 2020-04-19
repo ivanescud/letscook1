@@ -48,8 +48,21 @@
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+       android:layout_marginTop="5dp"
+        android:paddingTop="5dp"
+        android:elevation="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:elevation="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
         <TextView
-            android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rapido y Facil"
@@ -60,24 +73,43 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
             android:id="@+id/busquedaPrimeRV"
             tools:listitem="@layout/cellbusqueda"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
-            android:paddingBottom="20dp"
 
             />
 
 
         <Button
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/busmasbu"
             android:text="Ver Más"
+            android:layout_marginBottom="10dp"
             android:layout_gravity="center_horizontal"
             />
 
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:elevation="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Las Mas Queridas"
@@ -86,6 +118,7 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/busquedaSegunRV"
@@ -98,13 +131,31 @@
 
     <Button
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Ver Más"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/busmasbu"
         android:layout_gravity="center_horizontal"
         />
 
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:elevation="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mejor Ranking"
@@ -113,6 +164,7 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/busquedaTreRV"
@@ -125,10 +177,15 @@
 
     <Button
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Ver Más"
+        android:background="@drawable/busmasbu"
+        android:layout_marginBottom="10dp"
         android:layout_gravity="center_horizontal"
         />
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
 
