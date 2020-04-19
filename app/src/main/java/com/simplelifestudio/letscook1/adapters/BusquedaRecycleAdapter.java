@@ -47,9 +47,17 @@ public class BusquedaRecycleAdapter extends RecyclerView.Adapter<BusquedaRecycle
 
         Glide.with(context).load(recetas.get(position).getMainImgRc()).into(holder.mainImgIV);
         holder.titleTV.setText(recetas.get(position).getNombreRC());
-        if (tipo == 1){
+        switch (tipo){
+            case 1:
+
             holder.iconoIV.setImageResource(R.drawable.clock);
             holder.cantidadTV.setText(recetas.get(position).getTiempo());
+            break;
+
+            case 2:
+                holder.iconoIV.setImageResource(R.drawable.clock);
+                holder.cantidadTV.setText(String.valueOf(recetas.get(position).getLikes().size()));
+
         }
 
 
