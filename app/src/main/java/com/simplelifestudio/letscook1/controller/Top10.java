@@ -1,5 +1,7 @@
 package com.simplelifestudio.letscook1.controller;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.Top10Adapter;
+import com.simplelifestudio.letscook1.extra.DataHolder;
 import com.simplelifestudio.letscook1.model.Receta;
 
 import java.util.ArrayList;
@@ -20,12 +23,16 @@ public class Top10 extends AppCompatActivity {
     TextView top1Ranking;
     GridView gridView;
 
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top10);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.custum_toobat_top10);
         init();
         obtenerDatos();
+
 
     }
 
@@ -38,15 +45,8 @@ public class Top10 extends AppCompatActivity {
     }
 
     public void obtenerDatos(){
-        recetas.add(new Receta("IdExample","Cereal con Leche",String.valueOf(R.drawable.platillo_ejemplo)));
-        recetas.add(new Receta("IdExample","Cereal con Leche",String.valueOf(R.drawable.platillo_ejemplo)));
-        recetas.add(new Receta("IdExample","Cereal con Leche",String.valueOf(R.drawable.platillo_ejemplo)));
-        recetas.add(new Receta("IdExample","Cereal con Leche",String.valueOf(R.drawable.platillo_ejemplo)));
-        recetas.add(new Receta("IdExample","Cereal con Leche",String.valueOf(R.drawable.platillo_ejemplo)));
-        recetas.add(new Receta("IdExample","Cereal con Leche",String.valueOf(R.drawable.platillo_ejemplo)));
-        recetas.add(new Receta("IdExample","Cereal con Leche",String.valueOf(R.drawable.platillo_ejemplo)));
-        recetas.add(new Receta("IdExample","Cereal con Leche",String.valueOf(R.drawable.platillo_ejemplo)));
-        recetas.add(new Receta("IdExample","Cereal con Leche",String.valueOf(R.drawable.platillo_ejemplo)));
+        DataHolder data = new DataHolder();
+       recetas = data.getRecetas();
         Top10Adapter top10adapter = new Top10Adapter(Top10.this,recetas,R.layout.celda_viewgrid_top);
         gridView.setAdapter(top10adapter);
     }
