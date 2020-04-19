@@ -14,6 +14,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.BusquedaRecycleAdapter;
+import com.simplelifestudio.letscook1.adapters.HomeBebidasAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
 import com.simplelifestudio.letscook1.extra.DataHolder;
 import com.simplelifestudio.letscook1.model.Receta;
@@ -26,13 +27,12 @@ import me.relex.circleindicator.CircleIndicator;
 import me.relex.circleindicator.CircleIndicator3;
 
 
-public class resultado_listActivity extends AppCompatActivity implements BusquedaRecycleAdapter.OnClickCell2 {
+public class resultado_listActivity extends AppCompatActivity implements BusquedaRecycleAdapter.OnClickCell2 , HomeRecetaAdapter.OnClickCell {
 
     private ViewPager2 mainPager;
     private HomeRecetaAdapter adapter;
     private ArrayList<Receta> recetaslist = new ArrayList<>();
     private CircleIndicator3 circleIndicator;
-    DataHolder data;
     BusquedaRecycleAdapter recycleAdapter;
     BusquedaRecycleAdapter recycleAdapter2;
     BusquedaRecycleAdapter recycleAdapter3;
@@ -49,8 +49,10 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
 
         init();
 
-        data = new DataHolder();
-        recetaslist = data.getRecetas();
+
+
+
+        adapter = new HomeRecetaAdapter(recetaslist,resultado_listActivity.this,this);
 
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL,false);
         recyclerView1.setLayoutManager(horizontalLayoutManager);
@@ -66,7 +68,11 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         recycleAdapter = new BusquedaRecycleAdapter(recetaslist,resultado_listActivity.this,this,1);
         recycleAdapter2 = new BusquedaRecycleAdapter(recetaslist,resultado_listActivity.this,this,2);
         recycleAdapter3 = new BusquedaRecycleAdapter(recetaslist,resultado_listActivity.this,this,3);
+
         mainPager.setAdapter(adapter);
+        recyclerView1.setAdapter(recycleAdapter);
+        recyclerView2.setAdapter(recycleAdapter2);
+        recyclerView3.setAdapter(recycleAdapter3);
        // circleIndicator.setViewPager(mainPager);
 
     }
@@ -104,9 +110,10 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         recyclerView3 = findViewById(R.id.busquedaTreRV);
 
         circleIndicator.animatePageSelected(2);
-        circleIndicator.createIndicators(5,0);
+        circleIndicator.setViewPager(mainPager);
 
-
+       DataHolder data = new DataHolder();
+        recetaslist = data.getRecetas();
 
 
 
@@ -117,6 +124,11 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
 
     @Override
     public void onClickCell2(int positon) {
+
+    }
+
+    @Override
+    public void onClickCell(int positon) {
 
     }
 }

@@ -63,6 +63,9 @@
             android:id="@+id/busquedaPrimeRV"
             tools:listitem="@layout/cellbusqueda"
             android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingBottom="20dp"
+
             />
 
 
@@ -88,6 +91,8 @@
         android:id="@+id/busquedaSegunRV"
         tools:listitem="@layout/cellbusqueda"
         android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingBottom="10dp"
         />
 
 
@@ -113,6 +118,8 @@
         android:id="@+id/busquedaTreRV"
         tools:listitem="@layout/cellbusqueda"
         android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingBottom="10dp"
         />
 
 
