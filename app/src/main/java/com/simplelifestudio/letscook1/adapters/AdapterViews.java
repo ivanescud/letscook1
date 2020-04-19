@@ -21,8 +21,8 @@ import com.simplelifestudio.letscook1.model.Receta;
 import java.util.ArrayList;
 
 
-public class AdapterViews  {
-/*
+public class AdapterViews extends PagerAdapter {
+
     ArrayList<Receta> data;
     Activity activity;
     public static int LOOPS_COUNT = 1000;
@@ -61,9 +61,12 @@ public class AdapterViews  {
             LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.homecellrv, null);
              holder = new ViewHolder2();
-            holder.bannerimg = (ImageView) view.findViewById(R.id.banner_img);
-            holder.title = (TextView) view.findViewById(R.id.banner_title);
-            holder.likes = (TextView) view.findViewById(R.id.banner_likecount);
+            holder.bannerimg = view.findViewById(R.id.homecellimg);
+            holder.title = view.findViewById(R.id.homecellTitleTV);
+            holder.likes = view.findViewById(R.id.homecelllikeTv);
+            holder.ranking = view.findViewById(R.id.homecellrankTV);
+
+
 
             view.setTag(holder);
         }else {
@@ -73,13 +76,13 @@ public class AdapterViews  {
         }
 
         position = position % data.size();
-        holder.banner = data.get(position);
-        if (holder.banner.getImageurl().isEmpty()){
-            Glide.with(activity).load(R.drawable.loading).into(holder.bannerimg);
+        holder.receta = data.get(position);
+        if (holder.receta.getMainImgRc().isEmpty()){
+            Glide.with(activity).load(R.drawable.recetaholder).into(holder.bannerimg);
         }else {
-            Glide.with(activity).load(holder.banner.getImageurl()).placeholder(R.drawable.loading).into(holder.bannerimg);
-            holder.title.setText(holder.banner.getTitle().toString());
-            holder.likes.setText(String.valueOf(holder.banner.getLikecount()));
+            Glide.with(activity).load(holder.receta.getMainImgRc()).into(holder.bannerimg);
+            holder.title.setText(holder.receta.getNombreRC().toString());
+            holder.likes.setText(String.valueOf(holder.receta.getLikes().size()));
         }
 
         holder.bannerimg.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -93,12 +96,12 @@ public class AdapterViews  {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(activity, CuponDetail.class);
-                Bundle mBundle = new Bundle();
-                mBundle.putSerializable("pasedato", holder2.banner);
-                i.putExtras(mBundle);
-                activity.startActivity(i);
+//                Intent i = new Intent();
+//                i.setClass(activity, CuponDetail.class);
+//                Bundle mBundle = new Bundle();
+//                mBundle.putSerializable("pasedato", holder2.banner);
+//                i.putExtras(mBundle);
+//                activity.startActivity(i);
             }
         });
 
@@ -119,13 +122,12 @@ public class AdapterViews  {
     }
 
     public class ViewHolder2{
-        Banner banner;
+       Receta receta;
         TextView title;
         ImageView bannerimg;
         TextView likes;
-        String ComentCant;
+        TextView ranking;
 
 
-
-    }*/
+    }
 }
