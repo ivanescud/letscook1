@@ -73,6 +73,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         recyclerView1.setAdapter(recycleAdapter);
         recyclerView2.setAdapter(recycleAdapter2);
         recyclerView3.setAdapter(recycleAdapter3);
+        circleIndicator.setViewPager(mainPager);
        // circleIndicator.setViewPager(mainPager);
 
     }
@@ -110,10 +111,10 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         recyclerView3 = findViewById(R.id.busquedaTreRV);
 
         circleIndicator.animatePageSelected(2);
-        circleIndicator.setViewPager(mainPager);
 
        DataHolder data = new DataHolder();
         recetaslist = data.getRecetas();
+
 
 
 
