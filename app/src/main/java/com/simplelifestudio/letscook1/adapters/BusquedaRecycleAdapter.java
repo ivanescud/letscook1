@@ -57,6 +57,7 @@ public class BusquedaRecycleAdapter extends RecyclerView.Adapter<BusquedaRecycle
             case 2:
                 holder.iconoIV.setImageResource(R.drawable.clock);
                 holder.cantidadTV.setText(String.valueOf(recetas.get(position).getLikes().size()));
+            break;
 
         }
 
