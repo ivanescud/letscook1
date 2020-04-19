@@ -69,8 +69,9 @@ dependencies {
     implementation 'com.github.dmytrodanylyk.android-process-button:library:1.0.4'
 
 
-    implementation ('cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2') {
-        exclude module: 'support-v4'}
+    implementation('cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2') {
+        exclude module: 'support-v4'
+    }
 
 
     implementation 'me.relex:circleindicator:2.1.4'

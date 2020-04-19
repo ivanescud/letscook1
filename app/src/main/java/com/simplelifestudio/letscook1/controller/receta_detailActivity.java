@@ -51,6 +51,7 @@ public class receta_detailActivity extends AppCompatActivity {
     private TextView tiempoTV;
     private TextView servidasTV;
     private TextView tipoTV;
+    private TextView comentIV;
     //Init de la view recetas_detail.xml
     private YouTubePlayerView youTubePlayerView;
     private YouTubePlayerTracker youTubePlayerTracker;
@@ -87,6 +88,7 @@ public class receta_detailActivity extends AppCompatActivity {
         getLifecycle().addObserver(youTubePlayerView);
         cambiarActivity();
         botonFavorito();
+        cambiardeActivityComentario();
     }
 
     public void init() {
@@ -98,6 +100,7 @@ public class receta_detailActivity extends AppCompatActivity {
         tiempoTV = findViewById(R.id.recetaDetailTiempoTV);
         servidasTV = findViewById(R.id.recetaDetailServidasTV);
         tipoTV = findViewById(R.id.recetaDetailTipoTV);
+        comentIV = findViewById(R.id.recetaDetailNumeroComentarioTV);
 
 
         //Init de la view receta_detail.xml
@@ -190,6 +193,16 @@ public class receta_detailActivity extends AppCompatActivity {
                 //Toast.makeText(receta_detailActivity.this, "boton presionado", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void cambiardeActivityComentario(){
+        comentIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(receta_detailActivity.this,ComentarioActivity.class));
+            }
+        });
+
     }
 
 }

@@ -60,7 +60,7 @@
             android:scaleType="fitStart"
             android:src="@drawable/ic_star_border"
             android:tint="#D96704"
-            app:layout_constraintEnd_toStartOf="@+id/imageView11"
+            app:layout_constraintEnd_toStartOf="@+id/recetaDetailComentarioIV"
             app:layout_constraintStart_toEndOf="@+id/recetaDetailNumeroFavoritosTV"
             app:layout_constraintTop_toBottomOf="@+id/recetaDetailTituloTV" />
 
@@ -75,7 +75,7 @@
             app:layout_constraintTop_toBottomOf="@+id/recetaDetailTituloTV" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/recetaDetailComentarioIV"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
