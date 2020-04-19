@@ -2,6 +2,7 @@ package com.simplelifestudio.letscook1.controller;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -28,6 +29,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.YouTubePlayerTracker;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.PlayerUiController;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.YouTubePlayerMenu;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.AdapterDireccion;
 import com.simplelifestudio.letscook1.adapters.AdapterIngredientes;
@@ -115,7 +118,6 @@ public class receta_detailActivity extends AppCompatActivity {
     //Obtiene los datos y los setea
     public void obtenerDatos() {
         videoInicio = 0;
-        videoFinal = 15;
         bundle = getIntent().getExtras();
         paso = (ArrayList<Paso>) bundle.getSerializable("paso");
         ingredientes = (ArrayList<Ingrediente>) bundle.getSerializable("ingredientes");
@@ -140,9 +142,6 @@ public class receta_detailActivity extends AppCompatActivity {
             @Override
             public void onCurrentSecond(YouTubePlayer youTubePlayer, float second) {
                 super.onCurrentSecond(youTubePlayer, second);
-                if (youTubePlayerTracker.getCurrentSecond() > videoFinal) {
-                    youTubePlayer.seekTo(videoInicio);
-                }
             }
 
             @Override
@@ -151,8 +150,18 @@ public class receta_detailActivity extends AppCompatActivity {
                 youTubePlayer.play();
                 youTubePlayer.addListener(youTubePlayerTracker);
                 backgroundIV.setVisibility(View.GONE);
-                youTubePlayer.setVolume(0);
                 youTubePlayer1 = youTubePlayer;
+                youTubePlayerView.getPlayerUiController().setFullScreenButtonClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("videoUrl",videoUrl);
+                        bundle.putSerializable("paso",paso);
+                        Intent intent = new Intent(getApplicationContext(),reproductor_horizontalActivity.class).putExtras(bundle);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.top_in, R.anim.left_out);
+                    }
+                });
             }
 
             @Override
@@ -169,17 +178,7 @@ public class receta_detailActivity extends AppCompatActivity {
 
     //cambia de activity
     public void cambiarActivity() {
-        youTubePlayerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("videoUrl",videoUrl);
-                bundle.putSerializable("paso",paso);
-                Intent intent = new Intent(getApplicationContext(),reproductor_horizontalActivity.class).putExtras(bundle);
-                startActivity(intent);
-                overridePendingTransition(R.anim.top_in, R.anim.left_out);
-            }
-        });
+     return;
     }
 
     public void botonFavorito() {

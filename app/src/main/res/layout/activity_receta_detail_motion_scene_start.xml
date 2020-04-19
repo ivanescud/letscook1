@@ -27,13 +27,13 @@
             android:id="@+id/recetaDetailYoutubePlayer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clickable="false"
-            android:focusableInTouchMode="false"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
             app:autoPlay="true"
             app:showFullScreenButton="true"
-            app:showSeekBar="false"
-            app:showVideoCurrentTime="false"
-            app:showVideoDuration="false"
+            app:showSeekBar="true"
+            app:showVideoCurrentTime="true"
+            app:showVideoDuration="true"
             app:showYouTubeButton="false"
             app:videoId="" />
 
