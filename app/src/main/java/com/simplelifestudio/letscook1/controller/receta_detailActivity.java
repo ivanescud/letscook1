@@ -157,6 +157,7 @@ public class receta_detailActivity extends AppCompatActivity {
                         Bundle bundle = new Bundle();
                         bundle.putString("videoUrl",videoUrl);
                         bundle.putSerializable("paso",paso);
+                        bundle.putSerializable("posVideo",youTubePlayerTracker.getCurrentSecond());
                         Intent intent = new Intent(getApplicationContext(),reproductor_horizontalActivity.class).putExtras(bundle);
                         startActivity(intent);
                         overridePendingTransition(R.anim.top_in, R.anim.left_out);
