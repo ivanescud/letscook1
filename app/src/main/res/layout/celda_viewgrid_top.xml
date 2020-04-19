@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:elevation="10dp"
     app:cardCornerRadius="20dp">
 
@@ -15,29 +15,27 @@
         >
 
         <ImageView
+            android:id="@+id/recetaGridViewImgIV"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:id="@+id/recetaGridViewNombreTV"
-            android:src="@drawable/recetaholder"
             android:scaleType="centerCrop"
-            />
+            android:src="@drawable/recetaholder" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="20dp"
-            android:paddingRight="10dp"
             android:paddingLeft="10dp"
-            >
+            android:paddingRight="10dp"
+            android:paddingBottom="20dp">
 
 
             <TextView
-                android:layout_marginTop="10dp"
+                android:id="@+id/celdaGridViewNombreRecetaTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Salmon Ahumado"
-                android:id="@+id/celdaGridViewNombreRecetaTV"
                 android:textAlignment="center"
                 android:textColor="@color/negro"
 

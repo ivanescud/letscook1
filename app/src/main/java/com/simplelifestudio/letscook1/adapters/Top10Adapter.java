@@ -1,6 +1,7 @@
 package com.simplelifestudio.letscook1.adapters;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -40,18 +41,23 @@ public class Top10Adapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        view = layoutInflater.inflate(celda,null);
         ImageView PlaceHolder;
         TextView NombreReceta;
         TextView numeroTop;
+        String idReceta;
 
 
         NombreReceta = view.findViewById(R.id.celdaGridViewNombreRecetaTV);
-        PlaceHolder = view.findViewById((R.id.recetaGridViewNombreTV));
+        PlaceHolder = view.findViewById((R.id.recetaGridViewImgIV));
         numeroTop = view.findViewById(R.id.celdaGridViewTopNumberTV);
 
         NombreReceta.setText(arrayList.get(i).getNombreRC());
         PlaceHolder.setImageResource(Integer.valueOf(arrayList.get(i).getMainImgRc()));
-        numeroTop.setText((i+2));
+        idReceta = arrayList.get(i).getIdRC();
+        numeroTop.setText("Top "+(i+2));
         return view;
     }
 }

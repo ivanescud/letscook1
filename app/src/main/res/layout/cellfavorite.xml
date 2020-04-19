@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:id="@+id/recetaGridViewNombreTV"
+            android:id="@+id/recetaGridViewImgIV"
             android:src="@drawable/recetaholder"
             android:scaleType="centerCrop"
             />
