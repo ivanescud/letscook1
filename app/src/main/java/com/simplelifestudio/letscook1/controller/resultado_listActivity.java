@@ -32,6 +32,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     private ViewPager2 mainPager;
     private HomeRecetaAdapter adapter;
     private ArrayList<Receta> recetaslist = new ArrayList<>();
+    private ArrayList<Receta> bebidaslist = new ArrayList<Receta>();
     private CircleIndicator3 circleIndicator;
     BusquedaRecycleAdapter recycleAdapter;
     BusquedaRecycleAdapter recycleAdapter2;
@@ -66,7 +67,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
 
 
         recycleAdapter = new BusquedaRecycleAdapter(recetaslist,resultado_listActivity.this,this,1);
-        recycleAdapter2 = new BusquedaRecycleAdapter(recetaslist,resultado_listActivity.this,this,2);
+        recycleAdapter2 = new BusquedaRecycleAdapter(bebidaslist,resultado_listActivity.this,this,2);
         recycleAdapter3 = new BusquedaRecycleAdapter(recetaslist,resultado_listActivity.this,this,3);
 
         mainPager.setAdapter(adapter);
@@ -114,6 +115,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
 
        DataHolder data = new DataHolder();
         recetaslist = data.getRecetas();
+        bebidaslist = data.getBebidas();
 
 
 

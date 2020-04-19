@@ -22,7 +22,15 @@
         <activity
             android:name=".controller.resultado_listActivity"
             android:label="LET&apos;S COOK"
-            android:theme="@style/HomeActivityAppTheme" />
+            android:theme="@style/HomeActivityAppTheme"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".controller.MainActivity" />
         <activity android:name=".controller.Splash" />
         <activity android:name=".controller.receta_detailActivity" />
@@ -30,11 +38,7 @@
             android:name=".controller.HomeActivity"
             android:label="LET&apos;S COOK"
             android:theme="@style/HomeActivityAppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
