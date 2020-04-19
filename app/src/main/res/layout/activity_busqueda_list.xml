@@ -50,6 +50,7 @@
 
     <androidx.cardview.widget.CardView
        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:elevation="10dp"
         android:layout_marginBottom="15dp"
@@ -58,11 +59,13 @@
 
         <LinearLayout
             android:elevation="10dp"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
         <TextView
+            android:paddingLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rapido y Facil"
@@ -84,7 +87,7 @@
 
 
         <Button
-            android:layout_width="200dp"
+            android:layout_width="160dp"
             android:layout_height="40dp"
             android:background="@drawable/busmasbu"
             android:text="Ver Más"
@@ -99,6 +102,7 @@
         android:elevation="10dp"
         android:layout_marginTop="5dp"
         android:paddingTop="5dp"
+        android:paddingLeft="5dp"
         android:layout_marginBottom="15dp"
         android:padding="5dp"
         android:layout_width="match_parent"
@@ -109,7 +113,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
     <TextView
-
+        android:paddingLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Las Mas Queridas"
@@ -130,7 +134,7 @@
 
 
     <Button
-        android:layout_width="200dp"
+        android:layout_width="160dp"
         android:layout_height="40dp"
         android:text="Ver Más"
         android:layout_marginBottom="10dp"
@@ -145,6 +149,7 @@
         android:elevation="10dp"
         android:layout_marginTop="5dp"
         android:paddingTop="5dp"
+        android:paddingLeft="5dp"
         android:paddingBottom="10dp"
         android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
@@ -155,7 +160,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
     <TextView
-
+        android:paddingLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mejor Ranking"
@@ -176,7 +181,7 @@
 
 
     <Button
-        android:layout_width="200dp"
+        android:layout_width="160dp"
         android:layout_height="40dp"
         android:text="Ver Más"
         android:background="@drawable/busmasbu"
