@@ -10,9 +10,6 @@
         android:id="@+id/comentarioChatsRV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/imgcomidapordefecto"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,14 +25,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="50dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:src="@android:drawable/stat_notify_chat" />
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -43,7 +32,7 @@
             app:cardCornerRadius="20dp">
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/comentarioEditTextET"
                 android:layout_width="352dp"
                 android:layout_height="wrap_content"
                 android:hint="Escribe un comentario"
@@ -53,5 +42,15 @@
                 android:scrollbarThumbVertical="@color/light_blanco_detail"
                 android:scrollbarTrackVertical="@color/light_blanco_detail" />
         </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/comentarioSendIB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/fondotrasround"
+            android:foregroundGravity="center_vertical"
+            android:scaleType="center"
+            app:srcCompat="@android:drawable/ic_menu_send" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
