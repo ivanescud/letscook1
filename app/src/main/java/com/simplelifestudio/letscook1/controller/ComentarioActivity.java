@@ -54,8 +54,8 @@ private ArrayList<Comentarios> comentario;
                     return false;
 
                     if (i == KeyEvent.KEYCODE_ENTER) {
-                        if (!editText.getText().equals("") && editText.getText() != null) {
-                          //  editText.setFocusable(false);
+                        if (!editText.getText().toString().isEmpty()) {
+                            sendButton.setFocusable(true);
                             editText.setText("");
                             Toast.makeText(ComentarioActivity.this, "Mensaje enviado", Toast.LENGTH_SHORT).show();
                         }
@@ -69,8 +69,8 @@ private ArrayList<Comentarios> comentario;
             @Override
             public void onClick(View view) {
                 Toast.makeText(ComentarioActivity.this, "boton presionado"+editText.getText(), Toast.LENGTH_SHORT).show();
-                if (editText.getText().equals("") && editText.getText() != null) {
-                   // editText.setShowSoftInputOnFocus(false);
+                if (!editText.getText().toString().isEmpty()) {
+                    editText.setFocusable(true);
                     editText.setText("");
                     Toast.makeText(ComentarioActivity.this, "Mensaje enviado", Toast.LENGTH_SHORT).show();
                 }

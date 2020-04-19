@@ -9,6 +9,7 @@ public class Receta implements Serializable {
     private String nombreRC;
     private String autorRC;
     private String mainImgRc;
+    private String idRC;
     private float rankingRC;
     private Map<String, Boolean> likes = new HashMap<>();
     private int coments;
@@ -21,7 +22,8 @@ public class Receta implements Serializable {
     public Receta() {
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, float rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes, Map<Integer, String> pasos, String autorImgRC) {
+    public Receta(String idRC,String nombreRC, String autorRC, String mainImgRc, float rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes, Map<Integer, String> pasos, String autorImgRC) {
+        this.idRC = idRC;
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
@@ -33,13 +35,36 @@ public class Receta implements Serializable {
         this.autorImgRC = autorImgRC;
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, float rankingRC, Map<String, Boolean> likes, String autorImgRC) {
+    public Receta(String idRC,String nombreRC, String autorRC, String mainImgRc, float rankingRC, Map<String, Boolean> likes, String autorImgRC) {
+        this.idRC = idRC;
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
         this.rankingRC = rankingRC;
         this.likes = likes;
         this.autorImgRC = autorImgRC;
+    }
+
+    public Receta(String idRC,String nombreRc,String mainImgRc,float rankingRC){
+        this.idRC = idRC;
+        this.nombreRC = nombreRc;
+        this.mainImgRc = mainImgRc;
+        this.rankingRC = rankingRC;
+    }
+
+    public Receta(String idRC,String nombreRc,String mainImgRc){
+        this.idRC = idRC;
+        this.nombreRC = nombreRc;
+        this.mainImgRc = mainImgRc;
+    }
+
+
+    public String getIdRC() {
+        return idRC;
+    }
+
+    public void setIdRC(String idRC) {
+        this.idRC = idRC;
     }
 
     public String getNombreRC() {

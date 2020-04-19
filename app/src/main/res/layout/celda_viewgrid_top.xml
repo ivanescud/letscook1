@@ -32,26 +32,26 @@
             >
 
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Salmon Ahumado"
-            android:id="@+id/celdaGridViewNombreRecetaTV"
-            android:textAlignment="center"
-            android:textColor="@color/negro"
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Salmon Ahumado"
+                android:id="@+id/celdaGridViewNombreRecetaTV"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
 
-            />
+                />
 
-        <TextView
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="por LetsCook Team"
-            android:textAlignment="center"
-            android:id="@+id/celdaGridViewTopNumberTV"
+            <TextView
+                android:id="@+id/celdaGridViewTopNumberTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Top #"
+                android:textAlignment="center"
 
-            />
+                />
 
         </LinearLayout>
 

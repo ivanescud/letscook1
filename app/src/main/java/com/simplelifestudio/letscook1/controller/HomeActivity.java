@@ -140,11 +140,11 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
         String url2 = "https://okdiario.com/img/2018/07/02/receta-de-cocktail-de-martini-con-limon-1-655x368.jpg";
         String url3 = "https://images.freeimages.com/images/premium/previews/1716/17166547-cornflakes-with-pouring-milk.jpg";
         String url4 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTBQ0FnVuAGcbUAxpmdB4Q4grLaKDoaHtvEfkE5PQn1hLcxoxhJ&usqp=CAU";
-        recetas.add(new Receta("Salmon Ahumado","Lets cook Team",url,4.5f,likes,byImg));
-        recetas.add(new Receta("Corn Flake con leche","LetCook Team",url3,5.0f,likes,byImg));
+        recetas.add(new Receta("IdExample","Salmon Ahumado","Lets cook Team",url,4.5f,likes,byImg));
+        recetas.add(new Receta("IdExample","Corn Flake con leche","LetCook Team",url3,5.0f,likes,byImg));
 
-        bebidas.add(new Receta("Martiny Frances","LetsCook Team",url2,3.7f,likes,byImg2));
-        bebidas.add(new Receta("Blue Sky","Jorge Lopez",url4,4.0f,likes,byImg2));
+        bebidas.add(new Receta("IdExample","Martiny Frances","LetsCook Team",url2,3.7f,likes,byImg2));
+        bebidas.add(new Receta("IdExample","Blue Sky","Jorge Lopez",url4,4.0f,likes,byImg2));
 
         recetaAdapter = new HomeRecetaAdapter(recetas,HomeActivity.this,this);
         bebidasAdapter = new HomeRecetaAdapter(bebidas,HomeActivity.this,this);

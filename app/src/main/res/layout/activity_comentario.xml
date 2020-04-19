@@ -27,7 +27,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             app:cardCornerRadius="20dp">
 
@@ -35,6 +35,7 @@
                 android:id="@+id/comentarioEditTextET"
                 android:layout_width="352dp"
                 android:layout_height="wrap_content"
+                android:background="#0000"
                 android:hint="Escribe un comentario"
                 android:inputType="textPersonName"
                 android:padding="5dp"
