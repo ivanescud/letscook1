@@ -27,10 +27,10 @@ public class BusquedaRecycleAdapter extends RecyclerView.Adapter<BusquedaRecycle
     private int tipo;
 
 
-    public BusquedaRecycleAdapter(ArrayList<Receta> recetas, Context context, LayoutInflater layoutInflater, OnClickCell2 onClickCell, int tipo) {
+    public BusquedaRecycleAdapter(ArrayList<Receta> recetas, Context context,  OnClickCell2 onClickCell, int tipo) {
         this.recetas = recetas;
         this.context = context;
-        this.layoutInflater = layoutInflater;
+        this.layoutInflater = LayoutInflater.from(context);
         this.onClickCell = onClickCell;
         this.tipo = tipo;
     }

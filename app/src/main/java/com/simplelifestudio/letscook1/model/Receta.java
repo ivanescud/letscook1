@@ -35,13 +35,14 @@ public class Receta implements Serializable {
         this.autorImgRC = autorImgRC;
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, float rankingRC, Map<String, Boolean> likes, String autorImgRC) {
+    public Receta(String nombreRC, String autorRC, String mainImgRc, float rankingRC, Map<String, Boolean> likes, String autorImgRC, String tiempo) {
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
         this.rankingRC = rankingRC;
         this.likes = likes;
         this.autorImgRC = autorImgRC;
+        this.tiempo = tiempo;
     }
 
     public Receta(String idRC,String nombreRc,String mainImgRc,float rankingRC){
