@@ -11,9 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.Top10"
+        <activity android:name=".controller.Categoria"></activity>
+        <activity
+            android:name=".controller.Top10"
             android:label="Top 10"
-            android:theme="@style/HomeActivityAppTheme"></activity>
+            android:theme="@style/HomeActivityAppTheme" />
         <activity android:name=".controller.ComentarioActivity" />
         <activity android:name=".controller.SplashRecetaDetail" /> <!-- LandScape repoductor_horizontalActivity -->
         <activity android:name=".controller.reproductor_horizontalActivity" />

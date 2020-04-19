@@ -25,6 +25,8 @@ public class Top10Adapter extends BaseAdapter {
         this.celda = celda;
     }
 
+
+
     @Override
     public int getCount() {
         return arrayList.size() ;
@@ -44,21 +46,35 @@ public class Top10Adapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        view = layoutInflater.inflate(celda,null);
-        ImageView mainImg;
+        ViewHolder viewHolder = new ViewHolder();
+
+        if(view == null){
+             view = layoutInflater.inflate(celda,null);
+            viewHolder.NombreReceta = view.findViewById(R.id.celdaCategoriaNombreRecetaTV);
+            viewHolder.mainImg = view.findViewById((R.id.recetaGridViewImgIV));
+            viewHolder.numeroTop = view.findViewById(R.id.celdaGridViewTopNumberTV);
+            viewHolder.idReceta="";
+
+            view.setTag(viewHolder);
+        }
+        else{
+            viewHolder = (ViewHolder) view.getTag();
+        }
+
+        viewHolder.NombreReceta.setText(arrayList.get(i).getNombreRC());
+        Glide.with(context).load(arrayList.get(i).getMainImgRc()).into(viewHolder.mainImg);
+        viewHolder.idReceta = arrayList.get(i).getIdRC();
+        viewHolder.numeroTop.setText("Top "+(i+2));
+        return view;
+    }
+
+    class ViewHolder {
+
+         ImageView mainImg;
         TextView NombreReceta;
         TextView numeroTop;
         String idReceta;
 
-
-        NombreReceta = view.findViewById(R.id.celdaGridViewNombreRecetaTV);
-        mainImg = view.findViewById((R.id.recetaGridViewImgIV));
-        numeroTop = view.findViewById(R.id.celdaGridViewTopNumberTV);
-
-        NombreReceta.setText(arrayList.get(i).getNombreRC());
-        Glide.with(context).load(arrayList.get(i).getMainImgRc()).into(mainImg);
-        idReceta = arrayList.get(i).getIdRC();
-        numeroTop.setText("Top "+(i+2));
-        return view;
     }
+
 }

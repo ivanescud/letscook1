@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salmon Ahumado"
-            android:id="@+id/celdaGridViewNombreRecetaTV"
+            android:id="@+id/celdaCategoriaNombreRecetaTV"
             android:textAlignment="center"
             android:textColor="@color/negro"
 
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:text="por LetsCook Team"
             android:textAlignment="center"
-            android:id="@+id/celdaGridViewTopNumberTV"
+            android:id="@+id/CambiardeIdTv"
 
             />
 

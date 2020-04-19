@@ -54,6 +54,7 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
     }
 
 
+
     public class viewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
         TextView numeroPaso;
         TextView direccion;
