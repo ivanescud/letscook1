@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                app:cardBackgroundColor="@color/loginbutpress"
+                app:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="104dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Selecciona La Categoria"
+                    android:textColor="@color/light_blanco_detail"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Carnes"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="10dp"
+                android:numColumns="4" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Vegetales y legumbres"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="10dp"
+                android:numColumns="4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Frutas"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="10dp"
+                android:numColumns="4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Granos"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="10dp"
+                android:numColumns="4" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Hierbas y especies"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="10dp"
+                android:numColumns="4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Lácteos"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="10dp"
+                android:numColumns="4" />
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/busquedafloatinBut"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:foregroundGravity="center"
+        android:src="@drawable/ic_check_black_24dp"
+        app:fabSize="normal"
+        app:maxImageSize="30dp" />
+</RelativeLayout>

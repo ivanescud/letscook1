@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="5dp"
     android:orientation="vertical"
-    tools:context=".controller.Categoria">
+    tools:context=".controller.ResultadoBusqueda">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
