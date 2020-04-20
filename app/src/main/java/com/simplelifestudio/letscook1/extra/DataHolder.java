@@ -1,5 +1,7 @@
 package com.simplelifestudio.letscook1.extra;
 
+import com.simplelifestudio.letscook1.R;
+import com.simplelifestudio.letscook1.model.Ingredientes;
 import com.simplelifestudio.letscook1.model.Receta;
 
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ public class DataHolder {
 
     ArrayList<Receta> bebidas = new ArrayList<>();
     ArrayList<Receta>recetas = new ArrayList<>();
-
+    ArrayList<Ingredientes> ingredientes = new ArrayList<>();
 
     public DataHolder() {
         data();
@@ -51,6 +53,12 @@ public class DataHolder {
         this.recetas.add(new Receta("Blue Sky","Jorge Lopez",url4,4.0f,likes,byImg2, "5min"));
         this.recetas.add(new Receta("Salmon Ahumado","Lets cook Team",url,4.5f,likes,byImg,"5 min"));
         this.recetas.add(new Receta("Corn Flake con leche","LetCook Team",url3,5.0f,likes,byImg,"3 min"));
+
+
+
+        this.ingredientes.add(new Ingredientes("Pollo", R.drawable.carnepollo));
+
+
 
     }
 }
