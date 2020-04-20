@@ -10,16 +10,17 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.simplelifestudio.letscook1.R;
+import com.simplelifestudio.letscook1.model.Ingredientes;
 import com.simplelifestudio.letscook1.model.Receta;
 
 import java.util.ArrayList;
 
 public class CategoriaAdapter extends BaseAdapter {
 private Context context;
-private ArrayList<Receta> arrayList;
+private ArrayList<Ingredientes> arrayList;
 private int celda;
 
-    public CategoriaAdapter(Context context, ArrayList<Receta> arrayList, int celda) {
+    public CategoriaAdapter(Context context, ArrayList<Ingredientes> arrayList, int celda) {
         this.context = context;
         this.arrayList = arrayList;
         this.celda = celda;
@@ -48,22 +49,19 @@ private int celda;
             view = layoutInflater.inflate(celda,null);
             viewHolder.mainImgRC = view.findViewById(R.id.celdaCategoriaViewImgIV);
             viewHolder.mainNombreRC = view.findViewById(R.id.celdaCategoriaNombreRecetaTV);
-            viewHolder.idRC="";
 
             view.setTag(viewHolder);
         }
         else{
            viewHolder = (ViewHolder) view.getTag();
         }
-        Glide.with(context).load(arrayList.get(i).getMainImgRc()).into(viewHolder.mainImgRC);
-        viewHolder.mainNombreRC.setText(arrayList.get(i).getNombreRC());
-        viewHolder.idRC = arrayList.get(i).getIdRC();
+        Glide.with(context).load(arrayList.get(i).getMainImg()).into(viewHolder.mainImgRC);
+        viewHolder.mainNombreRC.setText(arrayList.get(i).getNombreIN());
         return view;
     }
 
     class ViewHolder {
         ImageView mainImgRC;
         TextView mainNombreRC;
-        String idRC;
     }
 }

@@ -31,7 +31,7 @@ private ArrayList<Receta> recetas;
     public void obtenerDatos(){
         DataHolder dataHolder = new DataHolder();
         recetas=dataHolder.getRecetas();
-        CategoriaAdapter categoriaAdapter = new CategoriaAdapter(Categoria.this,recetas,R.layout.celda_categoria);
-        gridView.setAdapter(categoriaAdapter);
+      //  CategoriaAdapter categoriaAdapter = new CategoriaAdapter(Categoria.this,recetas,R.layout.celda_categoria);
+      //  gridView.setAdapter(categoriaAdapter);
     }
 }

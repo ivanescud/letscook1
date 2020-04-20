@@ -1,6 +1,7 @@
 package com.simplelifestudio.letscook1.extra;
 
 import com.simplelifestudio.letscook1.R;
+import com.simplelifestudio.letscook1.model.Ingrediente;
 import com.simplelifestudio.letscook1.model.Ingredientes;
 import com.simplelifestudio.letscook1.model.Receta;
 
@@ -13,6 +14,7 @@ public class DataHolder {
     ArrayList<Receta> bebidas = new ArrayList<>();
     ArrayList<Receta>recetas = new ArrayList<>();
     ArrayList<Ingredientes> ingredientes = new ArrayList<>();
+    ArrayList<Ingredientes> categoria = new ArrayList<>();
 
     public DataHolder() {
         data();
@@ -25,6 +27,8 @@ public class DataHolder {
     public ArrayList<Receta> getRecetas() {
         return recetas;
     }
+
+    public ArrayList<Ingredientes> getCategoria(){return categoria;}
 
     private void data() {
 
@@ -62,7 +66,12 @@ public class DataHolder {
         this.ingredientes.add(new Ingredientes("Pescado", R.drawable.carnepescado));
         this.ingredientes.add(new Ingredientes("Vegetariana", R.drawable.carnevegeta));
 
-
-
+        this.categoria.add(new Ingredientes("Desayuno",R.drawable.desayuno_categoria));
+        this.categoria.add(new Ingredientes("Snack",R.drawable.snack_categoria));
+        this.categoria.add(new Ingredientes("Almuerzo",R.drawable.almuerzo_categoria));
+        this.categoria.add(new Ingredientes("Cena",R.drawable.cena_categoria));
+        this.categoria.add(new Ingredientes("Postre",R.drawable.postre_categoria));
+        this.categoria.add(new Ingredientes("Ensalada",R.drawable.ensalada_categoria));
+        this.categoria.add(new Ingredientes("Acompañamiento",R.drawable.acompaniamento_categoria));
     }
 }

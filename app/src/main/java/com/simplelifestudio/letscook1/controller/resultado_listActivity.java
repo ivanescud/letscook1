@@ -31,6 +31,7 @@ import com.simplelifestudio.letscook1.adapters.CategoriaAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeBebidasAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
 import com.simplelifestudio.letscook1.extra.DataHolder;
+import com.simplelifestudio.letscook1.model.Ingredientes;
 import com.simplelifestudio.letscook1.model.Receta;
 
 import java.util.ArrayList;
@@ -234,7 +235,10 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         builder.setView(dialogView);
         GridView gridView = dialogView.findViewById(R.id.categoriaGridView);
 
-        CategoriaAdapter categoriaAdapter = new CategoriaAdapter(resultado_listActivity.this,recetaslist,R.layout.celda_categoria);
+        DataHolder dataHolder = new DataHolder();
+        ArrayList<Ingredientes> categoria = new ArrayList<>();
+        categoria = dataHolder.getCategoria();
+        CategoriaAdapter categoriaAdapter = new CategoriaAdapter(resultado_listActivity.this,categoria,R.layout.celda_categoria);
         gridView.setAdapter(categoriaAdapter);
 
 
