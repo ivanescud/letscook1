@@ -4,34 +4,55 @@ package com.simplelifestudio.letscook1.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Fade;
+import android.transition.Slide;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.BusquedaRecycleAdapter;
 import com.simplelifestudio.letscook1.adapters.CategoriaAdapter;
+import com.simplelifestudio.letscook1.adapters.HomeBebidasAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
 import com.simplelifestudio.letscook1.extra.DataHolder;
 import com.simplelifestudio.letscook1.model.Ingredientes;
 import com.simplelifestudio.letscook1.model.Receta;
+import com.simplelifestudio.letscook1.model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+import me.relex.circleindicator.CircleIndicator;
 import me.relex.circleindicator.CircleIndicator3;
 
 
@@ -50,8 +71,10 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     private RecyclerView recyclerView3;
     private FirebaseAuth mAuth;
     private FloatingActionButton floatbut;
-    AlertDialog alertDialog;
-
+    private AlertDialog alertDialog;
+    private FirebaseFirestore db;
+    private CircleImageView useImgCIV;
+    private TextView userNameTV;
 
 
     @Override
@@ -88,9 +111,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         circleIndicator.setViewPager(mainPager);
        // circleIndicator.setViewPager(mainPager);
 
-        Fade slide = new Fade();
-        slide.setDuration(1000);
-        getWindow().setEnterTransition(slide);
+        getUserDataFirebase();
 
 
         floatbut.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +171,8 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         recyclerView2 = findViewById(R.id.busquedaSegunRV);
         recyclerView3 = findViewById(R.id.busquedaTreRV);
         floatbut = findViewById(R.id.busquedafloatinBut);
+        userNameTV = findViewById(R.id.homeUserTileTV);
+        useImgCIV = findViewById(R.id.homeUserImgIV);
 
         circleIndicator.animatePageSelected(2);
 
@@ -198,7 +221,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         bebidasIB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ResultadoBusqueda.class).putExtra("Dato","bebidas"));
+                dialogbebidas();
 
             }
         });
@@ -237,6 +260,118 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
 
         alertDialog = builder.create();
         alertDialog.show();
+    }
+
+
+
+    private void  dialogbebidas () {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(resultado_listActivity.this);
+
+        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.seleccion, null, false);
+        builder.setView(dialogView);
+        ImageButton bebidasIB = dialogView.findViewById(R.id.homedialogRcBT);
+        ImageButton recetaIB = dialogView.findViewById(R.id.homedialogBDBT);
+        TextView ftitleTV = dialogView.findViewById(R.id.homedialFTV);
+        TextView secondTV = dialogView.findViewById(R.id.homedialSTV);
+        Button salirBT = dialogView.findViewById(R.id.homedialogsalirBT);
+        salirBT.setVisibility(View.GONE);
+
+        recetaIB.setImageResource(R.drawable.bebidasalc);
+        secondTV.setText("Con Alchol");
+        ftitleTV.setText("Sin Alchol");
+        bebidasIB.setImageResource(R.drawable.bebidasnoalc);
+
+
+        recetaIB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+            }
+        });
+
+        bebidasIB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // startActivity(new Intent(getApplicationContext(),Categoria.class).putExtra("Dato","bebidas"));
+
+            }
+        });
+
+
+
+        salirBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+
+            }
+        });
+
+        alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+
+
+
+    private void getUserDataFirebase() {
+
+        String userID = mAuth.getCurrentUser().getProviderId().toString();
+        Log.d("Firebase",userID);
+
+        db = FirebaseFirestore.getInstance();
+
+        db.collection("users").document(userID)
+                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                //Log.d("Firebase", documentSnapshot.getData().get("nombre").toString());
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("Firebase",e.getMessage());
+            }
+        });
+//       db.collection("users").document(userID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//
+//                Map<String,Object> map = task.getResult().getData();
+//
+//
+//
+//
+//
+//               Log.d("Firebase", map.get("nombre").toString());
+//
+//
+////
+////                usuario.setNombre(map.get("nombre").toString());
+////                usuario.setApellido(map.get("apellido").toString());
+////                usuario.setUserImg(map.get("userImg").toString());
+////                usuario.setEdad(Integer.parseInt(map.get("edad").toString()));
+////                usuario.setUserID(map.get("userID").toString());
+//
+//
+////                Glide.with(getApplicationContext()).load(usuario.getUserImg()).into(useImgCIV);
+////                userNameTV.setText(usuario.getNombre()+" "+usuario.getApellido());
+//
+//
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//
+//            }
+//        });
+
+
     }
 
 }

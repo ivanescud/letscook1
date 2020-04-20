@@ -22,6 +22,14 @@ public class User {
         this.edad = edad;
     }
 
+    public User(String nombre, String apellido, int edad, String email, String userImg, String userID) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.email = email;
+        this.userImg = userImg;
+        this.userID = userID;
+    }
 
     public String getUserImg() {
         return userImg;

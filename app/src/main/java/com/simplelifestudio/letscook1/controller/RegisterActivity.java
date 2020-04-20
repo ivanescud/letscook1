@@ -58,13 +58,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     // Añade todos los campos a la clase usuario
-    public void nuevoUsuario(){
+    public void nuevoUsuario(String userId){
         User user = new User();
         user.setNombre(nombre.getText().toString());
         user.setApellido(apellido.getText().toString());
         user.setEdad(Integer.parseInt(edad.getText().toString()));
         user.setEmail(email.getText().toString());
-        user.setUserID(db.collection("users").document().getId());
+        user.setUserID(userId);
         user.setUserImg("https://firebasestorage.googleapis.com/v0/b/letscook-1b066.appspot.com/o/MainFiles%2Fproplaceholder.jpg?alt=media&token=b264f76d-eb44-4638-9e53-aa4d4e0404e7");
 
         db.collection("users").document(user.getUserID()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -89,7 +89,8 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                   nuevoUsuario();
+                    String userId = mAuth.getCurrentUser().getUid();
+                   nuevoUsuario(userId);
                     registrarBt.setProgress(50);
 
                    Handler handler = new Handler();
