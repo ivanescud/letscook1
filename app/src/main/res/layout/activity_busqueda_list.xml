@@ -254,15 +254,21 @@
 </LinearLayout>
 
 </ScrollView>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:foregroundGravity="center"
-        android:src="@drawable/cubiertos_icon"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
 
-        />
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:foregroundGravity="center"
+        android:src="@drawable/cubiertos_icon"
+        app:fabSize="normal"
+        app:maxImageSize="30dp" />
 
 </RelativeLayout>
