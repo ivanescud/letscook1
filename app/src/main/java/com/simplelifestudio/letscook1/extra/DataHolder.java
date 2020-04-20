@@ -47,6 +47,8 @@ public class DataHolder {
         this.recetas.add(new Receta("Corn Flake con leche","LetCook Team",url3,5.0f,likes,byImg,"3 min"));
         this.recetas.add(new Receta("Blue Sky","Jorge Lopez",url4,4.0f,likes,byImg2, "5min"));
         this.recetas.add(new Receta("Martiny Frances","LetsCook Team",url2,3.7f,likes,byImg2,"3 min"));
+        this.recetas.add(new Receta("Martiny Frances","LetsCook Team",url2,3.7f,likes,byImg2,"3 min"));
+        this.recetas.add(new Receta("Blue Sky","Jorge Lopez",url4,4.0f,likes,byImg2, "5min"));
 
     }
 }

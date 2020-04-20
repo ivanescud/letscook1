@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AlertDialog;
@@ -26,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.BusquedaRecycleAdapter;
+import com.simplelifestudio.letscook1.adapters.CategoriaAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeBebidasAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
 import com.simplelifestudio.letscook1.extra.DataHolder;
@@ -194,7 +196,8 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(getApplicationContext(),Categoria.class).putExtra("Dato","recetas"));
+                dialog2();
+
             }
         });
 
@@ -212,8 +215,28 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
             @Override
             public void onClick(View view) {
                 alertDialog.dismiss();
+
             }
         });
+
+        alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+
+
+
+    void dialog2(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(resultado_listActivity.this);
+
+        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.activity_categoria, null, false);
+        builder.setView(dialogView);
+        GridView gridView = dialogView.findViewById(R.id.categoriaGridView);
+
+        CategoriaAdapter categoriaAdapter = new CategoriaAdapter(resultado_listActivity.this,recetaslist,R.layout.celda_categoria);
+        gridView.setAdapter(categoriaAdapter);
+
 
         alertDialog = builder.create();
         alertDialog.show();
