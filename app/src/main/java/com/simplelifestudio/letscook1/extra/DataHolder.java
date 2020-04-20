@@ -57,6 +57,10 @@ public class DataHolder {
 
 
         this.ingredientes.add(new Ingredientes("Pollo", R.drawable.carnepollo));
+        this.ingredientes.add(new Ingredientes("Carne de Res", R.drawable.carneres));
+        this.ingredientes.add(new Ingredientes("Carne de Cerdo", R.drawable.carnecerdo));
+        this.ingredientes.add(new Ingredientes("Pescado", R.drawable.carnepescado));
+        this.ingredientes.add(new Ingredientes("Vegetariana", R.drawable.carnevegeta));
 
 
 
