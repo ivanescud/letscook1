@@ -6,7 +6,7 @@ public class User {
     private  String apellido;
     private int edad;
     private String email;
-
+    private String userImg;
     private String userID;
 
 
@@ -22,6 +22,14 @@ public class User {
         this.edad = edad;
     }
 
+
+    public String getUserImg() {
+        return userImg;
+    }
+
+    public void setUserImg(String userImg) {
+        this.userImg = userImg;
+    }
 
     public String getUserID() {
         return userID;

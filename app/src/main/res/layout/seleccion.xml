@@ -13,19 +13,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/loginbutpress"
+    >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
-        android:fontFamily="@font/baskervville_regular"
-        android:text="Seleccione"
-        android:textColor="@color/negro"
-        android:textSize="20dp" />
+        android:text="Seleccione una Opcion"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
 
-
+</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

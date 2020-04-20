@@ -65,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
         user.setEdad(Integer.parseInt(edad.getText().toString()));
         user.setEmail(email.getText().toString());
         user.setUserID(db.collection("users").document().getId());
+        user.setUserImg("https://firebasestorage.googleapis.com/v0/b/letscook-1b066.appspot.com/o/MainFiles%2Fproplaceholder.jpg?alt=media&token=b264f76d-eb44-4638-9e53-aa4d4e0404e7");
 
         db.collection("users").document(user.getUserID()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
