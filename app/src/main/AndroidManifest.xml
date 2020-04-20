@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.resultado_listActivity"></activity>
+        <activity android:name=".controller.Categoria"></activity>
         <activity
-            android:name=".controller.Categoria"
+            android:name=".controller.Top10"
             android:label="Top 10"
             android:theme="@style/HomeActivityAppTheme" />
         <activity android:name=".controller.ComentarioActivity" />
@@ -22,15 +22,9 @@
         <activity android:name=".controller.LoginActivity" />
         <activity android:name=".controller.RegisterActivity" />
         <activity
-            android:name=".controller.Top10"
+            android:name=".controller.resultado_listActivity"
             android:label="LET&apos;S COOK"
-            android:theme="@style/HomeActivityAppTheme"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:theme="@style/HomeActivityAppTheme">
 
         </activity>
         <activity android:name=".controller.MainActivity" />
@@ -40,6 +34,11 @@
             android:name=".controller.HomeActivity"
             android:label="LET&apos;S COOK"
             android:theme="@style/HomeActivityAppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
     </application>
