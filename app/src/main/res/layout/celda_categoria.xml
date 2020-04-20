@@ -5,6 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:elevation="10dp"
+    app:cardBackgroundColor="#000000"
     app:cardCornerRadius="20dp">
 
     <LinearLayout
@@ -35,7 +36,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Salmon Ahumado"
                 android:textAlignment="center"
-                android:textColor="@color/negro"
+                android:textColor="@color/light_blanco_detail"
 
                 />
 

@@ -19,6 +19,8 @@ private ArrayList<Receta> recetas;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categoria);
+        init();
+        obtenerDatos();
     }
 
     public void init(){
