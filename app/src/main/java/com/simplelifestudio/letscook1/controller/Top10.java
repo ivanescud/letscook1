@@ -3,6 +3,7 @@ package com.simplelifestudio.letscook1.controller;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -50,4 +51,6 @@ public class Top10 extends AppCompatActivity {
         Top10Adapter top10adapter = new Top10Adapter(Top10.this,recetas,R.layout.celda_viewgrid_top);
         gridView.setAdapter(top10adapter);
     }
+
+
 }

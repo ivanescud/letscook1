@@ -27,9 +27,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:horizontalSpacing="40dp"
+        android:horizontalSpacing="15dp"
         android:numColumns="2"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:verticalSpacing="60dp" />
+        android:verticalSpacing="10dp" />
 </LinearLayout>
