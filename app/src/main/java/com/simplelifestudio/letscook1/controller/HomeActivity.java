@@ -97,7 +97,7 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(getApplicationContext(),Top10.class));
+                startActivity(new Intent(getApplicationContext(),Categoria.class));
             }
         });
 

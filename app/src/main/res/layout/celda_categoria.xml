@@ -34,11 +34,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:inputType="textMultiLine"
                 android:text="Salmon Ahumado"
-                android:textAlignment="center"
-                android:textColor="@color/light_blanco_detail"
 
-                />
+                android:textAlignment="center"
+                android:textColor="@color/light_blanco_detail" />
 
         </LinearLayout>
 
