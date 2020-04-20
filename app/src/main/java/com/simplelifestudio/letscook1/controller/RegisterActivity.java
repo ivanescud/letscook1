@@ -96,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                        @Override
                        public void run() {
                            registrarBt.setProgress(100);
-                           startActivity(new Intent(RegisterActivity.this,HomeActivity.class));
+                           startActivity(new Intent(RegisterActivity.this,resultado_listActivity.class));
                            finish();
                            Toast.makeText(RegisterActivity.this,"Usuario Creado",Toast.LENGTH_SHORT).show();
                        }

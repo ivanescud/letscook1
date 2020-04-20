@@ -9,12 +9,12 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         app:cardCornerRadius="15dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="130dp"
+            android:layout_width="150dp"
             android:layout_height="190dp"
             android:orientation="vertical">
 
@@ -42,15 +42,47 @@
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:gravity="center|bottom"
             android:paddingBottom="5dp"
             android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/cellbusquedalikeIconImgIV"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+
+                android:src="@drawable/corazon"
+
+                />
+
+            <TextView
+                android:id="@+id/cellbusquedalikeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="251"
+                android:textSize="12dp" />
+
+
+            <ImageView
+                android:id="@+id/cellbusquedaRankIcoIV"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_star_border_black_24dp"
+
+                />
+
+            <TextView
+                android:id="@+id/cellbusquedaRankTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="251"
+                android:layout_marginRight="5dp"
+                android:textSize="12dp" />
 
             <ImageView
                 android:id="@+id/cellbusquedalitImgIV"
-                android:layout_width="20dp"
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginRight="10dp"
                 android:src="@drawable/clock"
 
                 />
@@ -61,6 +93,9 @@
                 android:layout_height="wrap_content"
                 android:text="251"
                 android:textSize="12dp" />
+
+
+
 
 
         </LinearLayout>

@@ -8,6 +8,8 @@
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 
-
+    <item android:id="@+id/logoutmenuBT"
+    android:title="Cerrar Sesion"
+    />
 
 </menu>

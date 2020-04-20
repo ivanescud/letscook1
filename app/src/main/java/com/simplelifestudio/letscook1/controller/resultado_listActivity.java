@@ -1,5 +1,6 @@
 package com.simplelifestudio.letscook1.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.BusquedaRecycleAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeBebidasAdapter;
@@ -40,6 +42,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     private RecyclerView recyclerView1;
     private RecyclerView recyclerView2;
     private RecyclerView recyclerView3;
+    private FirebaseAuth mAuth;
 
 
 
@@ -102,7 +105,23 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+
+        switch (item.getItemId()) {
+            case R.id.logoutmenuBT:
+                mAuth.signOut();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                finish();
+                break;
+
+
+        }
+
+        return super.onOptionsItemSelected(item);
+
+    }
 
     private void init() {
         mainPager = findViewById(R.id.busquedaAutoScrollPager);
@@ -118,7 +137,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         bebidaslist = data.getBebidas();
 
 
-
+        mAuth = FirebaseAuth.getInstance();
 
     }
 

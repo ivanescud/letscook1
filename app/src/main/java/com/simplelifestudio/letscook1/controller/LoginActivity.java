@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onSuccess(AuthResult authResult) {
 
                             loginBut.setProgress(100);
-                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            startActivity(new Intent(LoginActivity.this,resultado_listActivity.class));
                             finish();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
