@@ -2,7 +2,6 @@ package com.simplelifestudio.letscook1.controller;
 
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,18 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.simplelifestudio.letscook1.R;
-import com.simplelifestudio.letscook1.adapters.HomeBebidasAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeBebidasAdapter.OnClickCell2;
 import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
 import com.simplelifestudio.letscook1.extra.DataHolder;
-import com.simplelifestudio.letscook1.extra.DividerItemDecoration;
 import com.simplelifestudio.letscook1.extra.SimpleDividerItemDecoration;
 import com.simplelifestudio.letscook1.model.Receta;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -97,7 +90,7 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(getApplicationContext(),Categoria.class));
+                startActivity(new Intent(getApplicationContext(), ResultadoBusqueda.class));
             }
         });
 

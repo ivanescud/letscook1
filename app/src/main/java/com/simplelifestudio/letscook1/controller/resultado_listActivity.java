@@ -4,13 +4,11 @@ package com.simplelifestudio.letscook1.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Fade;
-import android.transition.Slide;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -20,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,17 +25,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.BusquedaRecycleAdapter;
 import com.simplelifestudio.letscook1.adapters.CategoriaAdapter;
-import com.simplelifestudio.letscook1.adapters.HomeBebidasAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
 import com.simplelifestudio.letscook1.extra.DataHolder;
 import com.simplelifestudio.letscook1.model.Ingredientes;
 import com.simplelifestudio.letscook1.model.Receta;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import me.relex.circleindicator.CircleIndicator;
 import me.relex.circleindicator.CircleIndicator3;
 
 
@@ -205,7 +198,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         bebidasIB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Categoria.class).putExtra("Dato","bebidas"));
+                startActivity(new Intent(getApplicationContext(), ResultadoBusqueda.class).putExtra("Dato","bebidas"));
 
             }
         });

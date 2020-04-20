@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.Categoria" />
+        <activity android:name=".controller.ResultadoBusqueda" />
         <activity
             android:name=".controller.Top10"
             android:label="Top 10"
