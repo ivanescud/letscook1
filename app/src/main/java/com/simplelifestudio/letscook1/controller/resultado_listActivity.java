@@ -1,11 +1,20 @@
 package com.simplelifestudio.letscook1.controller;
 
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.BusquedaRecycleAdapter;
@@ -43,6 +53,8 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     private RecyclerView recyclerView2;
     private RecyclerView recyclerView3;
     private FirebaseAuth mAuth;
+    private FloatingActionButton floatbut;
+    AlertDialog alertDialog;
 
 
 
@@ -79,6 +91,18 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         recyclerView3.setAdapter(recycleAdapter3);
         circleIndicator.setViewPager(mainPager);
        // circleIndicator.setViewPager(mainPager);
+
+        Fade slide = new Fade();
+        slide.setDuration(1000);
+        getWindow().setEnterTransition(slide);
+
+
+        floatbut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog();
+            }
+        });
 
     }
 
@@ -129,6 +153,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         recyclerView1 = findViewById(R.id.busquedaPrimeRV);
         recyclerView2 = findViewById(R.id.busquedaSegunRV);
         recyclerView3 = findViewById(R.id.busquedaTreRV);
+        floatbut = findViewById(R.id.busquedafloatinBut);
 
         circleIndicator.animatePageSelected(2);
 
@@ -153,4 +178,45 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     public void onClickCell(int positon) {
 
     }
+
+
+    private void  dialog () {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(resultado_listActivity.this);
+
+        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.seleccion, null, false);
+        builder.setView(dialogView);
+        ImageButton recetaIB = dialogView.findViewById(R.id.homedialogRcBT);
+        ImageButton bebidasIB = dialogView.findViewById(R.id.homedialogBDBT);
+        Button salirBT = dialogView.findViewById(R.id.homedialogsalirBT);
+
+        recetaIB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(getApplicationContext(),Categoria.class).putExtra("Dato","recetas"));
+            }
+        });
+
+        bebidasIB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),Categoria.class).putExtra("Dato","bebidas"));
+
+            }
+        });
+
+
+
+        salirBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog = builder.create();
+        alertDialog.show();
+    }
+
 }

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class BusquedaRecycleAdapter extends RecyclerView.Adapter<BusquedaRecycleAdapter.ViewHolder>{
+public class BusquedaRecycleAdapter extends RecyclerView.Adapter<BusquedaRecycleAdapter.ViewHolder> {
 
     ArrayList<Receta> recetas;
     private Context context;
@@ -27,7 +27,7 @@ public class BusquedaRecycleAdapter extends RecyclerView.Adapter<BusquedaRecycle
     private int tipo;
 
 
-    public BusquedaRecycleAdapter(ArrayList<Receta> recetas, Context context,  OnClickCell2 onClickCell, int tipo) {
+    public BusquedaRecycleAdapter(ArrayList<Receta> recetas, Context context, OnClickCell2 onClickCell, int tipo) {
         this.recetas = recetas;
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
@@ -39,7 +39,7 @@ public class BusquedaRecycleAdapter extends RecyclerView.Adapter<BusquedaRecycle
     @Override
     public BusquedaRecycleAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.cellbusqueda, parent, false);
-        return new ViewHolder(view,onClickCell);
+        return new ViewHolder(view, onClickCell);
     }
 
     @Override
@@ -47,23 +47,9 @@ public class BusquedaRecycleAdapter extends RecyclerView.Adapter<BusquedaRecycle
 
         Glide.with(context).load(recetas.get(position).getMainImgRc()).into(holder.mainImgIV);
         holder.titleTV.setText(recetas.get(position).getNombreRC());
-        switch (tipo){
-            case 1:
-
-            holder.iconoIV.setImageResource(R.drawable.clock);
-            holder.cantidadTV.setText(recetas.get(position).getTiempo());
-            break;
-
-            case 2:
-                holder.iconoIV.setImageResource(R.drawable.corazon);
-                holder.cantidadTV.setText(String.valueOf(recetas.get(position).getLikes().size()));
-            break;
-
-            case 3:
-                holder.iconoIV.setImageResource(R.drawable.ic_star_border_black_24dp);
-                holder.cantidadTV.setText(String.valueOf(recetas.get(position).getRankingRC()));
-             break;
-        }
+        holder.timeTV.setText(recetas.get(position).getTiempo());
+        holder.likesTV.setText(String.valueOf(recetas.get(position).getLikes().size()));
+        holder.rankTV.setText(String.valueOf(recetas.get(position).getRankingRC()));
 
 
     }
@@ -77,18 +63,22 @@ public class BusquedaRecycleAdapter extends RecyclerView.Adapter<BusquedaRecycle
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView mainImgIV;
-        TextView cantidadTV;
+        TextView likesTV;
         ImageView iconoIV;
         TextView titleTV;
+        TextView rankTV;
+        TextView timeTV;
 
         OnClickCell2 onClickCell;
 
         public ViewHolder(@NonNull View itemView, OnClickCell2 onClickCell) {
             super(itemView);
             mainImgIV = itemView.findViewById(R.id.cellbusquedaMainImgIV);
-            cantidadTV = itemView.findViewById(R.id.cellbusquedaAmountTV);
+            likesTV = itemView.findViewById(R.id.cellbusquedalikeTv);
             titleTV = itemView.findViewById(R.id.cellbusquedaTitleTV);
             iconoIV = itemView.findViewById(R.id.cellbusquedalitImgIV);
+            rankTV = itemView.findViewById(R.id.cellbusquedaRankTV);
+            timeTV = itemView.findViewById(R.id.cellbusquedaTiempoTV);
 
             this.onClickCell = onClickCell;
             itemView.setOnClickListener(this);
@@ -98,7 +88,7 @@ public class BusquedaRecycleAdapter extends RecyclerView.Adapter<BusquedaRecycle
         @Override
         public void onClick(View view) {
 
-                onClickCell.onClickCell2(getAdapterPosition());
+            onClickCell.onClickCell2(getAdapterPosition());
         }
     }
 

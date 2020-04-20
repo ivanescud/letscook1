@@ -49,6 +49,7 @@ public class HomeRecetaAdapter extends RecyclerView.Adapter<HomeRecetaAdapter.vi
         holder.nombreRc.setText(recetas.get(position).getNombreRC());
         holder.likesRC.setText(String.valueOf(recetas.get(position).getLikes().size()));
         holder.rankRC.setText(String.valueOf(recetas.get(position).getRankingRC()));
+        holder.timeTV.setText(recetas.get(position).getTiempo());
 
 
     }
@@ -62,6 +63,7 @@ public class HomeRecetaAdapter extends RecyclerView.Adapter<HomeRecetaAdapter.vi
         TextView nombreRc;
         TextView likesRC;
         TextView rankRC;
+        TextView timeTV;
         CircleImageView createdCIV;
         ImageView mainImgIV;
 
@@ -74,6 +76,7 @@ public class HomeRecetaAdapter extends RecyclerView.Adapter<HomeRecetaAdapter.vi
             likesRC = itemView.findViewById(R.id.homecelllikeTv);
             rankRC = itemView.findViewById(R.id.homecellrankTV);
             createdCIV = itemView.findViewById(R.id.homecellbyImgCIV);
+            timeTV = itemView.findViewById(R.id.homecelltimeTV);
 
             this.onClickCell = onClickCell;
 

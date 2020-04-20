@@ -74,11 +74,11 @@
                 android:textColor="@color/negro"
                 />
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
-                android:src="@drawable/favcellimg"
-                />
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/favcellimg"
+            />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,6 +88,23 @@
                 android:layout_marginLeft="5dp"
                 android:textColor="@color/negro"
                 />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/clock"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/homecelltimeTV"
+                android:text="200"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/negro"
+                />
+
 
         </LinearLayout>
 
