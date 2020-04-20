@@ -86,8 +86,7 @@ private boolean recetasDisponibles;
         categoria = "breakfast";
         labelList.add("leche");
         labelList.add("cereal");
-      //activar error para depurar--> // labelList.add("cereal");
-       // labelList.add("cereal");
+      labelList.add("cereal");
         //Generador de tag
         labelList.sort(String::compareToIgnoreCase);
         for(String i: labelList){
@@ -101,7 +100,6 @@ private boolean recetasDisponibles;
         label = label +","+categoria;
 
         //consulatador hacia la nube
-        if(tipo.equals("recetas")){
             db.collection(tipo).whereEqualTo("label", label).get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
@@ -117,14 +115,12 @@ private boolean recetasDisponibles;
                   }
                 }
             });
+        //        CategoriaAdapter categoriaAdapter = new CategoriaAdapter(ResultadoBusqueda.this,recetas,R.layout.celda_categoria);
+//        gridView.setAdapter(categoriaAdapter);
            }
 
-        else{
 
-        }
-//        CategoriaAdapter categoriaAdapter = new CategoriaAdapter(ResultadoBusqueda.this,recetas,R.layout.celda_categoria);
-//        gridView.setAdapter(categoriaAdapter);
-    }
+
 
     // Verificador:verifica cada dos segundos si encontro datos en firebase
      public void prepararRecetas() {
@@ -164,8 +160,16 @@ private boolean recetasDisponibles;
         resultadoNoEcontrado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
                 startActivity(new Intent(getApplicationContext(),HomeActivity.class));
             }
         });
+    }
+
+    //Back kill: mata la aplicacion cuando presiona el de volver
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
     }
 }
