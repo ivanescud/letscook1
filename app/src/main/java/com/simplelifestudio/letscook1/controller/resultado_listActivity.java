@@ -38,6 +38,8 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.simplelifestudio.letscook1.R;
+import com.simplelifestudio.letscook1.adapters.BannerAdapter;
+
 import com.simplelifestudio.letscook1.adapters.BusquedaRecycleAdapter;
 import com.simplelifestudio.letscook1.adapters.CategoriaAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
@@ -54,7 +56,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import me.relex.circleindicator.CircleIndicator3;
 
 
-public class resultado_listActivity extends AppCompatActivity implements BusquedaRecycleAdapter.OnClickCell2, HomeRecetaAdapter.OnClickCell {
+public class resultado_listActivity extends AppCompatActivity implements BusquedaRecycleAdapter.OnClickCell2, HomeRecetaAdapter.OnClickCell{
 
     private final static String TAGU = "FIREBASEUSER";
 
@@ -79,10 +81,11 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     private User currendUser;
     private FrameLayout loadingLayout;
     private boolean userReady = false;
-    private ArrayList<Banner> nannerList = new ArrayList<>();
+    private ArrayList<Banner> bannerList = new ArrayList<>();
     private ArrayList<Receta> recetasList = new ArrayList<>();
     private ArrayList<Receta> bebidasList = new ArrayList<>();
     private ArrayList<Receta>toplist = new ArrayList<>();
+    private BannerAdapter bannerAdapter;
 
 
     @Override
@@ -92,7 +95,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
 
         init();
 
-        adapter = new HomeRecetaAdapter(recetaslist, resultado_listActivity.this, this);
+
 
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView1.setLayoutManager(horizontalLayoutManager);
@@ -107,12 +110,13 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
 
 
 
-        mainPager.setAdapter(adapter);
+        getBannerData();
         getRecetasData();
         getBebidasData();
         getTopData();
 
-        circleIndicator.setViewPager(mainPager);
+
+
         // circleIndicator.setViewPager(mainPager);
 
         floatbut.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +125,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
                 dialog();
             }
         });
+
 
 
     }
@@ -201,6 +206,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     }
 
 
+
     @Override
     public void onClickCell2(int positon) {
 
@@ -210,6 +216,9 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     public void onClickCell(int positon) {
 
     }
+
+
+
 
 
     private void dialog() {
@@ -385,7 +394,15 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         db.collection("banner").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                   Banner banner = queryDocumentSnapshot.toObject(Banner.class);
+                    bannerList.add(banner);
+                }
 
+                bannerAdapter = new BannerAdapter(bannerList,getApplicationContext(),resultado_listActivity.this::onClickCell);
+
+                mainPager.setAdapter(bannerAdapter);
+                circleIndicator.setViewPager(mainPager);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -477,6 +494,8 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
 
 
     }
+
+
 
 
 }

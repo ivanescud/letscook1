@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.simplelifestudio.letscook1.R;
+import com.simplelifestudio.letscook1.model.Banner;
 import com.simplelifestudio.letscook1.model.Ingrediente;
 import com.simplelifestudio.letscook1.model.Ingredientes;
 import com.simplelifestudio.letscook1.model.Receta;
@@ -23,6 +24,8 @@ public class DataHolder {
     ArrayList<Receta>recetas = new ArrayList<>();
     ArrayList<Ingredientes> ingredientes = new ArrayList<>();
     ArrayList<Ingredientes> categoria = new ArrayList<>();
+    ArrayList<Banner> bannerlist = new ArrayList<Banner>();
+
     FirebaseFirestore db;
 
     public DataHolder() {
@@ -55,6 +58,8 @@ public class DataHolder {
         String url3 = "https://images.freeimages.com/images/premium/previews/1716/17166547-cornflakes-with-pouring-milk.jpg";
         String url4 = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTBQ0FnVuAGcbUAxpmdB4Q4grLaKDoaHtvEfkE5PQn1hLcxoxhJ&usqp=CAU";
         String url5 = "https://www.superama.com.mx/views/micrositio/recetas/images/fiestaspatrias/tequilasunrise/Web_fotoreceta.jpg";
+        String url6 = "https://latrattoriadealmeria.es/wp-content/uploads/2017/07/comida-italiana-restaurantes-italianos-almeria.png";
+        String url7 = "https://maxbrownhotels.com/wp-content/uploads/2019/05/3-Eyal-Shani3-300x200.jpg";
 
         this.bebidas.add(new Receta("Martiny Frances","LetsCook Team",url2,3.7f,likes,byImg2,"3 min"));
         this.bebidas.add(new Receta("Blue Sky","Jorge Lopez",url4,4.0f,likes,byImg2, "5min"));
@@ -87,6 +92,11 @@ public class DataHolder {
 
 
 
+        bannerlist.add(new Banner("Receta del Mes","receta","Cerial con Leche",url3));
+        bannerlist.add(new Banner("Mes de comida Italina","lista","Experimente los saboders de italia",url6));
+        bannerlist.add(new Banner("Noche de Apendizaje ","evento","Live con el Chef Carlos Lopez",url7));
+
+
     }
 
     public void addrecetas() {
@@ -110,6 +120,31 @@ public class DataHolder {
 
 
     }
+
+
+    public void addBanner() {
+
+
+        for (int i = 0; i < bannerlist.size() ; i++) {
+
+            Banner rc = bannerlist.get(i);
+            String id = db.collection("users").document().getId();
+            db.collection("banner").document(id).set(rc).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                    Log.d("Data","Datos agregados");
+
+                }
+            });
+        }
+
+
+
+
+    }
+
+
 
 
 }
