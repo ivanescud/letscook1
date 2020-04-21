@@ -96,7 +96,11 @@
         <GridView
             android:id="@+id/seleccion_ingredientesGridView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:horizontalSpacing="20dp"
+            android:numColumns="3"
+            android:padding="5dp"
+            android:verticalSpacing="20dp" />
     </FrameLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

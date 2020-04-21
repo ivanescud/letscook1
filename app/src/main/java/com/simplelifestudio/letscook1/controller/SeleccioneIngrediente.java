@@ -16,11 +16,13 @@ public class SeleccioneIngrediente extends AppCompatActivity {
   private TabLayout tabLayout;
   private GridView gridview;
   private ArrayList<Ingredientes> ingredientesCarnes;
+    private ArrayList<Ingredientes> ingredientesVegetales;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seleccion_ingredientes);
         init();
+        obtenerDatos();
         tablayoutListener();
     }
 
@@ -36,7 +38,15 @@ public class SeleccioneIngrediente extends AppCompatActivity {
         ingredientesCarnes.add(new Ingredientes("Carnecerdo",R.drawable.carnecerdo));
         ingredientesCarnes.add(new Ingredientes("Carnevegata",R.drawable.carnevegeta));
         ingredientesCarnes.add(new Ingredientes("Res",R.drawable.carnepescado));
-        GridIngredientesAdapter gridIngredientesAdapter = new GridIngredientesAdapter(getApplicationContext(),)
+
+        ingredientesVegetales.add(new Ingredientes("Maiz",R.drawable.carnepescado));
+        ingredientesVegetales.add(new Ingredientes("Maiz",R.drawable.carnepescado));
+        ingredientesVegetales.add(new Ingredientes("Maiz",R.drawable.carnepescado));
+        ingredientesVegetales.add(new Ingredientes("Maiz",R.drawable.carnepescado));
+        ingredientesVegetales.add(new Ingredientes("Maiz",R.drawable.carnepescado));
+        GridIngredientesAdapter gridIngredientesAdapter = new GridIngredientesAdapter(getApplicationContext(),ingredientesCarnes,R.layout.grid_ingredientes);
+        //GridIngredientesAdapter
+        gridview.setAdapter(gridIngredientesAdapter);
     }
 
     public void tablayoutListener(){
