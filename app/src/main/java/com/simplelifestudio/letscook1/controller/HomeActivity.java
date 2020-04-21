@@ -3,6 +3,7 @@ package com.simplelifestudio.letscook1.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,14 +16,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.HomeBebidasAdapter.OnClickCell2;
 import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
+import com.simplelifestudio.letscook1.database.FireBaseData;
 import com.simplelifestudio.letscook1.extra.DataHolder;
 import com.simplelifestudio.letscook1.extra.SimpleDividerItemDecoration;
 import com.simplelifestudio.letscook1.model.Receta;
+import com.simplelifestudio.letscook1.model.User;
 
 import java.util.ArrayList;
 
@@ -43,6 +50,9 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
     private FirebaseUser fuser;
     private HomeRecetaAdapter recetaAdapter;
     private HomeRecetaAdapter bebidasAdapter;
+    FirebaseFirestore db;
+
+
 
     ArrayList<Receta> recetas = new ArrayList<>();
     ArrayList<Receta> bebidas = new ArrayList<>();
@@ -84,7 +94,7 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
         setContentView(R.layout.activity_home);
 
         init();
-
+        db = FirebaseFirestore.getInstance();
 
         recetaImgcell.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,13 +112,33 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
             }
         });
 
+
+        FireBaseData data = new FireBaseData();
+
+        data.getUserData(db,getApplicationContext(),userImgCIV,userNameTV);
+
+        String userID = mAuth.getCurrentUser().getUid();
+
+
+        db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                User currentuser =  documentSnapshot.toObject(User.class);
+
+
+            }
+        });
+
+
+
+
     }
 
 
 
     private  void init() {
-        userImgCIV = findViewById(R.id.homeUserImgIV);
-        userNameTV = findViewById(R.id.homeUserTileTV);
+        userImgCIV = findViewById(R.id.userImgpru);
+        userNameTV = findViewById(R.id.usernamepru);
         recetaImgcell = findViewById(R.id.homeBotonRecetaBt);
          bebidasImgcell = findViewById(R.id.homeBotonbebidasIV);
           topImgcell = findViewById(R.id.homeBotontopIV);
