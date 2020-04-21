@@ -9,7 +9,7 @@ public class Receta implements Serializable {
     private String nombreRC;
     private String autorRC;
     private String mainImgRc;
-    private float rankingRC;
+    private double rankingRC;
     private Map<String, Boolean> likes = new HashMap<>();
     private int coments;
     private Map<String,Ingrediente> ingredientes = new HashMap<>();
@@ -18,12 +18,13 @@ public class Receta implements Serializable {
     private String type;
     private String idRC;
     private String tiempo;
+    private String categoria;
 
 
     public Receta() {
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, float rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes, Map<Integer, String> pasos, String autorImgRC) {
+    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes, Map<Integer, String> pasos, String autorImgRC) {
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
@@ -35,7 +36,7 @@ public class Receta implements Serializable {
         this.autorImgRC = autorImgRC;
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, float rankingRC, Map<String, Boolean> likes, String autorImgRC, String tiempo) {
+    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, String autorImgRC, String tiempo) {
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
@@ -45,7 +46,7 @@ public class Receta implements Serializable {
         this.tiempo = tiempo;
     }
 
-    public Receta(String idRC,String nombreRc,String mainImgRc,float rankingRC){
+    public Receta(String idRC,String nombreRc,String mainImgRc,double rankingRC){
         this.idRC = idRC;
         this.nombreRC = nombreRc;
         this.mainImgRc = mainImgRc;
@@ -58,6 +59,14 @@ public class Receta implements Serializable {
         this.mainImgRc = mainImgRc;
     }
 
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
     public String getTiempo() {
         return tiempo;
@@ -97,7 +106,7 @@ public class Receta implements Serializable {
         this.mainImgRc = mainImgRc;
     }
 
-    public float getRankingRC() {
+    public double getRankingRC() {
         return rankingRC;
     }
 
@@ -153,3 +162,5 @@ public class Receta implements Serializable {
         this.type = type;
     }
 }
+
+

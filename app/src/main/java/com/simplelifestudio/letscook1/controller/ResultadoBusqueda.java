@@ -65,6 +65,8 @@ private boolean recetasDisponibles;
         retorarHome();
     }
 
+
+
     public void init(){
         gridView = findViewById(R.id.categoriaGridView);
         recetas = new ArrayList<>();

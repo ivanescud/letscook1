@@ -1,5 +1,13 @@
 package com.simplelifestudio.letscook1.extra;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.model.Ingrediente;
 import com.simplelifestudio.letscook1.model.Ingredientes;
@@ -15,9 +23,11 @@ public class DataHolder {
     ArrayList<Receta>recetas = new ArrayList<>();
     ArrayList<Ingredientes> ingredientes = new ArrayList<>();
     ArrayList<Ingredientes> categoria = new ArrayList<>();
+    FirebaseFirestore db;
 
     public DataHolder() {
         data();
+        db = FirebaseFirestore.getInstance();
     }
 
     public ArrayList<Receta> getBebidas() {
@@ -73,5 +83,33 @@ public class DataHolder {
         this.categoria.add(new Ingredientes("Postre",R.drawable.postre_categoria));
         this.categoria.add(new Ingredientes("Ensalada",R.drawable.ensalada_categoria));
         this.categoria.add(new Ingredientes("Acompañamiento",R.drawable.acompaniamento_categoria));
+
+
+
+
     }
+
+    public void addrecetas() {
+
+
+        for (int i = 0; i < ingredientes.size() ; i++) {
+
+            Receta rc = recetas.get(i);
+            String id = db.collection("users").document().getId();
+            db.collection("recetas").document(id).set(rc).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                    Log.d("Data","Datos agregados");
+
+                }
+            });
+        }
+
+
+
+
+    }
+
+
 }

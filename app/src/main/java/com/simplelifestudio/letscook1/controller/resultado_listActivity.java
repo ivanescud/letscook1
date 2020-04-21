@@ -3,6 +3,7 @@ package com.simplelifestudio.letscook1.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -23,18 +25,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.BusquedaRecycleAdapter;
 import com.simplelifestudio.letscook1.adapters.CategoriaAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
 import com.simplelifestudio.letscook1.database.FireBaseData;
 import com.simplelifestudio.letscook1.extra.DataHolder;
+import com.simplelifestudio.letscook1.model.Banner;
 import com.simplelifestudio.letscook1.model.Ingredientes;
 import com.simplelifestudio.letscook1.model.Receta;
 import com.simplelifestudio.letscook1.model.User;
@@ -68,6 +77,12 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     private CircleImageView useImgCIV;
     private TextView userNameTV;
     private User currendUser;
+    private FrameLayout loadingLayout;
+    private boolean userReady = false;
+    private ArrayList<Banner> nannerList = new ArrayList<>();
+    private ArrayList<Receta> recetasList = new ArrayList<>();
+    private ArrayList<Receta> bebidasList = new ArrayList<>();
+    private ArrayList<Receta>toplist = new ArrayList<>();
 
 
     @Override
@@ -89,14 +104,14 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         recyclerView3.setLayoutManager(horizontalLayoutManager3);
 
 
-        recycleAdapter = new BusquedaRecycleAdapter(recetaslist, resultado_listActivity.this, this, 1);
-        recycleAdapter2 = new BusquedaRecycleAdapter(bebidaslist, resultado_listActivity.this, this, 2);
-        recycleAdapter3 = new BusquedaRecycleAdapter(recetaslist, resultado_listActivity.this, this, 3);
+
+
 
         mainPager.setAdapter(adapter);
-        recyclerView1.setAdapter(recycleAdapter);
-        recyclerView2.setAdapter(recycleAdapter2);
-        recyclerView3.setAdapter(recycleAdapter3);
+        getRecetasData();
+        getBebidasData();
+        getTopData();
+
         circleIndicator.setViewPager(mainPager);
         // circleIndicator.setViewPager(mainPager);
 
@@ -110,6 +125,13 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
 
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        prepararUser();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -160,25 +182,21 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         floatbut = findViewById(R.id.busquedafloatinBut);
         userNameTV = findViewById(R.id.busquedaUserNameTV);
         useImgCIV = findViewById(R.id.busquedaUserImgCIV);
-
+        //loadingLayout = findViewById(R.id.busquedaMainLoadLayoutFL);
         circleIndicator.animatePageSelected(2);
 
-        DataHolder data = new DataHolder();
-        recetaslist = data.getRecetas();
-        bebidaslist = data.getBebidas();
+
 
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
+       // loadingLayout.setVisibility(View.VISIBLE);
 
-        String userID = mAuth.getCurrentUser().getUid();
 
-        Log.d(TAGU, userID);
 
-        FireBaseData data1 = new FireBaseData();
 
-        data1.setUserDataTitle(db,getApplicationContext(),useImgCIV,userNameTV);
+
 
     }
 
@@ -306,9 +324,159 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
 
     private void getUserDataFirebase() {
 
+        String userID = mAuth.getCurrentUser().getUid();
+
+        Log.d(TAGU,userID);
+
+        db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot != null){
+                    currendUser =  documentSnapshot.toObject(User.class);
+                    userReady = true;
+                    Glide.with(getApplicationContext()).load(currendUser.getUserImg()).placeholder(R.drawable.proplaceholder).into(useImgCIV);
+                    String username = currendUser.getNombre() + " " + currendUser.getApellido();
+                    userNameTV.setText(username);
+                }
+
+
+
+            }
+        });
 
 
 
     }
+
+
+
+    public void prepararUser() {
+        getUserDataFirebase();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(!userReady){
+
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(resultado_listActivity.this);
+
+                    View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.lodingsplash, null, false);
+                    builder.setView(dialogView);
+
+
+                    alertDialog = builder.create();
+                    alertDialog.show();
+                    handler.removeCallbacks(this::run);
+
+                    Integer imgTag = (Integer) useImgCIV.getTag();
+                    alertDialog.dismiss();
+
+
+                }
+                else { prepararUser();}
+            }
+        }, 100);
+
+    }
+
+    private void getBannerData(){
+
+        db.collection("banner").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
+
+    }
+
+
+    private void getRecetasData(){
+
+        CollectionReference topF = db.collection("recetas");
+        Query query = topF.whereEqualTo("type","recetas");
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                    Receta receta = queryDocumentSnapshot.toObject(Receta.class);
+                    recetaslist.add(receta);
+                }
+
+                recycleAdapter = new BusquedaRecycleAdapter(recetaslist, resultado_listActivity.this, resultado_listActivity.this::onClickCell2, 1);
+                recyclerView1.setAdapter(recycleAdapter);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
+
+
+
+    }
+
+
+    private void getBebidasData(){
+
+        CollectionReference topF = db.collection("recetas");
+        Query query = topF.whereEqualTo("type","bebidas");
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                    Receta receta = queryDocumentSnapshot.toObject(Receta.class);
+                    bebidasList.add(receta);
+                }
+
+                recycleAdapter2 = new BusquedaRecycleAdapter(bebidasList, resultado_listActivity.this, resultado_listActivity.this::onClickCell2, 1);
+                recyclerView2.setAdapter(recycleAdapter2);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
+
+    }
+
+
+
+    private void getTopData(){
+        CollectionReference topF = db.collection("recetas");
+        Query query = topF.whereGreaterThanOrEqualTo("rankingRC",4);
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                    Receta receta = queryDocumentSnapshot.toObject(Receta.class);
+                    toplist.add(receta);
+                }
+
+                recycleAdapter3 = new BusquedaRecycleAdapter(toplist, resultado_listActivity.this, resultado_listActivity.this::onClickCell2, 3);
+                recyclerView3.setAdapter(recycleAdapter3);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
+
+    }
+
 
 }

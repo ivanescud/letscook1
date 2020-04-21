@@ -57,6 +57,7 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
 
 
 
+
     ArrayList<Receta> recetas = new ArrayList<>();
     ArrayList<Receta> bebidas = new ArrayList<>();
 
@@ -160,6 +161,8 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
 
         recetaAdapter = new HomeRecetaAdapter(recetas,HomeActivity.this,this);
         bebidasAdapter = new HomeRecetaAdapter(bebidas,HomeActivity.this,this);
+
+        DataHolder holder = new DataHolder();
 
 
 

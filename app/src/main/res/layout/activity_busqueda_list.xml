@@ -7,10 +7,13 @@
     android:layout_width="match_parent"
     >
 
+
 <ScrollView
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     >
+
+
 
 <LinearLayout
 
@@ -44,7 +47,6 @@
             android:id="@+id/busquedaUserNameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Carla Lopez"
             android:textColor="#ffffff"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -69,7 +71,6 @@
             android:layout_height="95dp"
             android:elevation="20dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/profileplaceholder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -250,6 +251,7 @@
 
     </LinearLayout>
     </androidx.cardview.widget.CardView>
+
 
 </LinearLayout>
 
