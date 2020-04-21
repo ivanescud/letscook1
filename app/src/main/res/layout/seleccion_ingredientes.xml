@@ -40,6 +40,7 @@
                 android:textSize="30sp" />
 
             <GridView
+                android:id="@+id/seleccionCarnesGV"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_marginTop="10dp"
@@ -50,11 +51,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Vegetales y legumbres"
+                android:text="Vegetales "
                 android:textColor="#000000"
                 android:textSize="30sp" />
 
             <GridView
+                android:id="@+id/seleccionVegetalesGV"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_marginTop="10dp"
@@ -69,6 +71,7 @@
                 android:textSize="30sp" />
 
             <GridView
+                android:id="@+id/seleccionFrutasGV"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_marginTop="10dp"
@@ -83,6 +86,7 @@
                 android:textSize="30sp" />
 
             <GridView
+                android:id="@+id/seleccionGranosVG"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_marginTop="10dp"
@@ -96,6 +100,7 @@
                 android:textSize="30sp" />
 
             <GridView
+                android:id="@+id/seleccionhierbasSpeciesGV"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_marginTop="10dp"
@@ -110,6 +115,7 @@
                 android:textSize="30sp" />
 
             <GridView
+                android:id="@+id/seleccionLacteosGV"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_marginTop="10dp"
