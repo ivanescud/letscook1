@@ -3,6 +3,7 @@ package com.simplelifestudio.letscook1.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -51,6 +52,8 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
     private HomeRecetaAdapter recetaAdapter;
     private HomeRecetaAdapter bebidasAdapter;
     FirebaseFirestore db;
+    User curretUD;
+    FireBaseData data;
 
 
 
@@ -113,23 +116,26 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
         });
 
 
-        FireBaseData data = new FireBaseData();
-
-        data.getUserData(db,getApplicationContext(),userImgCIV,userNameTV);
-
-        String userID = mAuth.getCurrentUser().getUid();
 
 
-        db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                User currentuser =  documentSnapshot.toObject(User.class);
 
 
-            }
-        });
 
-
+//        data.getUserData(db,getApplicationContext(),userImgCIV,userNameTV);
+//
+//        String userID = mAuth.getCurrentUser().getUid();
+//
+//
+//        db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            @Override
+//            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                User currentuser =  documentSnapshot.toObject(User.class);
+//
+//
+//            }
+//        });
+//
+//
 
 
     }
@@ -197,6 +203,7 @@ public class HomeActivity extends AppCompatActivity implements HomeRecetaAdapter
         Intent intent = new Intent (getApplicationContext(),receta_detailActivity.class).putExtra("data",data);
         startActivity(intent);
     }
+
 
 
 

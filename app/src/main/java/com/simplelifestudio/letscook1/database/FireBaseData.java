@@ -1,6 +1,7 @@
 package com.simplelifestudio.letscook1.database;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -28,15 +29,20 @@ public class FireBaseData {
     private User currendUser;
 
 
+
     public FireBaseData() {
 
         mAuth = FirebaseAuth.getInstance();
         db1 = FirebaseFirestore.getInstance();
 
         currendUser = new User();
+
+
+
+
     }
 
-    public User getUserData(FirebaseFirestore db, Context contex, CircleImageView userImgCIV, TextView userNameTV) {
+    public User setUserDataTitle(FirebaseFirestore db, Context contex, CircleImageView userImgCIV, TextView userNameTV) {
 
         String userID = mAuth.getCurrentUser().getUid();
 
@@ -46,18 +52,12 @@ public class FireBaseData {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 currendUser = documentSnapshot.toObject(User.class);
-
-
                 Glide.with(contex).load(currendUser.getUserImg()).into(userImgCIV);
-
                 String username = currendUser.getNombre() + " " + currendUser.getApellido();
                 userNameTV.setText(username);
             }
         });
-
         return currendUser ;
-
-
     }
 
 
@@ -67,7 +67,25 @@ public class FireBaseData {
 
     }
 
+    public User getCurrendUser() {
 
+        String userID = mAuth.getCurrentUser().getUid();
+
+        Log.d(TAGU,userID);
+
+        db1.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                currendUser =  documentSnapshot.toObject(User.class);
+
+            }
+        });
+
+
+
+        return currendUser;
+    }
 
 
 }
