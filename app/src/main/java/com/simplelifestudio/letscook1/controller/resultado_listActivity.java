@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,9 +33,11 @@ import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.BusquedaRecycleAdapter;
 import com.simplelifestudio.letscook1.adapters.CategoriaAdapter;
 import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
+import com.simplelifestudio.letscook1.database.FireBaseData;
 import com.simplelifestudio.letscook1.extra.DataHolder;
 import com.simplelifestudio.letscook1.model.Ingredientes;
 import com.simplelifestudio.letscook1.model.Receta;
+import com.simplelifestudio.letscook1.model.User;
 
 import java.util.ArrayList;
 
@@ -42,7 +45,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import me.relex.circleindicator.CircleIndicator3;
 
 
-public class resultado_listActivity extends AppCompatActivity implements BusquedaRecycleAdapter.OnClickCell2 , HomeRecetaAdapter.OnClickCell {
+public class resultado_listActivity extends AppCompatActivity implements BusquedaRecycleAdapter.OnClickCell2, HomeRecetaAdapter.OnClickCell {
+
+    private final static String TAGU = "FIREBASEUSER";
+
 
     private ViewPager2 mainPager;
     private HomeRecetaAdapter adapter;
@@ -61,6 +67,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     private FirebaseFirestore db;
     private CircleImageView useImgCIV;
     private TextView userNameTV;
+    private User currendUser;
 
 
     @Override
@@ -70,35 +77,28 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
 
         init();
 
+        adapter = new HomeRecetaAdapter(recetaslist, resultado_listActivity.this, this);
 
-
-
-        adapter = new HomeRecetaAdapter(recetaslist,resultado_listActivity.this,this);
-
-        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView1.setLayoutManager(horizontalLayoutManager);
 
-        LinearLayoutManager horizontalLayoutManager2 = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager horizontalLayoutManager2 = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView2.setLayoutManager(horizontalLayoutManager2);
 
-        LinearLayoutManager horizontalLayoutManager3 = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager horizontalLayoutManager3 = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView3.setLayoutManager(horizontalLayoutManager3);
 
 
-
-        recycleAdapter = new BusquedaRecycleAdapter(recetaslist,resultado_listActivity.this,this,1);
-        recycleAdapter2 = new BusquedaRecycleAdapter(bebidaslist,resultado_listActivity.this,this,2);
-        recycleAdapter3 = new BusquedaRecycleAdapter(recetaslist,resultado_listActivity.this,this,3);
+        recycleAdapter = new BusquedaRecycleAdapter(recetaslist, resultado_listActivity.this, this, 1);
+        recycleAdapter2 = new BusquedaRecycleAdapter(bebidaslist, resultado_listActivity.this, this, 2);
+        recycleAdapter3 = new BusquedaRecycleAdapter(recetaslist, resultado_listActivity.this, this, 3);
 
         mainPager.setAdapter(adapter);
         recyclerView1.setAdapter(recycleAdapter);
         recyclerView2.setAdapter(recycleAdapter2);
         recyclerView3.setAdapter(recycleAdapter3);
         circleIndicator.setViewPager(mainPager);
-       // circleIndicator.setViewPager(mainPager);
-
-        getUserDataFirebase();
-
+        // circleIndicator.setViewPager(mainPager);
 
         floatbut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,13 +107,14 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
             }
         });
 
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.searchmenu,menu);
+        inflater.inflate(R.menu.searchmenu, menu);
 
         MenuItem searchItem = menu.findItem(R.id.searchbar);
         SearchView searchView = (SearchView) searchItem.getActionView();
@@ -139,7 +140,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         switch (item.getItemId()) {
             case R.id.logoutmenuBT:
                 mAuth.signOut();
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
                 break;
 
@@ -157,21 +158,29 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         recyclerView2 = findViewById(R.id.busquedaSegunRV);
         recyclerView3 = findViewById(R.id.busquedaTreRV);
         floatbut = findViewById(R.id.busquedafloatinBut);
-        userNameTV = findViewById(R.id.usernamepru);
-        useImgCIV = findViewById(R.id.userImgpru);
+        userNameTV = findViewById(R.id.busquedaUserNameTV);
+        useImgCIV = findViewById(R.id.busquedaUserImgCIV);
 
         circleIndicator.animatePageSelected(2);
 
-       DataHolder data = new DataHolder();
+        DataHolder data = new DataHolder();
         recetaslist = data.getRecetas();
         bebidaslist = data.getBebidas();
 
 
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
+
+        String userID = mAuth.getCurrentUser().getUid();
+
+        Log.d(TAGU, userID);
+
+        FireBaseData data1 = new FireBaseData();
+
+        data1.setUserDataTitle(db,getApplicationContext(),useImgCIV,userNameTV);
 
     }
-
-
 
 
     @Override
@@ -185,7 +194,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     }
 
 
-    private void  dialog () {
+    private void dialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(resultado_listActivity.this);
 
@@ -213,7 +222,6 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         });
 
 
-
         salirBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -227,9 +235,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     }
 
 
-
-
-    void dialog2(){
+    void dialog2() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(resultado_listActivity.this);
 
@@ -240,7 +246,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         DataHolder dataHolder = new DataHolder();
         ArrayList<Ingredientes> categoria = new ArrayList<>();
         categoria = dataHolder.getCategoria();
-        CategoriaAdapter categoriaAdapter = new CategoriaAdapter(resultado_listActivity.this,categoria,R.layout.celda_categoria);
+        CategoriaAdapter categoriaAdapter = new CategoriaAdapter(resultado_listActivity.this, categoria, R.layout.celda_categoria);
         gridView.setAdapter(categoriaAdapter);
 
 
@@ -249,8 +255,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     }
 
 
-
-    private void  dialogbebidas () {
+    private void dialogbebidas() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(resultado_listActivity.this);
 
@@ -274,18 +279,16 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
             public void onClick(View view) {
 
 
-
             }
         });
 
         bebidasIB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // startActivity(new Intent(getApplicationContext(),Categoria.class).putExtra("Dato","bebidas"));
+                // startActivity(new Intent(getApplicationContext(),Categoria.class).putExtra("Dato","bebidas"));
 
             }
         });
-
 
 
         salirBT.setOnClickListener(new View.OnClickListener() {
@@ -301,61 +304,9 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     }
 
 
-
-
     private void getUserDataFirebase() {
 
-        String userID = mAuth.getCurrentUser().getProviderId().toString();
-        Log.d("Firebase",userID);
 
-        db = FirebaseFirestore.getInstance();
-
-        db.collection("users").document(userID)
-                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-
-                //Log.d("Firebase", documentSnapshot.getData().get("nombre").toString());
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("Firebase",e.getMessage());
-            }
-        });
-//       db.collection("users").document(userID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//
-//                Map<String,Object> map = task.getResult().getData();
-//
-//
-//
-//
-//
-//               Log.d("Firebase", map.get("nombre").toString());
-//
-//
-////
-////                usuario.setNombre(map.get("nombre").toString());
-////                usuario.setApellido(map.get("apellido").toString());
-////                usuario.setUserImg(map.get("userImg").toString());
-////                usuario.setEdad(Integer.parseInt(map.get("edad").toString()));
-////                usuario.setUserID(map.get("userID").toString());
-//
-//
-////                Glide.with(getApplicationContext()).load(usuario.getUserImg()).into(useImgCIV);
-////                userNameTV.setText(usuario.getNombre()+" "+usuario.getApellido());
-//
-//
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//
-//            }
-//        });
 
 
     }
