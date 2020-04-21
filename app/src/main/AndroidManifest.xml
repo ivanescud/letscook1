@@ -11,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".controller.RecetaList"
+            android:label="LET&apos;S COOK"
+            android:theme="@style/HomeActivityAppTheme"/>
         <activity android:name=".controller.ResultadoBusqueda" />
         <activity android:name=".controller.SeleccioneIngrediente" />
         <activity
@@ -25,7 +28,7 @@
         <activity
             android:name=".controller.resultado_listActivity"
             android:label="LET&apos;S COOK"
-            android:theme="@style/HomeActivityAppTheme"></activity>
+            android:theme="@style/HomeActivityAppTheme" />
         <activity android:name=".controller.MainActivity" />
         <activity android:name=".controller.Splash" />
         <activity android:name=".controller.receta_detailActivity" />
