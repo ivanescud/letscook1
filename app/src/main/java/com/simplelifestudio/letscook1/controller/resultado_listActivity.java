@@ -56,7 +56,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import me.relex.circleindicator.CircleIndicator3;
 
 
-public class resultado_listActivity extends AppCompatActivity implements BusquedaRecycleAdapter.OnClickCell2, HomeRecetaAdapter.OnClickCell{
+public class resultado_listActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final static String TAGU = "FIREBASEUSER";
 
@@ -86,6 +86,11 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     private ArrayList<Receta> bebidasList = new ArrayList<>();
     private ArrayList<Receta>toplist = new ArrayList<>();
     private BannerAdapter bannerAdapter;
+    private Button vMasRecetaBT;
+    private Button vMasBebidasBT;
+    private Button vMasTopBT;
+
+
 
 
     @Override
@@ -187,36 +192,22 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
         floatbut = findViewById(R.id.busquedafloatinBut);
         userNameTV = findViewById(R.id.busquedaUserNameTV);
         useImgCIV = findViewById(R.id.busquedaUserImgCIV);
+        vMasRecetaBT = findViewById(R.id.busquedaRecetaBT);
+        vMasBebidasBT = findViewById(R.id.busquedaBebidasBT);
+        vMasTopBT = findViewById(R.id.busquedaTopBT);
         //loadingLayout = findViewById(R.id.busquedaMainLoadLayoutFL);
         circleIndicator.animatePageSelected(2);
-
-
-
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
        // loadingLayout.setVisibility(View.VISIBLE);
 
-
-
-
-
-
-    }
-
-
-
-    @Override
-    public void onClickCell2(int positon) {
+        vMasTopBT.setOnClickListener(this);
+        vMasBebidasBT.setOnClickListener(this);
+        vMasRecetaBT.setOnClickListener(this);
 
     }
-
-    @Override
-    public void onClickCell(int positon) {
-
-    }
-
 
 
 
@@ -353,11 +344,7 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
             }
         });
 
-
-
     }
-
-
 
     public void prepararUser() {
         getUserDataFirebase();
@@ -399,7 +386,12 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
                     bannerList.add(banner);
                 }
 
-                bannerAdapter = new BannerAdapter(bannerList,getApplicationContext(),resultado_listActivity.this::onClickCell);
+                bannerAdapter = new BannerAdapter(bannerList, getApplicationContext(), new BannerAdapter.OnClickCellBanner() {
+                    @Override
+                    public void onClickCell(int positon) {
+
+                    }
+                });
 
                 mainPager.setAdapter(bannerAdapter);
                 circleIndicator.setViewPager(mainPager);
@@ -427,7 +419,12 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
                     recetaslist.add(receta);
                 }
 
-                recycleAdapter = new BusquedaRecycleAdapter(recetaslist, resultado_listActivity.this, resultado_listActivity.this::onClickCell2, 1);
+                recycleAdapter = new BusquedaRecycleAdapter(recetaslist, resultado_listActivity.this, new BusquedaRecycleAdapter.OnClickCell2() {
+                    @Override
+                    public void onClickCell2(int positon) {
+
+                    }
+                },1);
                 recyclerView1.setAdapter(recycleAdapter);
 
             }
@@ -456,7 +453,12 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
                     bebidasList.add(receta);
                 }
 
-                recycleAdapter2 = new BusquedaRecycleAdapter(bebidasList, resultado_listActivity.this, resultado_listActivity.this::onClickCell2, 1);
+                recycleAdapter2 = new BusquedaRecycleAdapter(bebidasList, resultado_listActivity.this, new BusquedaRecycleAdapter.OnClickCell2() {
+                    @Override
+                    public void onClickCell2(int positon) {
+
+                    }
+                },1);
                 recyclerView2.setAdapter(recycleAdapter2);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -482,7 +484,12 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
                     toplist.add(receta);
                 }
 
-                recycleAdapter3 = new BusquedaRecycleAdapter(toplist, resultado_listActivity.this, resultado_listActivity.this::onClickCell2, 3);
+                recycleAdapter3 = new BusquedaRecycleAdapter(toplist, resultado_listActivity.this, new BusquedaRecycleAdapter.OnClickCell2() {
+                    @Override
+                    public void onClickCell2(int positon) {
+
+                    }
+                }, 3);
                 recyclerView3.setAdapter(recycleAdapter3);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -496,6 +503,26 @@ public class resultado_listActivity extends AppCompatActivity implements Busqued
     }
 
 
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+            case R.id.busquedaRecetaBT:
+            startActivity(new Intent(getApplicationContext(),RecetaList.class).putExtra("tipo","recetas"));
+            break;
+
+            case R.id.busquedaBebidasBT:
+                startActivity(new Intent(getApplicationContext(),RecetaList.class).putExtra("tipo","bebidas"));
+                break;
 
 
+            case R.id.busquedaTopBT:
+                startActivity(new Intent(getApplicationContext(),Top10.class));
+                break;
+
+
+        }
+
+
+    }
 }
