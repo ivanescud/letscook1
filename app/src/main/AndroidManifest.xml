@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".controller.ResultadoBusqueda" />
+        <activity android:name=".controller.SeleccioneIngrediente" />
         <activity
             android:name=".controller.Top10"
             android:label="Top 10"
