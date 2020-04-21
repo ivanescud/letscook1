@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         app:cardBackgroundColor="@color/loginbutpress"
         app:cardElevation="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,48 +25,160 @@
             android:textSize="18sp" />
     </androidx.cardview.widget.CardView>
 
-    <ScrollView
-        android:layout_width="match_parent"
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:fadeScrollbars="false"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="none"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
         <com.google.android.material.tabs.TabLayout
-            android:layout_width="600dp"
-            android:layout_height="wrap_content">
+            android:id="@+id/seleccionIngredientesTabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true"
+            android:persistentDrawingCache="scrolling"
+            android:scrollbars="horizontal">
 
             <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
+                android:id="@+id/id1"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="CARNE/PESCADO" >
-                <include layout="@layout/celda_top1"/>
-            </com.google.android.material.tabs.TabItem>
+                android:text="CARNE Y PESCADO"></com.google.android.material.tabs.TabItem>
 
             <com.google.android.material.tabs.TabItem
+                android:id="@+id/id2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Vegetales" />
 
             <com.google.android.material.tabs.TabItem
+                android:id="@+id/id3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="FRUTAS" />
 
             <com.google.android.material.tabs.TabItem
+                android:id="@+id/id4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GRANOS" />
+
             <com.google.android.material.tabs.TabItem
+                android:id="@+id/id5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="HIERBAS Y ESPECIES" />
+
             <com.google.android.material.tabs.TabItem
+                android:id="@+id/id6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="LACTEOS" />
         </com.google.android.material.tabs.TabLayout>
-    </ScrollView>
+    </HorizontalScrollView>
+
+    <FrameLayout
+        android:id="@+id/seleccionIngredientesCarnes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        <include
+            layout="@layout/grind_ingredientes_carnes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/seleccionIngredientesVegetales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        <include
+            layout="@layout/grind_ingredientes_vegetales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/seleccionIngredientesFrutas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        <include
+            layout="@layout/grind_ingredientes_frutas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/seleccionIngredientesGranos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        <include
+            layout="@layout/grind_ingredientes_granos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/seleccionIngredientesHierbas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        <include
+            layout="@layout/grind_ingredientes_hierbas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/seleccionIngredientesLacteos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        <include
+            layout="@layout/grind_ingredientes_lacteos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </FrameLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
 
