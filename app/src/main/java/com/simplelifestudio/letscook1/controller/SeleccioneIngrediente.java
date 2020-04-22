@@ -211,19 +211,19 @@ public class SeleccioneIngrediente extends AppCompatActivity {
                        }
                        break;
                    case 4:
-                       if(label.get(ingredientesGranos.get(i).getNombreIN())!=null){
-                           label.remove(ingredientesGranos.get(i).getNombreIN());
+                       if(label.get(ingredientesHierbas.get(i).getNombreIN())!=null){
+                           label.remove(ingredientesHierbas.get(i).getNombreIN());
                        }
                        else {
-                           label.put(ingredientesGranos.get(i).getNombreIN(),true);
+                           label.put(ingredientesHierbas.get(i).getNombreIN(),true);
                        }
                        break;
                    case 5:
-                       if(label.get(ingredientesGranos.get(i).getNombreIN())!=null){
-                           label.remove(ingredientesGranos.get(i).getNombreIN());
+                       if(label.get(ingredientesLacteos.get(i).getNombreIN())!=null){
+                           label.remove(ingredientesLacteos.get(i).getNombreIN());
                        }
                        else {
-                           label.put(ingredientesGranos.get(i).getNombreIN(),true);
+                           label.put(ingredientesLacteos.get(i).getNombreIN(),true);
                        }
                        break;
                    default:
