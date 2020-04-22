@@ -32,7 +32,7 @@ public class RecetaList extends AppCompatActivity {
     private RecyclerView gridlist;
     private ArrayList<Receta> recetaslist = new ArrayList<Receta>();
     private FirebaseFirestore db;
-    private HomeRecetaAdapter adapter;
+    private BusquedaRecycleAdapter adapter;
     private String tipo;
 
 
@@ -69,7 +69,7 @@ public class RecetaList extends AppCompatActivity {
 
 
 
-        gridlist.setLayoutManager(new GridLayoutManager(RecetaList.this,3));
+        gridlist.setLayoutManager(new GridLayoutManager(RecetaList.this,2));
 
         getRecetasData();
 
@@ -104,12 +104,12 @@ public class RecetaList extends AppCompatActivity {
                         recetaslist.add(receta);
                     }
 
-                    adapter = new HomeRecetaAdapter(recetaslist, getApplicationContext(), new HomeRecetaAdapter.OnClickCell() {
+                    adapter = new BusquedaRecycleAdapter(recetaslist, getApplicationContext(), new BusquedaRecycleAdapter.OnClickCell2() {
                         @Override
-                        public void onClickCell(int positon) {
+                        public void onClickCell2(int positon) {
 
                         }
-                    });
+                    },1);
 
                     gridlist.setAdapter(adapter);
 

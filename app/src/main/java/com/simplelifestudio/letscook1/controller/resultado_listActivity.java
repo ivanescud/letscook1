@@ -389,7 +389,20 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                 bannerAdapter = new BannerAdapter(bannerList, getApplicationContext(), new BannerAdapter.OnClickCellBanner() {
                     @Override
                     public void onClickCell(int positon) {
+                        Banner banner = bannerList.get(positon);
+                        if(banner.getBannerType().equals("receta")){
+                           String recetaId = banner.getRecetaID();
+                            startActivity(new Intent(getApplicationContext(),receta_detailActivity.class).putExtra("recetaId",recetaId));
+                        }else if (banner.getBannerType().equals("evento")){
 
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("banner",banner);
+                            startActivity(new Intent(getApplicationContext(),BannerDetail.class).putExtras(bundle));
+
+                        }else if(banner.getBannerType().equals("lista")){
+                            String style = banner.getStyle();
+                            startActivity(new Intent(getApplicationContext(),RecetaList.class).putExtra("style",style));
+                        }
                     }
                 });
 
@@ -422,7 +435,11 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                 recycleAdapter = new BusquedaRecycleAdapter(recetaslist, resultado_listActivity.this, new BusquedaRecycleAdapter.OnClickCell2() {
                     @Override
                     public void onClickCell2(int positon) {
+                        Receta recetas = recetaslist.get(positon);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("receta",recetas);
 
+                        startActivity(new Intent(getApplicationContext(),receta_detailActivity.class).putExtras(bundle));
                     }
                 },1);
                 recyclerView1.setAdapter(recycleAdapter);
@@ -456,7 +473,11 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                 recycleAdapter2 = new BusquedaRecycleAdapter(bebidasList, resultado_listActivity.this, new BusquedaRecycleAdapter.OnClickCell2() {
                     @Override
                     public void onClickCell2(int positon) {
+                        Receta recetas = recetaslist.get(positon);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("receta",recetas);
 
+                        startActivity(new Intent(getApplicationContext(),receta_detailActivity.class).putExtras(bundle));
                     }
                 },1);
                 recyclerView2.setAdapter(recycleAdapter2);
@@ -487,7 +508,11 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                 recycleAdapter3 = new BusquedaRecycleAdapter(toplist, resultado_listActivity.this, new BusquedaRecycleAdapter.OnClickCell2() {
                     @Override
                     public void onClickCell2(int positon) {
+                        Receta recetas = recetaslist.get(positon);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("receta",recetas);
 
+                        startActivity(new Intent(getApplicationContext(),receta_detailActivity.class).putExtras(bundle));
                     }
                 }, 3);
                 recyclerView3.setAdapter(recycleAdapter3);

@@ -19,6 +19,7 @@ public class Receta implements Serializable {
     private String idRC;
     private String tiempo;
     private String categoria;
+    private String style;
 
 
     public Receta() {
@@ -59,6 +60,17 @@ public class Receta implements Serializable {
         this.mainImgRc = mainImgRc;
     }
 
+    public void setRankingRC(double rankingRC) {
+        this.rankingRC = rankingRC;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
 
     public String getCategoria() {
         return categoria;

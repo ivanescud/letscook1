@@ -11,9 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.RecetaList"
+        <activity android:name=".controller.BannerDetail"></activity>
+        <activity
+            android:name=".controller.RecetaList"
             android:label="LET&apos;S COOK"
-            android:theme="@style/HomeActivityAppTheme"/>
+            android:theme="@style/HomeActivityAppTheme" />
         <activity android:name=".controller.ResultadoBusqueda" />
         <activity android:name=".controller.SeleccioneIngrediente" />
         <activity

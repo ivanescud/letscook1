@@ -9,6 +9,8 @@ private String bannerTitle;
 private String bannerType;
 private String bannersubTile;
 private String bannerMainImg;
+private String recetaID;
+private String style;
 
     public Banner() {
     }
@@ -21,6 +23,21 @@ private String bannerMainImg;
         this.bannerMainImg = bannerMainImg;
     }
 
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getRecetaID() {
+        return recetaID;
+    }
+
+    public void setRecetaID(String recetaID) {
+        this.recetaID = recetaID;
+    }
 
     public String getBannerID() {
         return bannerID;

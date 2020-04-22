@@ -20,6 +20,7 @@ public class AdapterIngredientes extends RecyclerView.Adapter<AdapterIngrediente
     private LayoutInflater layoutInflater;
     private Context context;
 
+
     public AdapterIngredientes(Context context,ArrayList<Ingrediente> ingrediente) {
         this.context = context;
         this.ingrediente = ingrediente;
