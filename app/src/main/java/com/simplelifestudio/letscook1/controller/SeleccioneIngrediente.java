@@ -1,13 +1,18 @@
 package com.simplelifestudio.letscook1.controller;
 
+import android.app.AppComponentFactory;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -19,13 +24,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SeleccioneIngrediente{
+public class SeleccioneIngrediente extends AppCompatActivity {
     private Context context;
   private TabLayout tabLayout;
   private GridView gridview;
   private TextView textViewlabeL;
   private   GridIngredientesAdapter gridIngredientesAdapter;
-    private FloatingActionButton  floatingActionButton;
+    private Button floatingActionButton;
     private ArrayList<Ingredientes> ingredientesVegetales;
     private ArrayList<Ingredientes> ingredientesCarnes;
     private ArrayList<Ingredientes> ingredientesFrutas;
@@ -36,18 +41,25 @@ public class SeleccioneIngrediente{
     private int tipoIngrediente;
     private int datos =0;
 
-    public SeleccioneIngrediente(Context context, TabLayout tabLayout, GridView gridview, TextView textViewlabeL, GridIngredientesAdapter gridIngredientesAdapter, FloatingActionButton floatingActionButton) {
-        this.context = context;
-        this.tabLayout = tabLayout;
-        this.gridview = gridview;
-        this.textViewlabeL = textViewlabeL;
-        this.gridIngredientesAdapter = gridIngredientesAdapter;
-        this.floatingActionButton = floatingActionButton;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.seleccion_ingredientes);
+
+        context = getApplicationContext();
         init();
+
     }
 
-
     public void init(){
+
+        tabLayout = findViewById(R.id.seleccionIngredientesTabLayout);
+        gridview = findViewById(R.id.seleccion_ingredientesGridView);
+        textViewlabeL = findViewById(R.id.seleccionIngredientesLabelTV);
+        floatingActionButton = findViewById(R.id.selecciomIngredientesFlotingButtom);
+
         ingredientesCarnes = new ArrayList<Ingredientes>();
         ingredientesVegetales = new ArrayList<Ingredientes>();
         ingredientesFrutas = new ArrayList<>();
@@ -59,6 +71,8 @@ public class SeleccioneIngrediente{
         tablayoutListener();
         gridviewItemListener();
         flotingbuttomActionListener();
+
+
     }
 
     public void obtenerDatos(){
