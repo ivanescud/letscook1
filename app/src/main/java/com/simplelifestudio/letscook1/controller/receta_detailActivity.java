@@ -46,6 +46,7 @@ import java.util.Map;
 public class receta_detailActivity extends AppCompatActivity {
     //bundle
     private Bundle bundle;
+    private boolean favorito;
     //declaracion de la view recetas_detail_nestedscroll.xml
     private TextView calificacionTV;
     private TextView tituloTV;
@@ -168,29 +169,32 @@ public class receta_detailActivity extends AppCompatActivity {
 
             @Override
             public void onReady(YouTubePlayer youTubePlayer) {
-                youTubePlayer.loadVideo(videoUrl, 0);
-                youTubePlayer.play();
-                youTubePlayer.addListener(youTubePlayerTracker);
-                backgroundIV.setVisibility(View.GONE);
-                youTubePlayer1 = youTubePlayer;
-                youTubePlayerView.getPlayerUiController().setFullScreenButtonClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Bundle bundle = new Bundle();
-                        bundle.putString("videoUrl",videoUrl);
-                        bundle.putSerializable("paso",paso);
-                        bundle.putInt("posVideo",(int)youTubePlayerTracker.getCurrentSecond());
-                        Intent intent = new Intent(getApplicationContext(),reproductor_horizontalActivity.class).putExtras(bundle);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.top_in, R.anim.left_out);
-                    }
-                });
+                if(videoUrl!=null) {
+                    Toast.makeText(getApplicationContext(),videoUrl,Toast.LENGTH_SHORT).show();
+                    youTubePlayer.loadVideo(videoUrl, 0);
+                    youTubePlayer.play();
+                    youTubePlayer.addListener(youTubePlayerTracker);
+                    backgroundIV.setVisibility(View.GONE);
+                    youTubePlayer1 = youTubePlayer;
+                    youTubePlayerView.getPlayerUiController().setFullScreenButtonClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("videoUrl", videoUrl);
+                            bundle.putSerializable("paso", paso);
+                            bundle.putInt("posVideo", (int) youTubePlayerTracker.getCurrentSecond());
+                            Intent intent = new Intent(getApplicationContext(), reproductor_horizontalActivity.class).putExtras(bundle);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.top_in, R.anim.left_out);
+                        }
+                    });
+                }
             }
 
             @Override
             public void onError(YouTubePlayer youTubePlayer, PlayerConstants.PlayerError error) {
-                youTubePlayer.loadVideo(videoUrl, 0);
-                youTubePlayer.play();
+               // youTubePlayer.loadVideo(videoUrl, 0);
+              //  youTubePlayer.play();
             }
 
             @Override
@@ -208,6 +212,15 @@ public class receta_detailActivity extends AppCompatActivity {
         favoriteIB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (favorito){
+                    favoriteIB.setImageResource(R.drawable.ic_favorite_red_24dp);
+                    Toast.makeText(receta_detailActivity.this, "Te gusta", Toast.LENGTH_SHORT).show();
+                    favorito = false;
+                }else{
+                    favoriteIB.setImageResource(R.drawable.ic_favorite_black_24dp);
+                    Toast.makeText(receta_detailActivity.this, "Ya no te gusta", Toast.LENGTH_SHORT).show();
+                    favorito = true;
+                }
             }
         });
     }

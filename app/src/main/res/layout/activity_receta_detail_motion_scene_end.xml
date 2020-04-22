@@ -91,9 +91,9 @@
 
     <ImageButton
         android:id="@+id/recetaDetailBotonFavoritoIB"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="15dp"
         android:background="@drawable/white_circle"
         android:backgroundTint="#F6555B"
         android:contentDescription="@string/Imagen"
