@@ -108,28 +108,6 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     boolean active = false;
 
 
-    private TabLayout tabLayout;
-    private GridView gridview;
-    private TextView textViewlabeL;
-    private GridIngredientesAdapter gridIngredientesAdapter;
-    private Button  floatingActionButton;
-    private ArrayList<Ingredientes> ingredientesVegetales;
-    private ArrayList<Ingredientes> ingredientesCarnes;
-    private ArrayList<Ingredientes> ingredientesFrutas;
-    private ArrayList<Ingredientes> ingredientesGranos;
-    private ArrayList<Ingredientes> ingredientesHierbas;
-    private ArrayList<Ingredientes> ingredientesLacteos;
-    private Map<String,Boolean> label;
-    private int tipoIngrediente;
-    private int datos =0;
-
-
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,41 +115,14 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
 
         init();
 
-
-
-        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView1.setLayoutManager(horizontalLayoutManager);
-
-        LinearLayoutManager horizontalLayoutManager2 = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView2.setLayoutManager(horizontalLayoutManager2);
-
-        LinearLayoutManager horizontalLayoutManager3 = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView3.setLayoutManager(horizontalLayoutManager3);
-
-
-
-
-
+        //Update UI
         getBannerData();
         getRecetasData();
         getBebidasData();
         getTopData();
 
 
-
-        // circleIndicator.setViewPager(mainPager);
-
-        floatbut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog();
-            }
-        });
-
-
-
     }
-
 
     @Override
     protected void onStart() {
@@ -220,6 +171,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
 
     }
 
+    //Inicializaciones
     private void init() {
         mainPager = findViewById(R.id.busquedaAutoScrollPager);
         circleIndicator = findViewById(R.id.busquedaCircleIndicator);
@@ -232,7 +184,18 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         vMasRecetaBT = findViewById(R.id.busquedaRecetaBT);
         vMasBebidasBT = findViewById(R.id.busquedaBebidasBT);
         vMasTopBT = findViewById(R.id.busquedaTopBT);
-        //loadingLayout = findViewById(R.id.busquedaMainLoadLayoutFL);
+
+
+        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView1.setLayoutManager(horizontalLayoutManager);
+
+        LinearLayoutManager horizontalLayoutManager2 = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView2.setLayoutManager(horizontalLayoutManager2);
+
+        LinearLayoutManager horizontalLayoutManager3 = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView3.setLayoutManager(horizontalLayoutManager3);
+
+
         circleIndicator.animatePageSelected(2);
 
         mAuth = FirebaseAuth.getInstance();
@@ -244,8 +207,11 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         vMasBebidasBT.setOnClickListener(this);
         vMasRecetaBT.setOnClickListener(this);
 
+
     }
 
+
+    //Dialog
 
     private void dialogEvento(Banner banner) {
 
@@ -261,7 +227,6 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         bannerInfo = dialogView.findViewById(R.id.bannerdetailDatosTV);
         salirBT = dialogView.findViewById(R.id.bannerdetailSalirBT);
         notifBT = dialogView.findViewById(R.id.bannerdetailNotiBT);
-
 
 
         Glide.with(getApplicationContext()).load(banner.getBannerMainImg()).into(mainImgIV);
@@ -409,32 +374,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     }
 
 
-
-    public void flotingbuttomActionListener(){
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String[] listalabel = new String[datos];
-                int i = 0;
-                if(label.isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"No tienes ingredientes sufucientes",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    for(String key : label.keySet()) {
-                        listalabel[i] = key;
-                        i++;
-                    }
-                    Bundle bundle = new Bundle();
-                    bundle.putStringArray("listalabel",listalabel);
-                    Intent intent = new Intent(getApplicationContext(), ResultadoBusqueda.class).putExtras(bundle);
-                    startActivity(intent);
-                }
-            }
-        });
-    }
-
-
-
+    //Firebase Handle
 
     private void getUserDataFirebase() {
 
@@ -607,7 +547,6 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     }
 
 
-
     private void getTopData(){
         CollectionReference topF = db.collection("recetas");
         Query query = topF.whereGreaterThanOrEqualTo("rankingRC",4);
@@ -642,11 +581,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     }
 
 
-
-
-
-
-
+// Onclick
 
     @Override
     public void onClick(View view) {
@@ -665,7 +600,9 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                 startActivity(new Intent(getApplicationContext(),Top10.class));
                 break;
 
-
+            case R.id.busquedafloatinBut:
+                dialog();
+            break;
         }
 
 
