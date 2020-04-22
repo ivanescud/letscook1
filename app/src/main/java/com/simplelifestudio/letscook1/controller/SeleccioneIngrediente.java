@@ -96,9 +96,9 @@ public class SeleccioneIngrediente extends AppCompatActivity {
 
 
         ingredientesFrutas.add(new Ingredientes("Banana",R.drawable.ingre_banana));
-        ingredientesFrutas.add(new Ingredientes("Uvas",R.drawable.ingre_banana));
-        ingredientesFrutas.add(new Ingredientes("Cerezas",R.drawable.ingre_banana));
-        ingredientesFrutas.add(new Ingredientes("Kiwi",R.drawable.ingre_banana));
+        ingredientesFrutas.add(new Ingredientes("Uvas",R.drawable.ingre_uva));
+        ingredientesFrutas.add(new Ingredientes("Cerezas",R.drawable.ingre_cerezas));
+        ingredientesFrutas.add(new Ingredientes("Kiwi",R.drawable.ingre_kiwi));
 
         ingredientesGranos.add(new Ingredientes("Arroz",R.drawable.ingre_arroz));
         ingredientesGranos.add(new Ingredientes("Mijo",R.drawable.ingre_mijo));
