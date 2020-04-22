@@ -60,9 +60,7 @@ public class Receta implements Serializable {
         this.mainImgRc = mainImgRc;
     }
 
-    public void setRankingRC(double rankingRC) {
-        this.rankingRC = rankingRC;
-    }
+
 
     public String getStyle() {
         return style;

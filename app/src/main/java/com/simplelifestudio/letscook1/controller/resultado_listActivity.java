@@ -90,6 +90,8 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     private Button vMasBebidasBT;
     private Button vMasTopBT;
 
+    String[] datos = {"hola", "numero"};
+
 
 
 

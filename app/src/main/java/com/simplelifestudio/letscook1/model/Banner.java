@@ -11,6 +11,9 @@ private String bannersubTile;
 private String bannerMainImg;
 private String recetaID;
 private String style;
+private String fecha;
+private String hora;
+private String info;
 
     public Banner() {
     }
@@ -21,6 +24,30 @@ private String style;
         this.bannerType = bannerType;
         this.bannersubTile = bannersubTile;
         this.bannerMainImg = bannerMainImg;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 
     public String getStyle() {

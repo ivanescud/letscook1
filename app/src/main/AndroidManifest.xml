@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.BannerDetail"></activity>
+        <activity android:name=".controller.BannerDetail"
+            android:label="Eventos"
+            android:theme="@style/HomeActivityAppTheme"
+            ></activity>
         <activity
             android:name=".controller.RecetaList"
             android:label="LET&apos;S COOK"

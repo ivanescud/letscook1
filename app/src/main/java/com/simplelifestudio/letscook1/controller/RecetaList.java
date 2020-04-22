@@ -34,6 +34,7 @@ public class RecetaList extends AppCompatActivity {
     private FirebaseFirestore db;
     private BusquedaRecycleAdapter adapter;
     private String tipo;
+    private String style = "none";
 
 
 
@@ -66,12 +67,18 @@ public class RecetaList extends AppCompatActivity {
 
 
         tipo = getIntent().getStringExtra("tipo");
+        style = getIntent().getStringExtra("style");
+
+        if (style.equals("none")) {
+            getRecetasData();
+
+        }else{
+            getRecetasDataStyle();
+        }
 
 
 
-        gridlist.setLayoutManager(new GridLayoutManager(RecetaList.this,2));
 
-        getRecetasData();
 
     }
 
@@ -85,6 +92,9 @@ public class RecetaList extends AppCompatActivity {
 
 
         db = FirebaseFirestore.getInstance();
+
+        gridlist.setLayoutManager(new GridLayoutManager(RecetaList.this,2));
+
     }
 
 
@@ -126,7 +136,39 @@ public class RecetaList extends AppCompatActivity {
 
         }
 
+    private void getRecetasDataStyle(){
 
+        CollectionReference topF = db.collection("recetas");
+        Query query = topF.whereEqualTo("style","italiana");
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                    Receta receta = queryDocumentSnapshot.toObject(Receta.class);
+                    recetaslist.add(receta);
+                }
+
+                adapter = new BusquedaRecycleAdapter(recetaslist, getApplicationContext(), new BusquedaRecycleAdapter.OnClickCell2() {
+                    @Override
+                    public void onClickCell2(int positon) {
+
+                    }
+                },1);
+
+                gridlist.setAdapter(adapter);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
+
+
+
+    }
 
 
 }
