@@ -4,6 +4,7 @@ import android.app.AppComponentFactory;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -92,6 +93,7 @@ public class SeleccioneIngrediente extends AppCompatActivity {
         ingredientesCarnes.add(new Ingredientes("Carne vegana", R.drawable.carnevegeta));
         ingredientesCarnes.add(new Ingredientes("Cerdo", R.drawable.carnecerdo));
         ingredientesCarnes.add(new Ingredientes("Pescado", R.drawable.carnepescado));
+        ingredientesCarnes.add(new Ingredientes("Huevos",R.drawable.huevos));
 
 
         ingredientesVegetales.add(new Ingredientes("Apio", R.drawable.ingre_apio));
@@ -104,6 +106,8 @@ public class SeleccioneIngrediente extends AppCompatActivity {
         ingredientesFrutas.add(new Ingredientes("Uvas", R.drawable.ingre_uva));
         ingredientesFrutas.add(new Ingredientes("Cerezas", R.drawable.ingre_cerezas));
         ingredientesFrutas.add(new Ingredientes("Kiwi", R.drawable.ingre_kiwi));
+        ingredientesFrutas.add(new Ingredientes("Limon",R.drawable.limon));
+        ingredientesFrutas.add(new Ingredientes("Sandia",R.drawable.sandia));
 
         ingredientesGranos.add(new Ingredientes("Arroz", R.drawable.ingre_arroz));
         ingredientesGranos.add(new Ingredientes("Arroz integral", R.drawable.ingre_arrozintegral));
@@ -257,10 +261,10 @@ public class SeleccioneIngrediente extends AppCompatActivity {
                 } else {
                     for (String key : label.keySet()) {
                         listalabel[i] = key;
+                        Log.d("Datos",key);
                         i++;
                     }
                     Bundle bundle = new Bundle();
-                    label.put("Leche",true);
                     mapData.setData(label);
                     bundle.putSerializable("datos",mapData);
                    // bundle.putStringArray("listalabel", listalabel);
