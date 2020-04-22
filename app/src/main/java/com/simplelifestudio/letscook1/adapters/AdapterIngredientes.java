@@ -38,7 +38,7 @@ public class AdapterIngredientes extends RecyclerView.Adapter<AdapterIngrediente
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
      holder.producto.setText(ingrediente.get(position).getProducto());
      holder.cantidad.setText(ingrediente.get(position).getCantidad());
-     holder.icono.setImageResource(ingrediente.get(position).getIco());
+     holder.icono.setImageResource(R.drawable.boton_favorito_pulsado);
     }
 
     @Override

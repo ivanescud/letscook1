@@ -14,7 +14,7 @@ public class Receta implements Serializable {
     private double rankingRC;
     private Map<String, Boolean> likes = new HashMap<>();
     private int coments;
-    private Map<String,String> ingredientes = new HashMap<>();
+    private Map<String,Ingrediente> ingredientes = new HashMap<>();
     private Map<String,String> pasos = new HashMap<>();
     private String autorImgRC;
     private String type;
@@ -28,7 +28,7 @@ public class Receta implements Serializable {
     public Receta() {
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, String> ingredientes,  Map<String, String> pasos, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style, String videoUrl) {
+    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes,  Map<String, String> pasos, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style, String videoUrl) {
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
@@ -46,7 +46,7 @@ public class Receta implements Serializable {
         this.videoUrl = videoUrl;
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, String> ingredientes, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style) {
+    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style) {
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
@@ -165,11 +165,11 @@ public class Receta implements Serializable {
         this.coments = coments;
     }
 
-    public Map<String, String> getIngredientes() {
+    public Map<String, Ingrediente> getIngredientes() {
         return ingredientes;
     }
 
-    public void setIngredientes(Map<String, String> ingredientes) {
+    public void setIngredientes(Map<String, Ingrediente> ingredientes) {
         this.ingredientes = ingredientes;
     }
 

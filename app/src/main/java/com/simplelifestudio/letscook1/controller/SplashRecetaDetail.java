@@ -66,8 +66,6 @@ public class SplashRecetaDetail extends AppCompatActivity {
 
         //test ingredientesRV
         ingredientes = new ArrayList<>();
-        ingredientes.add(new Ingrediente(R.drawable.ic_comment, "1/2 libra", "zanahoria"));
-
 
 
     }

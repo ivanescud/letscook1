@@ -3,23 +3,23 @@ package com.simplelifestudio.letscook1.model;
 import java.io.Serializable;
 
 public class Ingrediente implements Serializable {
-    int ico;
+    String ico;
     String cantidad;
     String producto;
 
     public Ingrediente(){}
 
-    public Ingrediente(int ico, String cantidad, String producto) {
+    public Ingrediente(String ico, String cantidad, String producto) {
         this.ico = ico;
         this.cantidad = cantidad;
         this.producto = producto;
     }
 
-    public int getIco() {
+    public String getIco() {
         return ico;
     }
 
-    public void setIco(int ico) {
+    public void setIco(String ico) {
         this.ico = ico;
     }
 

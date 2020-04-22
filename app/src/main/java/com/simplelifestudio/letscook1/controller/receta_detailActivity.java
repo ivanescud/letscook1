@@ -129,8 +129,7 @@ public class receta_detailActivity extends AppCompatActivity {
         videoInicio = 0;
         bundle = getIntent().getExtras();
         receta = (Receta) bundle.getSerializable("receta");
-       videoUrl = receta.getVideoUrl();
-        videoUrl = "xBtnW3VXc5U";
+         videoUrl = receta.getVideoUrl();
         calificacionTV.setText( String.valueOf(receta.getRankingRC()));
         calificacionTV.setText(String.valueOf(receta.getRankingRC()));
         numeroFavoritosTV.setText(String.valueOf(receta.getLikes().size()));
@@ -138,17 +137,21 @@ public class receta_detailActivity extends AppCompatActivity {
         tipoTV.setText(receta.getCategoria());
 
         String key1="",key2="",value1="",value2="";
-        for(Map.Entry<String, String> entry : receta.getIngredientes().entrySet()){
+      /*  for(Map.Entry<String, String> entry : receta.getIngredientes().entrySet()){
             if(key1.isEmpty()&&value1.isEmpty()){
                 key1 = entry.getKey(); value1 = entry.getValue();
             }
             else{
                 key2 = entry.getKey(); value2 = entry.getValue();
-                ingredientes.add(new Ingrediente(Integer.valueOf(value1),value2,key1));
+                ingredientes.add(new Ingrediente(R.drawable.ic_comment,value2,key1));
                 key1 = "";value1 = "";key2 = "";value2 = "";
             }
 
-        }
+        }*/
+      for(Map.Entry<String,Ingrediente> entry : receta.getIngredientes().entrySet()){
+          ingredientes.add(entry.getValue());
+      }
+
         int i = 1;
         for(Map.Entry<String, String> entry : receta.getPasos().entrySet()){
             if(key1.isEmpty()&&value1.isEmpty()){
@@ -156,7 +159,7 @@ public class receta_detailActivity extends AppCompatActivity {
             }
             else{
                 key2 = entry.getKey(); value2 = entry.getValue();
-                paso.add(new Paso(String.valueOf(i),value1,generarIconoRamdon(),Integer.valueOf(value2)));
+                paso.add(new Paso(String.valueOf(i),value1,generarIconoRamdon(),R.drawable.barradebusqueda));
                 key1 = "";value1 = "";key2 = "";value2 = "";
                 i++;
             }
