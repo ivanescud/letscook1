@@ -67,6 +67,8 @@
                 android:id="@+id/bannerdetailTitleTV"
                 android:text="Titulo del Evento"
                 android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:textSize="20sp"
                 />
 
             <TextView
@@ -76,6 +78,7 @@
                 android:text="SubTitulo del Evento"
                 android:layout_below="@+id/bannerdetailTitleTV"
                 android:textColor="@color/negro"
+                android:textSize="15sp"
                 />
 
             <TextView
@@ -85,6 +88,7 @@
             android:text="Fecha:"
             android:layout_below="@+id/bannerdetailSubTitleTV"
             android:layout_marginTop="5dp"
+                android:textStyle="bold"
                 android:textColor="@color/negro"
             />
 
@@ -96,6 +100,7 @@
                 android:layout_below="@+id/bannerdetailfechaTV"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/negro"
+                android:textStyle="bold"
                 />
 
             <Button
