@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -20,18 +22,25 @@ import android.widget.ThemedSpinnerAdapter;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.simplelifestudio.letscook1.R;
+import com.simplelifestudio.letscook1.adapters.BusquedaRecycleAdapter;
 import com.simplelifestudio.letscook1.model.Ingredientes;
+import com.simplelifestudio.letscook1.model.MapData;
+import com.simplelifestudio.letscook1.model.Paso;
+import com.simplelifestudio.letscook1.model.Receta;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ResultadoBusqueda extends AppCompatActivity {
-private GridView gridView;
+private RecyclerView gridlist;
 private ArrayList<String> labelList;
 private String label;
 private String tipo;
@@ -46,29 +55,38 @@ private boolean recetasDisponibles;
     private FrameLayout resultadoNoEcontrado;
     private GridView gridResultado;
     private float tiempo;
+    private FirebaseFirestore bd;
+    private int con;
+    private Map<String, Boolean> pasDatos;
+    private MapData mapData;
+    private ArrayList<Receta>recetaslist = new ArrayList<>();
+    private BusquedaRecycleAdapter adapter;
 
 //fireBase
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+   // @RequiresApi(api = Build.VERSION_CODES.N)
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         setContentView(R.layout.activity_categoria);
         init();
         heading.setVisibility(View.GONE);
         titleHeading.setText("Resultados de busqueda");
        loadingLayout.setVisibility(View.VISIBLE);
-        obtenerDatos();
-        prepararRecetas();
-        noHarResultados();
-        retorarHome();
+
+
+       // obtenerDatos();
+       // prepararRecetas();
+      //  noHarResultados();
+      //  retorarHome();
     }
 
 
 
     public void init(){
-        gridView = findViewById(R.id.categoriaGridView);
+        gridlist = findViewById(R.id.categoriaGridView);
         recetas = new ArrayList<>();
         labelList = new ArrayList<>();
         label = "";
@@ -81,7 +99,27 @@ private boolean recetasDisponibles;
         gridResultado = findViewById(R.id.categoriaGridView);
         resultadoNoEcontrado = findViewById(R.id.categoriaNoResultadosFL);
 
+        gridlist.setLayoutManager(new GridLayoutManager(ResultadoBusqueda.this,2));
+
+        bd = FirebaseFirestore.getInstance();
+
+        mapData = new MapData();
+        Bundle bundle = new Bundle();
+
+        bundle = getIntent().getExtras();
+        mapData = (MapData) bundle.getSerializable("datos");
+
+
+
+
+
     }
+
+
+
+
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void obtenerDatos(){
