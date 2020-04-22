@@ -16,6 +16,7 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -98,6 +99,8 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     private TextView fechaTV;
     private TextView bannerInfo;
     private Button salirBT;
+    private Button notifBT;
+    boolean active = false;
 
 
     String[] datos = {"hola", "numero"};
@@ -235,6 +238,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         horaTV = dialogView.findViewById(R.id.bannerdetailhoraTV);
         bannerInfo = dialogView.findViewById(R.id.bannerdetailDatosTV);
         salirBT = dialogView.findViewById(R.id.bannerdetailSalirBT);
+        notifBT = dialogView.findViewById(R.id.bannerdetailNotiBT);
 
 
 
@@ -244,6 +248,21 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         fechaTV.setText("Fecha:"+banner.getFecha());
         horaTV.setText("Hora: "+banner.getHora());
         bannerInfo.setText(banner.getInfo());
+
+        notifBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (active){
+                    notifBT.setBackgroundResource(R.drawable.ic_notifications);
+                    Toast.makeText(resultado_listActivity.this, "Notificacion Desactivada", Toast.LENGTH_SHORT).show();
+                    active = false;
+                }else{
+                    notifBT.setBackgroundResource(R.drawable.ic_notifications_active);
+                    Toast.makeText(resultado_listActivity.this, "Notificacion Activada", Toast.LENGTH_SHORT).show();
+                    active = true;
+                }
+            }
+        });
 
         salirBT.setOnClickListener(new View.OnClickListener() {
             @Override
