@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -89,6 +90,15 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     private Button vMasRecetaBT;
     private Button vMasBebidasBT;
     private Button vMasTopBT;
+
+    private ImageView mainImgIV;
+    private TextView tilteTV;
+    private TextView subTitleTV;
+    private TextView horaTV;
+    private TextView fechaTV;
+    private TextView bannerInfo;
+    private Button salirBT;
+
 
     String[] datos = {"hola", "numero"};
 
@@ -212,6 +222,40 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     }
 
 
+    private void dialogEvento(Banner banner) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(resultado_listActivity.this);
+
+        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.activity_banner_detail, null, false);
+        builder.setView(dialogView);
+        mainImgIV = dialogView.findViewById(R.id.bannerdetailMainImgIV);
+        tilteTV = dialogView.findViewById(R.id.bannerdetailTitleTV);
+        subTitleTV = dialogView.findViewById(R.id.bannerdetailSubTitleTV);
+        fechaTV = dialogView.findViewById(R.id.bannerdetailfechaTV);
+        horaTV = dialogView.findViewById(R.id.bannerdetailhoraTV);
+        bannerInfo = dialogView.findViewById(R.id.bannerdetailDatosTV);
+        salirBT = dialogView.findViewById(R.id.bannerdetailSalirBT);
+
+
+
+        Glide.with(getApplicationContext()).load(banner.getBannerMainImg()).into(mainImgIV);
+        tilteTV.setText(banner.getBannerTitle());
+        subTitleTV.setText(banner.getBannersubTile());
+        fechaTV.setText("Fecha:"+banner.getFecha());
+        horaTV.setText("Hora: "+banner.getHora());
+        bannerInfo.setText(banner.getInfo());
+
+        salirBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+
+
+        alertDialog = builder.create();
+        alertDialog.show();
+    }
 
 
     private void dialog() {
@@ -399,7 +443,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
 
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("banner",banner);
-                            startActivity(new Intent(getApplicationContext(),BannerDetail.class).putExtras(bundle));
+                            dialogEvento(banner);
 
                         }else if(banner.getBannerType().equals("lista")){
                             String style = banner.getStyle();

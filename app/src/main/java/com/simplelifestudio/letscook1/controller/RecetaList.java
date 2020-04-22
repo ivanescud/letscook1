@@ -69,12 +69,14 @@ public class RecetaList extends AppCompatActivity {
         tipo = getIntent().getStringExtra("tipo");
         style = getIntent().getStringExtra("style");
 
-        if (style.equals("none")) {
-            getRecetasData();
 
-        }else{
-            getRecetasDataStyle();
-        }
+            if(style == null){
+                getRecetasData();
+            }else{
+                getRecetasDataStyle();
+            }
+
+
 
 
 
