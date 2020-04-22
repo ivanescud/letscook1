@@ -94,9 +94,11 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/favorito_boton_off"
+        android:background="@drawable/white_circle"
+        android:backgroundTint="#F6555B"
         android:contentDescription="@string/Imagen"
         android:elevation="21dp"
+        android:src="@drawable/ic_favorite_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
