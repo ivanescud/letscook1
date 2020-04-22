@@ -129,19 +129,38 @@ public class receta_detailActivity extends AppCompatActivity {
         videoInicio = 0;
         bundle = getIntent().getExtras();
         receta = (Receta) bundle.getSerializable("receta");
-        videoUrl = receta.getVideoUrl();
+       videoUrl = receta.getVideoUrl();
+        videoUrl = "xBtnW3VXc5U";
         calificacionTV.setText( String.valueOf(receta.getRankingRC()));
         calificacionTV.setText(String.valueOf(receta.getRankingRC()));
         numeroFavoritosTV.setText(String.valueOf(receta.getLikes().size()));
         numeroComentarios.setText(String.valueOf(receta.getComents()));
         tipoTV.setText(receta.getCategoria());
-        for(Ingrediente value : receta.getIngredientes().values()){
-            ingredientes.add(new Ingrediente(generarIconoRamdon(),value.getCantidad(),value.getProducto()));
+
+        String key1="",key2="",value1="",value2="";
+        for(Map.Entry<String, String> entry : receta.getIngredientes().entrySet()){
+            if(key1.isEmpty()&&value1.isEmpty()){
+                key1 = entry.getKey(); value1 = entry.getValue();
+            }
+            else{
+                key2 = entry.getKey(); value2 = entry.getValue();
+                ingredientes.add(new Ingrediente(Integer.valueOf(value1),value2,key1));
+                key1 = "";value1 = "";key2 = "";value2 = "";
+            }
+
         }
-         int i = 0;
-        for(Map.Entry<Integer, String> entry : receta.getPasos().entrySet()){
-            paso.add(new Paso(i,entry.getValue(),generarIconoRamdon(),entry.getKey()));
-            i++;
+        int i = 1;
+        for(Map.Entry<String, String> entry : receta.getPasos().entrySet()){
+            if(key1.isEmpty()&&value1.isEmpty()){
+                key1 = entry.getKey(); value1 = entry.getValue();
+            }
+            else{
+                key2 = entry.getKey(); value2 = entry.getValue();
+                paso.add(new Paso(String.valueOf(i),value1,generarIconoRamdon(),Integer.valueOf(value2)));
+                key1 = "";value1 = "";key2 = "";value2 = "";
+                i++;
+            }
+
         }
 
         adapterIngredientes = new AdapterIngredientes(receta_detailActivity.this, ingredientes);

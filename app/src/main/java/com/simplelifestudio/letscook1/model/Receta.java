@@ -14,8 +14,8 @@ public class Receta implements Serializable {
     private double rankingRC;
     private Map<String, Boolean> likes = new HashMap<>();
     private int coments;
-    private Map<String,Ingrediente> ingredientes = new HashMap<>();
-    private Map<Integer,String> pasos = new HashMap<>();
+    private Map<String,String> ingredientes = new HashMap<>();
+    private Map<String,String> pasos = new HashMap<>();
     private String autorImgRC;
     private String type;
     private String idRC;
@@ -28,7 +28,7 @@ public class Receta implements Serializable {
     public Receta() {
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes,  Map<Integer, String> pasos, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style, String videoUrl) {
+    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, String> ingredientes,  Map<String, String> pasos, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style, String videoUrl) {
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
@@ -44,6 +44,22 @@ public class Receta implements Serializable {
         this.categoria = categoria;
         this.style = style;
         this.videoUrl = videoUrl;
+    }
+
+    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, String> ingredientes, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style) {
+        this.nombreRC = nombreRC;
+        this.autorRC = autorRC;
+        this.mainImgRc = mainImgRc;
+        this.rankingRC = rankingRC;
+        this.likes = likes;
+        this.coments = coments;
+        this.ingredientes = ingredientes;
+        this.autorImgRC = autorImgRC;
+        this.type = type;
+        this.idRC = idRC;
+        this.tiempo = tiempo;
+        this.categoria = categoria;
+        this.style = style;
     }
 
     public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, String autorImgRC, String tiempo) {
@@ -149,19 +165,19 @@ public class Receta implements Serializable {
         this.coments = coments;
     }
 
-    public Map<String, Ingrediente> getIngredientes() {
+    public Map<String, String> getIngredientes() {
         return ingredientes;
     }
 
-    public void setIngredientes(Map<String, Ingrediente> ingredientes) {
+    public void setIngredientes(Map<String, String> ingredientes) {
         this.ingredientes = ingredientes;
     }
 
-    public Map<Integer, String> getPasos() {
+    public Map<String, String> getPasos() {
         return pasos;
     }
 
-    public void setPasos(Map<Integer, String> pasos) {
+    public void setPasos(Map<String, String> pasos) {
         this.pasos = pasos;
     }
 
@@ -179,10 +195,6 @@ public class Receta implements Serializable {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public void setRankingRC(double rankingRC) {
-        this.rankingRC = rankingRC;
     }
 
     public String getVideoUrl() {

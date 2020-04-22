@@ -493,8 +493,8 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
-                    Receta receta = queryDocumentSnapshot.toObject(Receta.class);
-                    recetaslist.add(receta);
+//                    Receta receta = queryDocumentSnapshot.toObject(Receta.class);
+              //      recetaslist.add(receta);
                 }
 
                 recycleAdapter = new BusquedaRecycleAdapter(recetaslist, resultado_listActivity.this, new BusquedaRecycleAdapter.OnClickCell2() {

@@ -112,8 +112,8 @@ public class RecetaList extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
-                        Receta receta = queryDocumentSnapshot.toObject(Receta.class);
-                        recetaslist.add(receta);
+                   //     Receta receta = queryDocumentSnapshot.toObject(Receta.class);
+                    //    recetaslist.add(receta);
                     }
 
                     adapter = new BusquedaRecycleAdapter(recetaslist, getApplicationContext(), new BusquedaRecycleAdapter.OnClickCell2() {
