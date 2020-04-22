@@ -20,6 +20,7 @@ import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -103,6 +104,7 @@ public class receta_detailActivity extends AppCompatActivity {
         servidasTV = findViewById(R.id.recetaDetailServidasTV);
         tipoTV = findViewById(R.id.recetaDetailTipoTV);
         comentIV = findViewById(R.id.recetaDetailNumeroComentarioTV);
+        backgroundIV = findViewById(R.id.recetaDetailBgIV);
 
 
         //Init de la view receta_detail.xml
@@ -129,7 +131,12 @@ public class receta_detailActivity extends AppCompatActivity {
         videoInicio = 0;
         bundle = getIntent().getExtras();
         receta = (Receta) bundle.getSerializable("receta");
+        tituloTV.setText(receta.getNombreRC());
+        Glide.with(getApplicationContext()).load(receta.getMainImgRc()).into(backgroundIV);
          videoUrl = receta.getVideoUrl();
+         tiempoTV.setText(receta.getTiempo());
+         servidasTV.setText(receta.getServidas());
+
         calificacionTV.setText( String.valueOf(receta.getRankingRC()));
         calificacion1TV.setText(String.valueOf(receta.getRankingRC()));
         numeroFavoritosTV.setText(String.valueOf(receta.getLikes().size()));

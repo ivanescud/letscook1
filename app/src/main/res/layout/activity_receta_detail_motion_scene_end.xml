@@ -94,7 +94,7 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/boton_favorito_pulsado"
+        android:background="@drawable/favorito_boton_off"
         android:contentDescription="@string/Imagen"
         android:elevation="21dp"
         app:layout_constraintEnd_toEndOf="parent"

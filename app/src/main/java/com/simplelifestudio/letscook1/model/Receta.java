@@ -23,12 +23,13 @@ public class Receta implements Serializable {
     private String categoria;
     private String style;
     private String videoUrl;
+    private String servidas;
 
 
     public Receta() {
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes,  Map<String, Paso> pasos, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style, String videoUrl) {
+    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes,  Map<String, Paso> pasos, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style, String videoUrl,String servidas) {
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
@@ -44,6 +45,7 @@ public class Receta implements Serializable {
         this.categoria = categoria;
         this.style = style;
         this.videoUrl = videoUrl;
+        this.servidas = servidas;
     }
 
     public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style) {
@@ -203,6 +205,14 @@ public class Receta implements Serializable {
 
     public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
+    }
+
+    public String getServidas() {
+        return servidas;
+    }
+
+    public void setServidas(String servidas) {
+        this.servidas = servidas;
     }
 }
 
