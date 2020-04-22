@@ -30,6 +30,12 @@ public class SeleccioneIngrediente extends AppCompatActivity {
   private GridView gridview;
   private TextView textViewlabeL;
   private   GridIngredientesAdapter gridIngredientesAdapter;
+  private GridIngredientesAdapter adaptercarnes;
+  private GridIngredientesAdapter adaptervegetales;
+  private GridIngredientesAdapter adapterfrutas;
+  private GridIngredientesAdapter adaptergranos;
+  private GridIngredientesAdapter adapterhierbas;
+  private GridIngredientesAdapter adapterLacteos;
     private Button floatingActionButton;
     private ArrayList<Ingredientes> ingredientesVegetales;
     private ArrayList<Ingredientes> ingredientesCarnes;
@@ -90,9 +96,9 @@ public class SeleccioneIngrediente extends AppCompatActivity {
 
 
         ingredientesFrutas.add(new Ingredientes("Banana",R.drawable.ingre_banana));
-        ingredientesFrutas.add(new Ingredientes("Uvas",R.drawable.ingre_uva));
-        ingredientesFrutas.add(new Ingredientes("Cerezas",R.drawable.ingre_cerezas));
-        ingredientesFrutas.add(new Ingredientes("Kiwi",R.drawable.ingre_kiwi));
+        ingredientesFrutas.add(new Ingredientes("Uvas",R.drawable.ingre_banana));
+        ingredientesFrutas.add(new Ingredientes("Cerezas",R.drawable.ingre_banana));
+        ingredientesFrutas.add(new Ingredientes("Kiwi",R.drawable.ingre_banana));
 
         ingredientesGranos.add(new Ingredientes("Arroz",R.drawable.ingre_arroz));
         ingredientesGranos.add(new Ingredientes("Mijo",R.drawable.ingre_mijo));
@@ -124,28 +130,34 @@ public class SeleccioneIngrediente extends AppCompatActivity {
                       gridview.setAdapter(gridIngredientesAdapter);
                       break;
                   case 1:
-                      gridIngredientesAdapter = new GridIngredientesAdapter(context,ingredientesVegetales,R.layout.grid_ingredientes);
-                      gridview.setAdapter(gridIngredientesAdapter);
+                      adaptervegetales = new GridIngredientesAdapter(context,ingredientesVegetales,R.layout.grid_ingredientes);
+                      gridview.setAdapter(adaptervegetales);
+                      gridview.refreshDrawableState();
                       break;
                   case 2:
-                      gridIngredientesAdapter = new GridIngredientesAdapter(context,ingredientesFrutas,R.layout.grid_ingredientes);
-                      gridview.setAdapter(gridIngredientesAdapter);
+                      adapterfrutas = new GridIngredientesAdapter(context,ingredientesFrutas,R.layout.grid_ingredientes);
+                      gridview.setAdapter(adapterfrutas);
+                      gridview.refreshDrawableState();
                       break;
                   case 3:
-                      gridIngredientesAdapter = new GridIngredientesAdapter(context,ingredientesGranos,R.layout.grid_ingredientes);
-                      gridview.setAdapter(gridIngredientesAdapter);
+                      adaptergranos = new GridIngredientesAdapter(context,ingredientesGranos,R.layout.grid_ingredientes);
+                      gridview.setAdapter(adaptergranos);
+                      gridview.refreshDrawableState();
                       break;
                   case 4:
-                      gridIngredientesAdapter = new GridIngredientesAdapter(context,ingredientesHierbas,R.layout.grid_ingredientes);
-                      gridview.setAdapter(gridIngredientesAdapter);
+                      adapterhierbas = new GridIngredientesAdapter(context,ingredientesHierbas,R.layout.grid_ingredientes);
+                      gridview.setAdapter(adapterhierbas);
+                      gridview.refreshDrawableState();
                       break;
                   case 5:
-                      gridIngredientesAdapter = new GridIngredientesAdapter(context,ingredientesLacteos,R.layout.grid_ingredientes);
-                      gridview.setAdapter(gridIngredientesAdapter);
+                      adapterLacteos= new GridIngredientesAdapter(context,ingredientesLacteos,R.layout.grid_ingredientes);
+                      gridview.setAdapter(adapterLacteos);
+                      gridview.refreshDrawableState();
                       break;
                   default:
                       gridIngredientesAdapter = new GridIngredientesAdapter(context,ingredientesCarnes,R.layout.grid_ingredientes);
                       gridview.setAdapter(gridIngredientesAdapter);
+                      gridview.refreshDrawableState();
                       break;
               }
             }
