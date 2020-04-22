@@ -71,7 +71,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     private ViewPager2 mainPager;
     private HomeRecetaAdapter adapter;
     private ArrayList<Receta> recetaslist = new ArrayList<>();
-    private ArrayList<Receta> bebidaslist = new ArrayList<Receta>();
+    private ArrayList<Receta> bebidaslist = new ArrayList<>();
     private CircleIndicator3 circleIndicator;
     BusquedaRecycleAdapter recycleAdapter;
     BusquedaRecycleAdapter recycleAdapter2;
@@ -82,6 +82,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     private FirebaseAuth mAuth;
     private FloatingActionButton floatbut;
     private AlertDialog alertDialog;
+    private AlertDialog alertDialogOp;
     private FirebaseFirestore db;
     private CircleImageView useImgCIV;
     private TextView userNameTV;
@@ -89,14 +90,13 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     private FrameLayout loadingLayout;
     private boolean userReady = false;
     private ArrayList<Banner> bannerList = new ArrayList<>();
-    private ArrayList<Receta> recetasList = new ArrayList<>();
     private ArrayList<Receta> bebidasList = new ArrayList<>();
-    private ArrayList<Receta>toplist = new ArrayList<>();
+    private ArrayList<Receta> toplist = new ArrayList<>();
     private BannerAdapter bannerAdapter;
     private Button vMasRecetaBT;
     private Button vMasBebidasBT;
     private Button vMasTopBT;
-
+    ArrayList<Ingredientes> categoria = new ArrayList<>();
     private ImageView mainImgIV;
     private TextView tilteTV;
     private TextView subTitleTV;
@@ -201,11 +201,12 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-       // loadingLayout.setVisibility(View.VISIBLE);
+        // loadingLayout.setVisibility(View.VISIBLE);
 
         vMasTopBT.setOnClickListener(this);
         vMasBebidasBT.setOnClickListener(this);
         vMasRecetaBT.setOnClickListener(this);
+        floatbut.setOnClickListener(this);
 
 
     }
@@ -232,18 +233,18 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         Glide.with(getApplicationContext()).load(banner.getBannerMainImg()).into(mainImgIV);
         tilteTV.setText(banner.getBannerTitle());
         subTitleTV.setText(banner.getBannersubTile());
-        fechaTV.setText("Fecha:"+banner.getFecha());
-        horaTV.setText("Hora: "+banner.getHora());
+        fechaTV.setText("Fecha:" + banner.getFecha());
+        horaTV.setText("Hora: " + banner.getHora());
         bannerInfo.setText(banner.getInfo());
 
         notifBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (active){
+                if (active) {
                     notifBT.setBackgroundResource(R.drawable.ic_notifications);
                     Toast.makeText(resultado_listActivity.this, "Notificacion Desactivada", Toast.LENGTH_SHORT).show();
                     active = false;
-                }else{
+                } else {
                     notifBT.setBackgroundResource(R.drawable.ic_notifications_active);
                     Toast.makeText(resultado_listActivity.this, "Notificacion Activada", Toast.LENGTH_SHORT).show();
                     active = true;
@@ -277,9 +278,9 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         recetaIB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dialog2();
+                alertDialogOp.dismiss();
 
-               startActivity(new Intent(getApplicationContext(),SeleccioneIngrediente.class));
-            //    dialogListaIngre();
             }
         });
 
@@ -287,6 +288,8 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
             @Override
             public void onClick(View view) {
                 dialogbebidas();
+                alertDialogOp.dismiss();
+
 
             }
         });
@@ -295,13 +298,13 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         salirBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertDialog.dismiss();
+                alertDialogOp.dismiss();
 
             }
         });
 
-        alertDialog = builder.create();
-        alertDialog.show();
+        alertDialogOp = builder.create();
+        alertDialogOp.show();
     }
 
 
@@ -314,11 +317,17 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         GridView gridView = dialogView.findViewById(R.id.categoriaGridView);
 
         DataHolder dataHolder = new DataHolder();
-        ArrayList<Ingredientes> categoria = new ArrayList<>();
         categoria = dataHolder.getCategoria();
         CategoriaAdapter categoriaAdapter = new CategoriaAdapter(resultado_listActivity.this, categoria, R.layout.celda_categoria);
         gridView.setAdapter(categoriaAdapter);
 
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                startActivity(new Intent(getApplicationContext(), SeleccioneIngrediente.class).putExtra("categoria", categoria.get(i).getNombreIN()));
+                alertDialog.dismiss();
+            }
+        });
 
         alertDialog = builder.create();
         alertDialog.show();
@@ -380,19 +389,18 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
 
         String userID = mAuth.getCurrentUser().getUid();
 
-        Log.d(TAGU,userID);
+        Log.d(TAGU, userID);
 
         db.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot != null){
-                    currendUser =  documentSnapshot.toObject(User.class);
+                if (documentSnapshot != null) {
+                    currendUser = documentSnapshot.toObject(User.class);
                     userReady = true;
                     Glide.with(getApplicationContext()).load(currendUser.getUserImg()).placeholder(R.drawable.proplaceholder).into(useImgCIV);
                     String username = currendUser.getNombre() + " " + currendUser.getApellido();
                     userNameTV.setText(username);
                 }
-
 
 
             }
@@ -406,7 +414,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(!userReady){
+                if (!userReady) {
 
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(resultado_listActivity.this);
@@ -423,20 +431,21 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                     alertDialog.dismiss();
 
 
+                } else {
+                    prepararUser();
                 }
-                else { prepararUser();}
             }
         }, 100);
 
     }
 
-    private void getBannerData(){
+    private void getBannerData() {
 
         db.collection("banner").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
-                   Banner banner = queryDocumentSnapshot.toObject(Banner.class);
+                for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
+                    Banner banner = queryDocumentSnapshot.toObject(Banner.class);
                     bannerList.add(banner);
                 }
 
@@ -444,18 +453,18 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                     @Override
                     public void onClickCell(int positon) {
                         Banner banner = bannerList.get(positon);
-                        if(banner.getBannerType().equals("receta")){
-                           String recetaId = banner.getRecetaID();
-                            startActivity(new Intent(getApplicationContext(),receta_detailActivity.class).putExtra("recetaId",recetaId));
-                        }else if (banner.getBannerType().equals("evento")){
+                        if (banner.getBannerType().equals("receta")) {
+                            String recetaId = banner.getRecetaID();
+                            startActivity(new Intent(getApplicationContext(), receta_detailActivity.class).putExtra("recetaId", recetaId));
+                        } else if (banner.getBannerType().equals("evento")) {
 
                             Bundle bundle = new Bundle();
-                            bundle.putSerializable("banner",banner);
+                            bundle.putSerializable("banner", banner);
                             dialogEvento(banner);
 
-                        }else if(banner.getBannerType().equals("lista")){
+                        } else if (banner.getBannerType().equals("lista")) {
                             String style = banner.getStyle();
-                            startActivity(new Intent(getApplicationContext(),RecetaList.class).putExtra("style",style));
+                            startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtra("style", style));
                         }
                     }
                 });
@@ -474,14 +483,14 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     }
 
 
-    private void getRecetasData(){
+    private void getRecetasData() {
 
         CollectionReference topF = db.collection("recetas");
-        Query query = topF.whereEqualTo("type","recetas");
+        Query query = topF.whereEqualTo("type", "recetas");
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
                     Receta receta = queryDocumentSnapshot.toObject(Receta.class);
                     recetaslist.add(receta);
                 }
@@ -491,11 +500,11 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                     public void onClickCell2(int positon) {
                         Receta recetas = recetaslist.get(positon);
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("receta",recetas);
+                        bundle.putSerializable("receta", recetas);
 
-                        startActivity(new Intent(getApplicationContext(),receta_detailActivity.class).putExtras(bundle));
+                        startActivity(new Intent(getApplicationContext(), receta_detailActivity.class).putExtras(bundle));
                     }
-                },1);
+                }, 1);
                 recyclerView1.setAdapter(recycleAdapter);
 
             }
@@ -507,19 +516,17 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         });
 
 
-
-
     }
 
 
-    private void getBebidasData(){
+    private void getBebidasData() {
 
         CollectionReference topF = db.collection("recetas");
-        Query query = topF.whereEqualTo("type","bebidas");
+        Query query = topF.whereEqualTo("type", "bebidas");
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
                     Receta receta = queryDocumentSnapshot.toObject(Receta.class);
                     bebidasList.add(receta);
                 }
@@ -529,11 +536,11 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                     public void onClickCell2(int positon) {
                         Receta recetas = bebidasList.get(positon);
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("receta",recetas);
+                        bundle.putSerializable("receta", recetas);
 
-                        startActivity(new Intent(getApplicationContext(),receta_detailActivity.class).putExtras(bundle));
+                        startActivity(new Intent(getApplicationContext(), receta_detailActivity.class).putExtras(bundle));
                     }
-                },1);
+                }, 1);
                 recyclerView2.setAdapter(recycleAdapter2);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -547,13 +554,13 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     }
 
 
-    private void getTopData(){
+    private void getTopData() {
         CollectionReference topF = db.collection("recetas");
-        Query query = topF.whereGreaterThanOrEqualTo("rankingRC",4);
+        Query query = topF.whereGreaterThanOrEqualTo("rankingRC", 4);
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
                     Receta receta = queryDocumentSnapshot.toObject(Receta.class);
                     toplist.add(receta);
                 }
@@ -563,9 +570,9 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                     public void onClickCell2(int positon) {
                         Receta recetas = toplist.get(positon);
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("receta",recetas);
+                        bundle.putSerializable("receta", recetas);
 
-                        startActivity(new Intent(getApplicationContext(),receta_detailActivity.class).putExtras(bundle));
+                        startActivity(new Intent(getApplicationContext(), receta_detailActivity.class).putExtras(bundle));
                     }
                 }, 3);
                 recyclerView3.setAdapter(recycleAdapter3);
@@ -586,23 +593,23 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.busquedaRecetaBT:
-            startActivity(new Intent(getApplicationContext(),RecetaList.class).putExtra("tipo","recetas"));
-            break;
+                startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtra("tipo", "recetas"));
+                break;
 
             case R.id.busquedaBebidasBT:
-                startActivity(new Intent(getApplicationContext(),RecetaList.class).putExtra("tipo","bebidas"));
+                startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtra("tipo", "bebidas"));
                 break;
 
 
             case R.id.busquedaTopBT:
-                startActivity(new Intent(getApplicationContext(),Top10.class));
+                startActivity(new Intent(getApplicationContext(), Top10.class));
                 break;
 
             case R.id.busquedafloatinBut:
                 dialog();
-            break;
+                break;
         }
 
 
