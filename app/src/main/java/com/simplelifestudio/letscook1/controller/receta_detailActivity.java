@@ -35,7 +35,9 @@ import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.AdapterDireccion;
 import com.simplelifestudio.letscook1.adapters.AdapterIngredientes;
 import com.simplelifestudio.letscook1.model.Ingrediente;
+import com.simplelifestudio.letscook1.model.Ingredientes;
 import com.simplelifestudio.letscook1.model.Paso;
+import com.simplelifestudio.letscook1.model.Receta;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -52,6 +54,7 @@ public class receta_detailActivity extends AppCompatActivity {
     private TextView servidasTV;
     private TextView tipoTV;
     private TextView comentIV;
+    private String videoUrl;
     //Init de la view recetas_detail.xml
     private YouTubePlayerView youTubePlayerView;
     private YouTubePlayerTracker youTubePlayerTracker;
@@ -61,8 +64,9 @@ public class receta_detailActivity extends AppCompatActivity {
     private ImageButton favoriteIB;
     private CardView contenedorVideo;
     //recyclerView
-    private ArrayList<Paso> paso;
+    private Receta receta;
     private ArrayList<Ingrediente> ingredientes;
+    private ArrayList<Paso> paso;
     private AdapterDireccion adapterDireccion;
     private AdapterIngredientes adapterIngredientes;
     private RecyclerView direccionRV;
@@ -70,8 +74,6 @@ public class receta_detailActivity extends AppCompatActivity {
     LinearLayoutManager verticalLayoutManager;
     LinearLayoutManager horizontalLayoutManager;
     //
-    private String receta;
-    private String videoUrl;
     private int videoInicio, videoFinal;
 
     @Override
@@ -116,25 +118,34 @@ public class receta_detailActivity extends AppCompatActivity {
         ingredienteRV = findViewById(R.id.recetaDetailIngredientesRV);
         verticalLayoutManager = new LinearLayoutManager(receta_detailActivity.this,LinearLayoutManager.VERTICAL,false);
         ingredienteRV.setLayoutManager(verticalLayoutManager);
+
+        //
+        ingredientes = new ArrayList<>();
+        paso = new ArrayList<>();
     }
 
     //Obtiene los datos y los setea
     public void obtenerDatos() {
         videoInicio = 0;
         bundle = getIntent().getExtras();
-        paso = (ArrayList<Paso>) bundle.getSerializable("paso");
-        ingredientes = (ArrayList<Ingrediente>) bundle.getSerializable("ingredientes");
-        tituloTV.setText(bundle.getString("titulo"));
-        calificacionTV.setText(bundle.getString("calificacion"));
-        numeroFavoritosTV.setText(bundle.getString("favoritos"));
-        numeroComentarios.setText(bundle.getString("comentario"));
-        tiempoTV.setText(bundle.getString("tiempo"));
-        servidasTV.setText(bundle.getString("servidas"));
-        tipoTV.setText(bundle.getString("tipo"));
-        videoUrl = bundle.getString("videoUrl");
-        calificacion1TV.setText(bundle.getString("calificacion"));
-        adapterDireccion = new AdapterDireccion(receta_detailActivity.this, paso, videoUrl);
+        receta = (Receta) bundle.getSerializable("receta");
+        videoUrl = receta.getVideoUrl();
+        calificacionTV.setText( String.valueOf(receta.getRankingRC()));
+        calificacionTV.setText(String.valueOf(receta.getRankingRC()));
+        numeroFavoritosTV.setText(String.valueOf(receta.getLikes().size()));
+        numeroComentarios.setText(String.valueOf(receta.getComents()));
+        tipoTV.setText(receta.getCategoria());
+        for(Ingrediente value : receta.getIngredientes().values()){
+            ingredientes.add(new Ingrediente(generarIconoRamdon(),value.getCantidad(),value.getProducto()));
+        }
+         int i = 0;
+        for(Map.Entry<Integer, String> entry : receta.getPasos().entrySet()){
+            paso.add(new Paso(i,entry.getValue(),generarIconoRamdon(),entry.getKey()));
+            i++;
+        }
+
         adapterIngredientes = new AdapterIngredientes(receta_detailActivity.this, ingredientes);
+        adapterDireccion = new AdapterDireccion(receta_detailActivity.this, paso,videoUrl);
         direccionRV.setAdapter(adapterDireccion);
         ingredienteRV.setAdapter(adapterIngredientes);
     }
@@ -189,8 +200,6 @@ public class receta_detailActivity extends AppCompatActivity {
         favoriteIB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(receta_detailActivity.this,"esto: "+videoUrl,Toast.LENGTH_SHORT).show();
-                //Toast.makeText(receta_detailActivity.this, "boton presionado", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -203,6 +212,27 @@ public class receta_detailActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public int generarIconoRamdon(){
+        return R.drawable.boton_favorito_pulsado;
+       /* int inicio =0,fin=3;
+        double i = Math.random()*fin-inicio+1;
+        switch () {
+            case 0:
+                return;
+            break;
+            case 1:
+                return;
+            break;
+            case 2:
+                return;
+            break;
+            case 3:
+                return;
+            default:
+                return ;
+        }*/
     }
 
 }

@@ -13,7 +13,7 @@ public class Paso implements Serializable {
     int ico;
     int posVideo;
 
-    public Paso() { }
+    public Paso(int i, String value, int ico, Integer key) { }
 
     public Paso(Parcel in){
         super();

@@ -43,6 +43,7 @@ public class SeleccioneIngrediente{
         this.textViewlabeL = textViewlabeL;
         this.gridIngredientesAdapter = gridIngredientesAdapter;
         this.floatingActionButton = floatingActionButton;
+        init();
     }
 
 

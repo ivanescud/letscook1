@@ -38,4 +38,5 @@ public class Ingrediente implements Serializable {
     public void setProducto(String producto) {
         this.producto = producto;
     }
+
 }

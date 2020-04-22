@@ -1,5 +1,7 @@
 package com.simplelifestudio.letscook1.model;
 
+import com.simplelifestudio.letscook1.adapters.AdapterDireccion;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,12 +22,13 @@ public class Receta implements Serializable {
     private String tiempo;
     private String categoria;
     private String style;
+    private String videoUrl;
 
 
     public Receta() {
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes, Map<Integer, String> pasos, String autorImgRC) {
+    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes,  Map<Integer, String> pasos, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style, String videoUrl) {
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
@@ -35,6 +38,12 @@ public class Receta implements Serializable {
         this.ingredientes = ingredientes;
         this.pasos = pasos;
         this.autorImgRC = autorImgRC;
+        this.type = type;
+        this.idRC = idRC;
+        this.tiempo = tiempo;
+        this.categoria = categoria;
+        this.style = style;
+        this.videoUrl = videoUrl;
     }
 
     public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, String autorImgRC, String tiempo) {
@@ -170,6 +179,18 @@ public class Receta implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void setRankingRC(double rankingRC) {
+        this.rankingRC = rankingRC;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 }
 
