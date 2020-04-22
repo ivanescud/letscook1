@@ -268,7 +268,7 @@ public class SeleccioneIngrediente extends AppCompatActivity {
                     mapData.setData(label);
                     bundle.putSerializable("datos",mapData);
                    // bundle.putStringArray("listalabel", listalabel);
-                    Intent intent = new Intent(context, RecetaList.class).putExtras(bundle);
+                    Intent intent = new Intent(context, RecetaList.class).putExtras(bundle).putExtra("numero",1);
                     startActivity(intent);
                 }
             }

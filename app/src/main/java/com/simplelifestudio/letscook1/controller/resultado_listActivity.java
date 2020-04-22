@@ -595,11 +595,11 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
 
         switch (view.getId()) {
             case R.id.busquedaRecetaBT:
-                startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtra("tipo", "recetas"));
+                startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtra("tipo", "recetas").putExtra("numero",2));
                 break;
 
             case R.id.busquedaBebidasBT:
-                startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtra("tipo", "bebidas"));
+                startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtra("tipo", "bebidas").putExtra("numero",3));
                 break;
 
 

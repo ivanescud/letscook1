@@ -86,7 +86,7 @@ private boolean recetasDisponibles;
 
 
     public void init(){
-        gridlist = findViewById(R.id.categoriaGridView);
+      //  gridlist = findViewById(R.id.categoriaGridView);
         recetas = new ArrayList<>();
         labelList = new ArrayList<>();
         label = "";

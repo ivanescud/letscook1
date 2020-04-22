@@ -41,7 +41,7 @@ public class RecetaList extends AppCompatActivity {
     private String style = "none";
     private Map<String, Boolean> pasDatos;
     private MapData mapData;
-
+    int numero;
 
 
 
@@ -82,16 +82,21 @@ public class RecetaList extends AppCompatActivity {
         bundle = getIntent().getExtras();
         mapData = (MapData) bundle.getSerializable("datos");
 
-        getData();
 
-            if(style == null){
-                getRecetasData();
-            }else if(tipo != null){
-                getRecetasDataStyle();
-            }else if(bundle != null){
+
+        numero = getIntent().getIntExtra("numero",0);
+
+        switch (numero){
+            case 1:
                 getData();
-            }
-
+            break;
+            case 2:
+                getRecetasData();
+            break;
+            case 3:
+                getRecetasDataStyle();
+            break;
+        }
 
 
     }
@@ -220,7 +225,7 @@ public class RecetaList extends AppCompatActivity {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("receta", recetas);
 
-                        startActivity(new Intent(getApplicationContext(), ResultadoBusqueda.class).putExtras(bundle));
+                        startActivity(new Intent(getApplicationContext(), receta_detailActivity.class).putExtras(bundle));
                     }
                 },1);
 
