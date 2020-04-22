@@ -527,7 +527,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                 recycleAdapter2 = new BusquedaRecycleAdapter(bebidasList, resultado_listActivity.this, new BusquedaRecycleAdapter.OnClickCell2() {
                     @Override
                     public void onClickCell2(int positon) {
-                        Receta recetas = recetaslist.get(positon);
+                        Receta recetas = bebidasList.get(positon);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("receta",recetas);
 
@@ -561,7 +561,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                 recycleAdapter3 = new BusquedaRecycleAdapter(toplist, resultado_listActivity.this, new BusquedaRecycleAdapter.OnClickCell2() {
                     @Override
                     public void onClickCell2(int positon) {
-                        Receta recetas = recetaslist.get(positon);
+                        Receta recetas = toplist.get(positon);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("receta",recetas);
 

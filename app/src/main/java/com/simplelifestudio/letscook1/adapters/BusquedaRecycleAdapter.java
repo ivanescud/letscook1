@@ -16,7 +16,7 @@ import com.simplelifestudio.letscook1.model.Receta;
 
 import java.util.ArrayList;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class BusquedaRecycleAdapter extends RecyclerView.Adapter<BusquedaRecycleAdapter.ViewHolder> {
 
