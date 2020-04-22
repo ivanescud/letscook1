@@ -101,7 +101,6 @@ public class SeleccioneIngrediente extends AppCompatActivity {
         ingredientesFrutas.add(new Ingredientes("Kiwi",R.drawable.ingre_kiwi));
 
         ingredientesGranos.add(new Ingredientes("Arroz",R.drawable.ingre_arroz));
-        ingredientesGranos.add(new Ingredientes("Mijo",R.drawable.ingre_mijo));
         ingredientesGranos.add(new Ingredientes("Arroz integral",R.drawable.ingre_arrozintegral));
         ingredientesGranos.add(new Ingredientes("Cereal",R.drawable.ingre_cereal));
 
