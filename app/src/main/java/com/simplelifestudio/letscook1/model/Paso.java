@@ -10,7 +10,7 @@ import static android.os.UserHandle.readFromParcel;
 public class Paso implements Serializable {
     String numeroPaso;
     String intruccion;
-    int ico;
+    String ico;
     int posVideo;
 
     public Paso(int i, String value, int ico, Integer key) { }
@@ -22,7 +22,7 @@ public class Paso implements Serializable {
 
     public Paso() {}
 
-    public Paso(String numeroPaso, String intruccion, int ico, int posVideo) {
+    public Paso(String numeroPaso, String intruccion, String ico, int posVideo) {
         this.numeroPaso = numeroPaso;
         this.intruccion = intruccion;
         this.ico = ico;
@@ -45,11 +45,11 @@ public class Paso implements Serializable {
         this.intruccion = intruccion;
     }
 
-    public int getIco() {
+    public String getIco() {
         return ico;
     }
 
-    public void setIco(int ico) {
+    public void setIco(String ico) {
         this.ico = ico;
     }
 

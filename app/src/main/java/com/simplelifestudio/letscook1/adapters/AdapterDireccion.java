@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.controller.reproductor_horizontalActivity;
 import com.simplelifestudio.letscook1.model.Paso;
@@ -44,7 +45,7 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
     holder.numeroPaso.setText(paso.get(position).getNumeroPaso());
     holder.direccion.setText((paso.get(position).getIntruccion()));
-    holder.icono.setImageResource(R.drawable.boton_favorito_pulsado);
+        Glide.with(context).load(paso.get(position).getIco());
     holder.posVideo = paso.get(position).getPosVideo();
     }
 

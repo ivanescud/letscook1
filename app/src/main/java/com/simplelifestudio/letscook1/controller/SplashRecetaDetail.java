@@ -62,7 +62,6 @@ public class SplashRecetaDetail extends AppCompatActivity {
         });
         //test direccionRV
         paso = new ArrayList<>();
-        paso.add(new Paso("1", "TEXT EXAMPLE", R.drawable.ic_comment, 20));
 
         //test ingredientesRV
         ingredientes = new ArrayList<>();

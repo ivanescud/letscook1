@@ -131,7 +131,7 @@ public class receta_detailActivity extends AppCompatActivity {
         receta = (Receta) bundle.getSerializable("receta");
          videoUrl = receta.getVideoUrl();
         calificacionTV.setText( String.valueOf(receta.getRankingRC()));
-        calificacionTV.setText(String.valueOf(receta.getRankingRC()));
+        calificacion1TV.setText(String.valueOf(receta.getRankingRC()));
         numeroFavoritosTV.setText(String.valueOf(receta.getLikes().size()));
         numeroComentarios.setText(String.valueOf(receta.getComents()));
         tipoTV.setText(receta.getCategoria());
@@ -215,26 +215,6 @@ public class receta_detailActivity extends AppCompatActivity {
 
     }
 
-    public int generarIconoRamdon(){
-        return R.drawable.boton_favorito_pulsado;
-       /* int inicio =0,fin=3;
-        double i = Math.random()*fin-inicio+1;
-        switch () {
-            case 0:
-                return;
-            break;
-            case 1:
-                return;
-            break;
-            case 2:
-                return;
-            break;
-            case 3:
-                return;
-            default:
-                return ;
-        }*/
-    }
 
 }
 
