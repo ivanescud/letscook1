@@ -193,7 +193,7 @@ public class receta_detailActivity extends AppCompatActivity {
 
             @Override
             public void onError(YouTubePlayer youTubePlayer, PlayerConstants.PlayerError error) {
-              // backgroundIV.setVisibility(View.VISIBLE);
+             youTubePlayer1.loadVideo(videoUrl,0);
             }
 
             @Override
