@@ -44,7 +44,7 @@ public class AdapterDireccion extends RecyclerView.Adapter<AdapterDireccion.view
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
     holder.numeroPaso.setText(paso.get(position).getNumeroPaso());
     holder.direccion.setText((paso.get(position).getIntruccion()));
-    holder.icono.setImageResource(paso.get(position).getIco());
+    holder.icono.setImageResource(R.drawable.boton_favorito_pulsado);
     holder.posVideo = paso.get(position).getPosVideo();
     }
 

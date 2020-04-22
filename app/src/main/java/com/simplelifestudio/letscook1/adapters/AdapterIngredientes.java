@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.model.Ingrediente;
 
@@ -38,7 +39,7 @@ public class AdapterIngredientes extends RecyclerView.Adapter<AdapterIngrediente
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
      holder.producto.setText(ingrediente.get(position).getProducto());
      holder.cantidad.setText(ingrediente.get(position).getCantidad());
-     holder.icono.setImageResource(R.drawable.boton_favorito_pulsado);
+        Glide.with(context).load(ingrediente.get(position).getIco()).into(holder.icono);
     }
 
     @Override

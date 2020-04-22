@@ -20,6 +20,8 @@ public class Paso implements Serializable {
         readFromParcel(in);
     }
 
+    public Paso() {}
+
     public Paso(String numeroPaso, String intruccion, int ico, int posVideo) {
         this.numeroPaso = numeroPaso;
         this.intruccion = intruccion;

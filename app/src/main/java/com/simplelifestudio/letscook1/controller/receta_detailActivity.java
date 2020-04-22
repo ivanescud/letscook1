@@ -136,34 +136,13 @@ public class receta_detailActivity extends AppCompatActivity {
         numeroComentarios.setText(String.valueOf(receta.getComents()));
         tipoTV.setText(receta.getCategoria());
 
-        String key1="",key2="",value1="",value2="";
-      /*  for(Map.Entry<String, String> entry : receta.getIngredientes().entrySet()){
-            if(key1.isEmpty()&&value1.isEmpty()){
-                key1 = entry.getKey(); value1 = entry.getValue();
-            }
-            else{
-                key2 = entry.getKey(); value2 = entry.getValue();
-                ingredientes.add(new Ingrediente(R.drawable.ic_comment,value2,key1));
-                key1 = "";value1 = "";key2 = "";value2 = "";
-            }
-
-        }*/
       for(Map.Entry<String,Ingrediente> entry : receta.getIngredientes().entrySet()){
           ingredientes.add(entry.getValue());
       }
 
         int i = 1;
-        for(Map.Entry<String, String> entry : receta.getPasos().entrySet()){
-            if(key1.isEmpty()&&value1.isEmpty()){
-                key1 = entry.getKey(); value1 = entry.getValue();
-            }
-            else{
-                key2 = entry.getKey(); value2 = entry.getValue();
-                paso.add(new Paso(String.valueOf(i),value1,generarIconoRamdon(),R.drawable.barradebusqueda));
-                key1 = "";value1 = "";key2 = "";value2 = "";
-                i++;
-            }
-
+        for(Map.Entry<String,Paso> entry : receta.getPasos().entrySet()){
+            paso.add(entry.getValue());
         }
 
         adapterIngredientes = new AdapterIngredientes(receta_detailActivity.this, ingredientes);

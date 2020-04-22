@@ -15,7 +15,7 @@ public class Receta implements Serializable {
     private Map<String, Boolean> likes = new HashMap<>();
     private int coments;
     private Map<String,Ingrediente> ingredientes = new HashMap<>();
-    private Map<String,String> pasos = new HashMap<>();
+    private Map<String,Paso> pasos = new HashMap<>();
     private String autorImgRC;
     private String type;
     private String idRC;
@@ -28,7 +28,7 @@ public class Receta implements Serializable {
     public Receta() {
     }
 
-    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes,  Map<String, String> pasos, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style, String videoUrl) {
+    public Receta(String nombreRC, String autorRC, String mainImgRc, double rankingRC, Map<String, Boolean> likes, int coments, Map<String, Ingrediente> ingredientes,  Map<String, Paso> pasos, String autorImgRC, String type, String idRC, String tiempo, String categoria, String style, String videoUrl) {
         this.nombreRC = nombreRC;
         this.autorRC = autorRC;
         this.mainImgRc = mainImgRc;
@@ -173,11 +173,11 @@ public class Receta implements Serializable {
         this.ingredientes = ingredientes;
     }
 
-    public Map<String, String> getPasos() {
+    public Map<String, Paso> getPasos() {
         return pasos;
     }
 
-    public void setPasos(Map<String, String> pasos) {
+    public void setPasos(Map<String, Paso> pasos) {
         this.pasos = pasos;
     }
 
