@@ -78,7 +78,7 @@ public class reproductor_horizontalActivity extends AppCompatActivity {
         //YoutubePlayer
         youTubePlayerView = findViewById(R.id.youTubePlayerViewh);
         youTubePlayerTracker = new YouTubePlayerTracker();
-        Toast.makeText(this, "el video inicia en " + videoUrl, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "el video inicia en " + videoUrl, Toast.LENGTH_SHORT).show();
         //menu
         navigationView = findViewById(R.id.navigation);
         //View

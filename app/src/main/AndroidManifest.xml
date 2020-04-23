@@ -35,17 +35,19 @@
             android:label="LET&apos;S COOK"
             android:theme="@style/HomeActivityAppTheme" />
         <activity android:name=".controller.MainActivity" />
-        <activity android:name=".controller.Splash" />
-        <activity android:name=".controller.receta_detailActivity" />
-        <activity
-            android:name=".controller.HomeActivity"
-            android:label="LET&apos;S COOK"
-            android:theme="@style/HomeActivityAppTheme">
+        <activity android:name=".controller.Splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".controller.receta_detailActivity" />
+        <activity
+            android:name=".controller.HomeActivity"
+            android:label="LET&apos;S COOK"
+            android:theme="@style/HomeActivityAppTheme">
+
         </activity>
     </application>
 

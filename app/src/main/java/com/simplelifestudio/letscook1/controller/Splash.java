@@ -42,7 +42,7 @@ public class Splash extends AppCompatActivity {
                     finish();
                 }else {
                     progressBar.setProgress(100);
-                    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                    startActivity(new Intent(getApplicationContext(),resultado_listActivity.class));
                    finish();
                 }
 
