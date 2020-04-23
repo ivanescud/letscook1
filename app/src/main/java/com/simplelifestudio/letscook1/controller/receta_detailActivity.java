@@ -106,6 +106,7 @@ public class receta_detailActivity extends AppCompatActivity {
         tipoTV = findViewById(R.id.recetaDetailTipoTV);
         comentIV = findViewById(R.id.recetaDetailNumeroComentarioTV);
         backgroundIV = findViewById(R.id.recetaDetailBgIV);
+        favorito = false;
 
 
         //Init de la view receta_detail.xml
@@ -170,7 +171,6 @@ public class receta_detailActivity extends AppCompatActivity {
             @Override
             public void onReady(YouTubePlayer youTubePlayer) {
                 if(videoUrl!=null) {
-                    Toast.makeText(getApplicationContext(),videoUrl,Toast.LENGTH_SHORT).show();
                     youTubePlayer.loadVideo(videoUrl, 0);
                     youTubePlayer.play();
                     youTubePlayer.addListener(youTubePlayerTracker);

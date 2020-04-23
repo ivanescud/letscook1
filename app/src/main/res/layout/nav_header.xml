@@ -14,8 +14,9 @@
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            android:background="@color/light_blanco_detail"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/logocirimg" />
 
         <TextView
             android:id="@+id/textView4"
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:text="Cereal con Leche"
-            android:textColor="@color/light_blanco_detail"
+            android:textColor="@color/loginbut"
             android:textSize="24sp" />
     </androidx.cardview.widget.CardView>
 

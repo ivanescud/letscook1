@@ -146,6 +146,7 @@
             android:tint="@color/fondotras"
             app:layout_constraintBottom_toBottomOf="@+id/view4"
             app:layout_constraintEnd_toStartOf="@+id/recetaDetailServidasTV"
+            app:layout_constraintStart_toEndOf="@+id/recetaDetailTiempoTV"
             app:layout_constraintTop_toTopOf="@+id/view4"
             app:srcCompat="@drawable/ic_local_dining_black_24dp" />
 
