@@ -106,6 +106,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
     private Button salirBT;
     private Button notifBT;
     boolean active = false;
+    private AlertDialog splashDialog;
 
 
     @Override
@@ -184,7 +185,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         vMasRecetaBT = findViewById(R.id.busquedaRecetaBT);
         vMasBebidasBT = findViewById(R.id.busquedaBebidasBT);
         vMasTopBT = findViewById(R.id.busquedaTopBT);
-
+        splashdialog();
 
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(resultado_listActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView1.setLayoutManager(horizontalLayoutManager);
@@ -307,6 +308,28 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
         alertDialogOp.show();
     }
 
+
+    void splashdialog(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(resultado_listActivity.this);
+
+        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.lodingsplash, null, false);
+        builder.setView(dialogView);
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+              splashDialog.dismiss();
+            }
+        }, 2500);
+
+        splashDialog = builder.create();
+        splashDialog.show();
+
+
+    }
 
     void dialog2() {
 
