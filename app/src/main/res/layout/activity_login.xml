@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/Imagen"
+            app:srcCompat="@drawable/logo" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <EditText
+                android:id="@+id/loginActEmailET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/eMail"
+                android:inputType="textEmailAddress"
+                android:autofillHints="" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <EditText
+                android:id="@+id/loginActPasswordET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:autofillHints="" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <com.dd.processbutton.iml.ActionProcessButton
+                android:id="@+id/loginacLoginBut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textColor="@color/light_blanco_detail"
+                app:pb_colorNormal="@color/loginbut"
+                app:pb_colorPressed="@color/loginbutpress"
+                app:pb_colorComplete="@color/cpb_green_dark"
+                app:pb_textComplete="Acceso Correcto"
+                app:pb_textError="Acceso denegado"
+                app:pb_colorError="#BDBDBD"
+                app:pb_textProgress="Cargando"
+                app:pb_colorProgress="#ffffff"
+                app:pb_cornerRadius="45dp"
+
+                />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>

@@ -6,11 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".controller.MainActivity">
 
+
+
+
     <ImageView
         android:id="@+id/backlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/Imagen"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,6 +27,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/Imagen"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +40,7 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/Imagen"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -46,7 +51,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="73dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:outlineProvider="paddedBounds"
@@ -76,17 +81,7 @@
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

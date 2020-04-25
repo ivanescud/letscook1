@@ -8,7 +8,13 @@
     <color name="registerbutcol">#FF9800</color>
     <color name="registerbutpress">#D58002</color>
     <color name="fondotras">#5EFFFFFF</color>
-    <color name="blancofondologo">#FFFFFF</color>
+    <color name="light_blanco_detail">#FFFFFFFF</color>
+    <color name="gris_detail">#616161</color>
+    <!--Colores translucidos-->
+    <color name="blanco_translucido">#B9FFFFFF</color>
+    <color name="negro_translucido">#7A000000</color>
+    <color name="negro">#000000</color>
+
 
 
 

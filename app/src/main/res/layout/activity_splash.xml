@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    tools:context=".controller.Splash"
+    >
+
+
+    <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mpb_progressStyle="horizontal"
+        android:indeterminate="true"
+        android:id="@+id/splashprogressbar"
+
+        style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo2"
+        android:layout_gravity="center"
+        android:layout_marginTop="130dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/baskervville_regular"
+        android:text="@string/es_hora_de_cocinar"
+        android:textColor="#696969"
+        android:textSize="48sp" />
+
+
+</LinearLayout>

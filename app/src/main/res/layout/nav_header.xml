@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/header_height"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_blanco_detail"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/logocirimg" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="Cereal con Leche"
+            android:textColor="@color/loginbut"
+            android:textSize="24sp" />
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

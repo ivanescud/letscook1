@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".controller.BannerDetail">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/loginbutpress"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eventos"
+            android:fontFamily="@font/baskervville_regular"
+            android:textColor="#ffffff"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/recetaholder"
+        android:scaleType="centerCrop"
+        android:id="@+id/bannerdetailMainImgIV"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="10dp"
+        android:elevation="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bannerdetailTitleTV"
+                android:text="Titulo del Evento"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bannerdetailSubTitleTV"
+                android:text="SubTitulo del Evento"
+                android:layout_below="@+id/bannerdetailTitleTV"
+                android:textColor="@color/negro"
+                android:textSize="15sp"
+                />
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bannerdetailfechaTV"
+            android:text="Fecha:"
+            android:layout_below="@+id/bannerdetailSubTitleTV"
+            android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/negro"
+            />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bannerdetailhoraTV"
+                android:text="Hora:"
+                android:layout_below="@+id/bannerdetailfechaTV"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                />
+
+            <Button
+                android:id="@+id/bannerdetailNotiBT"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/ic_notifications" />
+
+
+        </RelativeLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:elevation="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bannerdetailDatosTV"
+                android:inputType="textMultiLine"
+                android:textColor="@color/negro"
+                android:text="Un grupo de colecciones consta de todas las colecciones con el mismo ID. Según la configuración predeterminada, las consultas recuperan los resultados de una sola colección de tu base de datos. Usa una consulta de grupos de colecciones para obtener documentos de un grupo de colecciones y no de una sola colección.
+
+Por ejemplo, para crear un grupo de colecciones de landmarks, puedes agregar una subcolección de puntos de referencia a cada ciudad:"
+                />
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+
+
+
+
+</ScrollView>
+   <Button
+       android:layout_width="30dp"
+       android:layout_height="30dp"
+       android:background="@drawable/ic_close"
+       android:layout_alignParentTop="true"
+       android:layout_alignParentRight="true"
+       android:layout_margin="5dp"
+       android:layout_marginBottom="10dp"
+       android:id="@+id/bannerdetailSalirBT"
+       />
+
+</RelativeLayout>
+

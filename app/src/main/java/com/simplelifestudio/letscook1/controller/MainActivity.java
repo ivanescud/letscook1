@@ -1,4 +1,9 @@
+//Creado por ivan squdero Richard quiros Jeanpoll cordova
 package com.simplelifestudio.letscook1.controller;
+/*Desarrollado por
+        Ivan Escudero
+        Richar Quiroz
+        Todo los derechos reservado 2020*/
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +14,13 @@ import android.widget.Button;
 
 import com.simplelifestudio.letscook1.R;
 
+import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button registerBut;
+    private Button loginBut;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
             init();
         registerBut.setOnClickListener(this);
+        loginBut.setOnClickListener(this);
+
+
 
     }
 
@@ -27,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void init() {
         registerBut = findViewById(R.id.loginRegisterBt);
+        loginBut = findViewById(R.id.loginbut);
+
 
     }
 
@@ -37,15 +51,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.loginRegisterBt:
 
-
-
-                startActivity(new Intent(MainActivity.this,register.class));
-
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
 
                 break;
 
             case R.id.loginbut:
 
+                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
 
                 break;
 

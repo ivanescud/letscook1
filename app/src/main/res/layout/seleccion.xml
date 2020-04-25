@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/loginbutpress"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Seleccione una Opcion"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#1e1e25"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/homedialogRcBT"
+                    android:layout_width="160dp"
+                    android:layout_height="140dp"
+                    android:background="#ffffff"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/recetaholder" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Recetas"
+                    android:textColor="#ffffff"
+                    android:textSize="20dp"
+                    android:id="@+id/homedialFTV"
+                    android:paddingBottom="10dp"
+
+                    />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#1e1e25"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_width="160dp"
+                    android:layout_height="140dp"
+                    android:background="#FFFFFF"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/homedialogBDBT"
+                    android:src="@drawable/drinksdos" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Bebidas"
+                    android:textColor="#ffffff"
+                    android:textSize="20dp"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/homedialSTV"
+
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:text="Salir"
+            android:layout_marginTop="5dp"
+            android:id="@+id/homedialogsalirBT"
+            android:textColor="#ffffff"
+            android:background="@drawable/unpressloginbut"
+            android:layout_marginBottom="20dp"
+
+            />
+    </LinearLayout>
+
+</LinearLayout>
+
+
+</RelativeLayout>

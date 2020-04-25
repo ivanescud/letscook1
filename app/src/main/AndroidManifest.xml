@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.simplelifestudio.letscook1">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +11,43 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.register" />
-        <activity android:name=".controller.MainActivity">
+        <activity android:name=".controller.BannerDetail"
+            android:label="Eventos"
+            android:theme="@style/HomeActivityAppTheme"
+            ></activity>
+        <activity
+            android:name=".controller.RecetaList"
+            android:label="LET&apos;S COOK"
+            android:theme="@style/HomeActivityAppTheme" />
+        <activity android:name=".controller.ResultadoBusqueda" />
+        <activity android:name=".controller.SeleccioneIngrediente" />
+        <activity
+            android:name=".controller.Top10"
+            android:label="Top 10"
+            android:theme="@style/HomeActivityAppTheme" />
+        <activity android:name=".controller.ComentarioActivity" />
+        <activity android:name=".controller.SplashRecetaDetail" /> <!-- LandScape repoductor_horizontalActivity -->
+        <activity android:name=".controller.reproductor_horizontalActivity" />
+        <activity android:name=".controller.LoginActivity" />
+        <activity android:name=".controller.RegisterActivity" />
+        <activity
+            android:name=".controller.resultado_listActivity"
+            android:label="LET&apos;S COOK"
+            android:theme="@style/HomeActivityAppTheme" />
+        <activity android:name=".controller.MainActivity" />
+        <activity android:name=".controller.Splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".controller.receta_detailActivity" />
+        <activity
+            android:name=".controller.HomeActivity"
+            android:label="LET&apos;S COOK"
+            android:theme="@style/HomeActivityAppTheme">
+
         </activity>
     </application>
 

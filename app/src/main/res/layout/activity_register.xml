@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".controller.register">
+    tools:context=".controller.RegisterActivity">
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -16,7 +16,7 @@
         android:layout_marginBottom="95dp"
         android:alpha="0.8"
         android:background="#00FFFFFF"
-        android:contentDescription="Imagen de ingredientes"
+        android:contentDescription="@string/Imagen"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:fontFamily="@font/arizonia"
-        android:text="Registro"
+        android:text="@string/Registro"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
@@ -54,73 +54,79 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/registroNombreTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
             android:ems="10"
-            android:hint="Nombre"
-            android:inputType="textPersonName" />
+            android:hint="@string/Nombre"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="15dp" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/registroApellidoTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Apellido"
-            android:inputType="textPersonName" />
+            android:hint="@string/Apellido"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="15dp" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/registroEmailTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:hint="@string/eMail"
+            android:inputType="textEmailAddress"
+            android:importantForAutofill="no" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="15dp" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/registroEdadTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Edad"
-            android:inputType="number" />
+            android:hint="@string/edad"
+            android:inputType="number"
+            android:autofillHints="" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="15dp" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/registroContraseñaTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="number|textPassword" />
+            android:hint="@string/Contraseña"
+            android:inputType="textPassword"
+            android:autofillHints="" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="15dp" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/registroRecontraseñaTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Re-Contraseña"
-            android:inputType="textPassword" />
+            android:hint="@string/recontraseña"
+            android:inputType="textPassword"
+            android:autofillHints="" />
 
         <Space
             android:layout_width="match_parent"
@@ -138,14 +144,24 @@
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
             app:layout_constraintVertical_bias="0.37">
 
-            <Button
+
+
+            <com.dd.processbutton.iml.ActionProcessButton
                 android:id="@+id/loginRegisterBt"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/butradio"
                 android:fontFamily="sans-serif-black"
                 android:text="@string/registrarbutname"
                 android:textColor="#ffffff"
+                app:pb_colorNormal="@color/loginbut"
+                app:pb_colorPressed="@color/loginbutpress"
+                app:pb_colorComplete="@color/cpb_green_dark"
+                app:pb_textComplete="Registro Completo"
+                app:pb_textError="Error"
+                app:pb_colorError="#BDBDBD"
+                app:pb_textProgress="Registrando..."
+                app:pb_colorProgress="#ffffff"
+                app:pb_cornerRadius="45dp"
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>

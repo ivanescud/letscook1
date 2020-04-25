@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recetaDetailMotionLayoutML"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/negro">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/recetaDetailContenedorVideoCV"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="invisible"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
+        app:cardPreventCornerOverlap="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/recetaDetailContenedorVideoCV"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" >
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/recetaDetailYoutubePlayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            app:autoPlay="true"
+            app:showFullScreenButton="true"
+            app:showSeekBar="true"
+            app:showVideoCurrentTime="true"
+            app:showVideoDuration="true"
+            app:showYouTubeButton="false"
+            app:videoId="" />
+
+        -
+
+        <ImageView
+            android:id="@+id/recetaDetailBgIV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/Imagen"
+            android:scaleType="centerCrop"
+            android:src="@drawable/platillo_ejemplo"
+            android:visibility="visible" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.github.captain_miao.optroundcardview.OptRoundCardView
+        android:id="@+id/scrollableContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="5dp"
+        android:elevation="20dp"
+        android:nestedScrollingEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:optRoundCardBackgroundColor="@color/light_blanco_detail"
+        app:optRoundCardCornerRadius="20dp"
+        app:optRoundCardLeftBottomCorner="false"
+        app:optRoundCardRightBottomCorner="false">
+
+        <include
+            layout="@layout/receta_detail_nestedscroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </com.github.captain_miao.optroundcardview.OptRoundCardView>
+
+    <TextView
+        android:id="@+id/calificaion"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/butradioregister"
+        android:backgroundTint="#D96704"
+        android:elevation="21dp"
+        android:gravity="center"
+        android:textColor="@color/light_blanco_detail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/recetaDetailBotonFavoritoIB"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/white_circle"
+        android:backgroundTint="#F6555B"
+        android:contentDescription="@string/Imagen"
+        android:elevation="21dp"
+        android:src="@drawable/ic_favorite_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
+

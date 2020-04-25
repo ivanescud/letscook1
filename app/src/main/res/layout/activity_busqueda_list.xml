@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    >
+
+
+<ScrollView
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    >
+
+
+
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#910C0C"
+        android:elevation="30dp"
+
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/busquedaSaludoTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hola!"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/busquedaUserNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/busquedaSaludoTV" />
+
+
+        <TextView
+            android:id="@+id/busquedaSubtitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Que quieres cocinar hoy?"
+            android:textColor="#ffffff"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/busquedaUserNameTV" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/busquedaUserImgCIV"
+            android:layout_width="90dp"
+            android:layout_height="95dp"
+            android:elevation="20dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/busquedaAutoScrollPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        />
+    <me.relex.circleindicator.CircleIndicator3
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/busquedaCircleIndicator"
+        app:ci_orientation="horizontal"
+        app:ci_gravity="center"
+        app:ci_drawable="@drawable/indicadoractivo"
+        app:ci_drawable_unselected="@drawable/indicadordesactive"
+        />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+       android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:elevation="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:elevation="10dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recetas"
+            android:textColor="@color/negro"
+            android:textSize="20sp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            android:id="@+id/busquedaPrimeRV"
+            tools:listitem="@layout/cellbusqueda"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+
+            />
+
+
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:background="@drawable/busmasbu"
+            android:text="Ver Más"
+            android:id="@+id/busquedaRecetaBT"
+
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:elevation="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bebidas"
+        android:textColor="@color/negro"
+        android:textSize="20sp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/busquedaSegunRV"
+        tools:listitem="@layout/cellbusqueda"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingBottom="10dp"
+        />
+
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="Ver Más"
+        android:id="@+id/busquedaBebidasBT"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/busmasbu"
+        android:layout_gravity="center_horizontal"
+        />
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:elevation="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Top 10"
+        android:textColor="@color/negro"
+        android:textSize="20sp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/busquedaTreRV"
+        tools:listitem="@layout/cellbusqueda"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingBottom="10dp"
+        />
+
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="Ver Más"
+        android:id="@+id/busquedaTopBT"
+        android:background="@drawable/busmasbu"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
+
+</ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/busquedafloatinBut"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:foregroundGravity="center"
+        android:src="@drawable/cubiertos_icon"
+        app:fabSize="normal"
+        app:maxImageSize="30dp" />
+
+</RelativeLayout>

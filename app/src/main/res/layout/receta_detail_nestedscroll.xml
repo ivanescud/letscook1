@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:background="#00FFFFFF"
+    android:paddingRight="5dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/recetaDetailTituloTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/text_default"
+            android:textColor="@color/design_default_color_on_secondary"
+            android:textSize="36sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/Imagen"
+            android:scaleType="centerInside"
+            android:tint="@color/loginbutpress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recetaDetailTituloTV"
+            app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
+
+        <TextView
+            android:id="@+id/recetaDetailNumeroFavoritosTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+           android:text="200"
+            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/recetaDetailTituloTV" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/Imagen"
+            android:padding="3dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/ic_star_border_black_24dp"
+            android:tint="#D96704"
+            app:layout_constraintEnd_toStartOf="@+id/recetaDetailComentarioIV"
+            app:layout_constraintStart_toEndOf="@+id/recetaDetailNumeroFavoritosTV"
+            app:layout_constraintTop_toBottomOf="@+id/recetaDetailTituloTV" />
+
+        <TextView
+            android:id="@+id/recetaDetailCalificacionTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:text="4.2"
+            app:layout_constraintStart_toEndOf="@+id/imageView10"
+            app:layout_constraintTop_toBottomOf="@+id/recetaDetailTituloTV" />
+
+        <ImageView
+            android:id="@+id/recetaDetailComentarioIV"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/Imagen"
+            android:padding="3dp"
+            android:tint="#4B83A6"
+            app:layout_constraintEnd_toStartOf="@+id/recetaDetailNumeroComentarioTV"
+            app:layout_constraintTop_toBottomOf="@+id/recetaDetailTituloTV"
+            app:srcCompat="@drawable/ic_comment_black_24dp" />
+
+        <TextView
+            android:id="@+id/recetaDetailNumeroComentarioTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:text="200"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recetaDetailTituloTV" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/butradioregister"
+            android:backgroundTint="#31707070"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@string/Imagen"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:tint="@color/fondotras"
+            app:layout_constraintBottom_toBottomOf="@+id/view4"
+            app:layout_constraintStart_toStartOf="@+id/view4"
+            app:layout_constraintTop_toTopOf="@+id/view4"
+            app:srcCompat="@drawable/ic_access_time_black_24dp" />
+
+        <TextView
+            android:id="@+id/recetaDetailTiempoTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view4"
+            app:layout_constraintStart_toEndOf="@+id/imageView12"
+            app:layout_constraintTop_toTopOf="@+id/view4" />
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/Imagen"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:tint="@color/fondotras"
+            app:layout_constraintBottom_toBottomOf="@+id/view4"
+            app:layout_constraintEnd_toStartOf="@+id/recetaDetailServidasTV"
+            app:layout_constraintStart_toEndOf="@+id/recetaDetailTiempoTV"
+            app:layout_constraintTop_toTopOf="@+id/view4"
+            app:srcCompat="@drawable/ic_local_dining_black_24dp" />
+
+        <TextView
+            android:id="@+id/recetaDetailServidasTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="24dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view4"
+            app:layout_constraintEnd_toStartOf="@+id/imageView14"
+            app:layout_constraintStart_toEndOf="@+id/recetaDetailTiempoTV"
+            app:layout_constraintTop_toTopOf="@+id/view4" />
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/Imagen"
+            android:padding="5dp"
+            android:tint="@color/fondotras"
+            app:layout_constraintBottom_toBottomOf="@+id/view4"
+            app:layout_constraintEnd_toStartOf="@+id/recetaDetailTipoTV"
+            app:layout_constraintTop_toTopOf="@+id/view4"
+            app:srcCompat="@drawable/ic_import_contacts_black_24dp" />
+
+        <TextView
+            android:id="@+id/recetaDetailTipoTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view4"
+            app:layout_constraintEnd_toEndOf="@+id/view4"
+            app:layout_constraintTop_toTopOf="@+id/view4" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/ingredientes"
+            android:textColor="#262226"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recetaDetailIngredientesRV"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:foregroundGravity="left"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/textView134"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/dirrecion"
+            android:textColor="#262226"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recetaDetailIngredientesRV" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recetaDetailDireccionRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recetaDetailIngredientesRV">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recetaDetailDireccionRV" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
