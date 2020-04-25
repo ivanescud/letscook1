@@ -1,5 +1,9 @@
 package com.simplelifestudio.letscook1.controller;
 
+/*Desarrollado por
+        Ivan Escudero
+        Richar Quiroz
+        Todo los derechos reservado 2020*/
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -487,7 +491,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
 
                         } else if (banner.getBannerType().equals("lista")) {
                             String style = banner.getStyle();
-                            startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtra("style", style));
+                            startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtra("numero", 3));
                         }
                     }
                 });
@@ -622,7 +626,7 @@ public class resultado_listActivity extends AppCompatActivity implements View.On
                 break;
 
             case R.id.busquedaBebidasBT:
-                startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtra("tipo", "bebidas").putExtra("numero",3));
+                startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtra("tipo", "bebidas").putExtra("numero",2));
                 break;
 
 

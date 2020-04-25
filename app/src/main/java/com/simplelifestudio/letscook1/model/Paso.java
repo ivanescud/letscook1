@@ -1,4 +1,8 @@
 package com.simplelifestudio.letscook1.model;
+/*Desarrollado por
+        Ivan Escudero
+        Richar Quiroz
+        Todo los derechos reservado 2020*/
 
 import android.os.Parcel;
 import android.os.Parcelable;

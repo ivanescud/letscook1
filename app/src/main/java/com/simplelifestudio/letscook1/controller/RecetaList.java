@@ -1,3 +1,9 @@
+/*Desarrollado por
+        Ivan Escudero
+        Richar Quiroz
+        Todo los derechos reservado 2020*/
+
+
 package com.simplelifestudio.letscook1.controller;
 
 import androidx.annotation.NonNull;
@@ -11,7 +17,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.GridView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -23,7 +28,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.simplelifestudio.letscook1.R;
 import com.simplelifestudio.letscook1.adapters.BusquedaRecycleAdapter;
-import com.simplelifestudio.letscook1.adapters.HomeRecetaAdapter;
 import com.simplelifestudio.letscook1.model.Ingrediente;
 import com.simplelifestudio.letscook1.model.MapData;
 import com.simplelifestudio.letscook1.model.Receta;
@@ -43,13 +47,11 @@ public class RecetaList extends AppCompatActivity {
     private MapData mapData;
     int numero;
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.searchonly,menu);
+        inflater.inflate(R.menu.searchonly, menu);
 
 
         return true;
@@ -72,98 +74,45 @@ public class RecetaList extends AppCompatActivity {
 
         init();
 
+        numero = getIntent().getIntExtra("numero", 0);
 
-        tipo = getIntent().getStringExtra("tipo");
-        style = getIntent().getStringExtra("style");
-
-        mapData = new MapData();
-        Bundle bundle = new Bundle();
-
-        bundle = getIntent().getExtras();
-        mapData = (MapData) bundle.getSerializable("datos");
-
-
-
-        numero = getIntent().getIntExtra("numero",0);
-
-        switch (numero){
+        switch (numero) {
             case 1:
-                getData();
-            break;
+                mapData = new MapData();
+                Bundle bundle = getIntent().getExtras();
+                if (bundle != null) {
+                    mapData = (MapData) bundle.getSerializable("datos");
+                    getDataRecetasIngredientes();
+                }
+
+                break;
             case 2:
-                getRecetasData();
-            break;
+                tipo = getIntent().getStringExtra("tipo");
+                getDataHome();
+                break;
             case 3:
-                getRecetasDataStyle();
-            break;
+                style = getIntent().getStringExtra("style");
+                getRecetasPorBanner();
+                break;
         }
-
-
     }
 
-
-
-
-    private  void init() {
+    private void init() {
 
         gridlist = findViewById(R.id.recetaListGridV);
-
-
         db = FirebaseFirestore.getInstance();
-
-        gridlist.setLayoutManager(new GridLayoutManager(RecetaList.this,2));
+        gridlist.setLayoutManager(new GridLayoutManager(RecetaList.this, 2));
 
     }
 
-
-
-        private void getRecetasData(){
-
-            CollectionReference topF = db.collection("recetas");
-            Query query = topF.whereEqualTo("type",tipo);
-            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
-                        Receta receta = queryDocumentSnapshot.toObject(Receta.class);
-                        recetaslist.add(receta);
-                    }
-
-                    adapter = new BusquedaRecycleAdapter(recetaslist, getApplicationContext(), new BusquedaRecycleAdapter.OnClickCell2() {
-                        @Override
-                        public void onClickCell2(int positon) {
-
-                            Receta recetas = recetaslist.get(positon);
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable("receta", recetas);
-
-                            startActivity(new Intent(getApplicationContext(), RecetaList.class).putExtras(bundle));
-                        }
-                    },1);
-
-                    gridlist.setAdapter(adapter);
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                }
-            });
-
-
-
-
-        }
-
-    private void getRecetasDataStyle(){
+    private void getDataHome() {
 
         CollectionReference topF = db.collection("recetas");
-        Query query = topF.whereEqualTo("style",style);
+        Query query = topF.whereEqualTo("type", tipo);
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()){
+                for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
                     Receta receta = queryDocumentSnapshot.toObject(Receta.class);
                     recetaslist.add(receta);
                 }
@@ -172,8 +121,48 @@ public class RecetaList extends AppCompatActivity {
                     @Override
                     public void onClickCell2(int positon) {
 
+                        Receta recetas = recetaslist.get(positon);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("receta", recetas);
+
+                        startActivity(new Intent(getApplicationContext(), receta_detailActivity.class).putExtras(bundle));
                     }
-                },1);
+                }, 1);
+
+                gridlist.setAdapter(adapter);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+    }
+
+    private void getRecetasPorBanner() {
+
+        CollectionReference topF = db.collection("recetas");
+        Query query = topF.whereEqualTo("style", style);
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
+                    Receta receta = queryDocumentSnapshot.toObject(Receta.class);
+                    recetaslist.add(receta);
+                }
+
+                adapter = new BusquedaRecycleAdapter(recetaslist, getApplicationContext(), new BusquedaRecycleAdapter.OnClickCell2() {
+                    @Override
+                    public void onClickCell2(int positon) {
+
+                        Receta recetas = recetaslist.get(positon);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("receta", recetas);
+
+                        startActivity(new Intent(getApplicationContext(), receta_detailActivity.class).putExtras(bundle));
+                    }
+                }, 1);
 
                 gridlist.setAdapter(adapter);
 
@@ -187,9 +176,7 @@ public class RecetaList extends AppCompatActivity {
 
     }
 
-
-
-    private void getData() {
+    private void getDataRecetasIngredientes() {
         db.collection("recetas").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -198,25 +185,22 @@ public class RecetaList extends AppCompatActivity {
                     Receta receta = queryDocumentSnapshot.toObject(Receta.class);
 
 
-                    for(Map.Entry<String, Ingrediente> entry1 :receta.getIngredientes().entrySet()){
+                    for (Map.Entry<String, Ingrediente> entry1 : receta.getIngredientes().entrySet()) {
 
                         String key = entry1.getKey();
 
 
-                        for(Map.Entry<String, Boolean> entry2 : mapData.getData().entrySet()){
+                        for (Map.Entry<String, Boolean> entry2 : mapData.getData().entrySet()) {
                             String ke2 = entry2.getKey();
 
-                            if (ke2.equals(receta.getIngredientes().get(key).getProducto())){
-                                recetaslist.add(receta);
-                                Log.d("Datos",""+recetaslist.size());
-                            }
+                                if (ke2.equals(receta.getIngredientes().get(key).getProducto())) {
+                                    recetaslist.add(receta);
+                                    Log.d("Datos", "" + recetaslist.size());
+
+                                }
+
                         }
-
-
-
                     }
-
-
                 }
                 adapter = new BusquedaRecycleAdapter(recetaslist, getApplicationContext(), new BusquedaRecycleAdapter.OnClickCell2() {
                     @Override
@@ -227,7 +211,7 @@ public class RecetaList extends AppCompatActivity {
 
                         startActivity(new Intent(getApplicationContext(), receta_detailActivity.class).putExtras(bundle));
                     }
-                },1);
+                }, 1);
 
                 gridlist.setAdapter(adapter);
 
@@ -239,10 +223,6 @@ public class RecetaList extends AppCompatActivity {
 
             }
         });
-
-
-
-
 
 
     }

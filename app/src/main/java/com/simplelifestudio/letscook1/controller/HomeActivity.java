@@ -1,5 +1,9 @@
 package com.simplelifestudio.letscook1.controller;
 
+/*Desarrollado por
+        Ivan Escudero
+        Richar Quiroz
+        Todo los derechos reservado 2020*/
 
 import android.content.Intent;
 import android.os.Bundle;

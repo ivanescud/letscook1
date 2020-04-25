@@ -1,4 +1,8 @@
 package com.simplelifestudio.letscook1.extra;
+/*Desarrollado por
+        Ivan Escudero
+        Richar Quiroz
+        Todo los derechos reservado 2020*/
 
 import android.content.Context;
 import android.content.res.TypedArray;

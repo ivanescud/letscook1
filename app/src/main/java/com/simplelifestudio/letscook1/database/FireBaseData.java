@@ -20,6 +20,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.simplelifestudio.letscook1.model.User;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+/*Desarrollado por
+        Ivan Escudero
+        Richar Quiroz
+        Todo los derechos reservado 2020*/
 
 public class FireBaseData {
 
